@@ -1,4 +1,8 @@
-export const AddButton = (props) => {
+type AddButtonProps = {
+    setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const AddButton = (props: AddButtonProps) => {
     const { setModalIsOpen } = props;
     return (
         <div className='albumAddButton'>

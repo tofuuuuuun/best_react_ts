@@ -1,4 +1,8 @@
-export const Introduction = (props) => {
+type IntroductionProps = {
+    selectStart: () => void;
+}
+
+export const Introduction = (props: IntroductionProps) => {
     const { selectStart } = props;
 
     return (

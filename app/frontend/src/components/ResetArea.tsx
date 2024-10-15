@@ -1,7 +1,12 @@
 import rotateIcon from '../../public/images/rotate.png';
 import cameraIcon from '../../public/images/camera.png';
 
-export const ResetArea = (props) => {
+type ResetAreaProps = {
+    resetAlbumList: () => void;
+    handleCapture: () => void;
+}
+
+export const ResetArea = (props: ResetAreaProps) => {
     const { resetAlbumList, handleCapture } = props;
     return (
         <div className='resetArea m-top-1em'>
