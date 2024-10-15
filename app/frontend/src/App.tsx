@@ -1,10 +1,10 @@
 import { useEffect, useCallback, useState } from 'react'
-import { Modal } from './components/modal';
-import { Header } from './common/Header';
-import { Introduction } from './components/Introduction';
+import { Modal } from './components/Modal.tsx';
+import { Header } from './common/Header.tsx';
+import { Introduction } from './components/Introduction.tsx';
 import { AddButton } from './components/AddButton.tsx';
-import { AlbumArtList } from './components/AlbumartList';
-import { ResetArea } from './components/ResetArea';
+import { AlbumArtList } from './components/AlbumArtList.tsx';
+import { ResetArea } from './components/ResetArea.tsx';
 
 export const App = () => {
   const [isSelectStart, setIsSelectStart] = useState(false);
