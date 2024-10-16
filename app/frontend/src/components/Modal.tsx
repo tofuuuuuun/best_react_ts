@@ -2,14 +2,49 @@
 import noImage from '../../public/images/noImage.png';
 import searchIcon from '../../public/images/search.png';
 
-export const Modal = (props) => {
+type ResponseArtist = {
+    id: string;
+    name: string;
+    images: { url: string }[];
+}
+
+type FilterResponseAlbum = {
+    id: string;
+    name: string;
+    release_date: string;
+    artists: { name: string }[];
+    images: { url: string }[];
+}
+
+type IsCheckedArrayProps = {
+    id: string;
+}
+
+type ModalProps = {
+    toggleModal: (toggle: boolean) => void;
+    changeType: (typeValue: string) => void
+    type: string;
+    searchArtist: (artistName: string) => void;
+    artistName: string;
+    inputArtistName: () => void;
+    responseArtist: ResponseArtist[];
+    searchAlbum: (id: string, name: string) => void;
+    filterResponseAlbum: FilterResponseAlbum[]
+    addAlbumArt: (id: string, name: string, image: string, artist: string) => void;
+    isCheckedArray: IsCheckedArrayProps[];
+    addIsChecked: (id: string) => void;
+    clearModal: () => void;
+    errorMessage: string;
+}
+
+export const Modal = (props: ModalProps) => {
     const { toggleModal, changeType, type, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, addAlbumArt, isCheckedArray, addIsChecked, clearModal, errorMessage } = props;
 
-    const selectType = (event) => changeType(event.target.value);
+    const selectType = (event: { target: { value: string; }; }) => changeType(event.target.value);
     const changeFlg = () => toggleModal(false);
-    const addAlbumList = (id, name, image, artist) => { addAlbumArt(id, name, image, artist); }
-    const isChecked = (id) => addIsChecked(id);
-    const isCheckedToggle = (id) => isCheckedArray.some((value) => value.id === id)
+    const addAlbumList = (id: string, name: string, image: string, artist: string) => { addAlbumArt(id, name, image, artist); }
+    const isChecked = (id: string) => addIsChecked(id);
+    const isCheckedToggle = (id: string) => isCheckedArray.some((value) => value.id === id)
     return (
         <div className='modal-container'>
             <div className='modal-body'>
@@ -33,7 +68,7 @@ export const Modal = (props) => {
                             <ul className='autocompleteList padding-all-1em'>
                                 {responseArtist.map((artist, index) => (
                                     <li className='artistItems action' data-artist_id={artist.id} key={index} onClick={() => searchAlbum(artist.id, artist.name)}>
-                                        <img className='l-searchArtistImage artistImage' src={artist.images[0] ? artist.images[0].url : noImage} loading='lazy' />
+                                        <img className='l-searchArtistImage artistImage' src={artist.images[0]?.url || noImage} loading='lazy' />
                                         <div className='l-artistInfo'>
                                             <span className='searchArtistName font-wb'>{artist.name}</span>
                                         </div>
@@ -62,9 +97,9 @@ export const Modal = (props) => {
                                             <span className='albumName font-wb'>{album.name} ({album.release_date.substring(0, 4)})</span>
                                             <span className='artistsName'>{album.artists.map((value) => value.name).join(',')}</span>
                                         </div>
-                                        <label id={album.id} className={isCheckedToggle(album.id) ? 'l-button bg-orange txt-white action ta-center' : 'l-button bg-turquoise txt-white action ta-center'}>
+                                        <label htmlFor={album.id} className={isCheckedToggle(album.id) ? 'l-button bg-orange txt-white action ta-center' : 'l-button bg-turquoise txt-white action ta-center'}>
                                             <input type='checkbox'
-                                                htmlFor={album.id}
+                                                id={album.id}
                                                 className={isCheckedToggle(album.id) ? 'selected' : 'select'}
                                                 checked={isCheckedToggle(album.id)}
                                                 onChange={() => {
