@@ -26,7 +26,7 @@ type ModalProps = {
     type: string;
     searchArtist: (artistName: string) => void;
     artistName: string;
-    inputArtistName: () => void;
+    inputArtistName: (event: { target: { value: string } }) => void;
     responseArtist: ResponseArtist[];
     searchAlbum: (id: string, name: string) => void;
     filterResponseAlbum: FilterResponseAlbum[]
