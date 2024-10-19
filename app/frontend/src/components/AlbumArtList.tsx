@@ -5,6 +5,7 @@ type Album = {
     albumArtist: string;
 }
 type AlbumArtListProps = {
+    isSelectStart: boolean;
     albumArtList: Album[];
     deleteAlbum: (id: string) => void;
 }

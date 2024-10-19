@@ -8,12 +8,22 @@ type ResponseArtist = {
     images: { url: string }[];
 }
 
-type FilterResponseAlbum = {
+// type FilterResponseAlbum = {
+//     id: string;
+//     name: string;
+//     release_date: string;
+//     artists: { name: string }[];
+//     images: { url: string }[];
+// }
+
+type ResponseAlbumType = {
+    album_type: string;
     id: string;
+    images: { url: string }[];
     name: string;
     release_date: string;
-    artists: { name: string }[];
-    images: { url: string }[];
+    type: string;
+    artists: { id: string, name: string }[];
 }
 
 type IsCheckedArrayProps = {
@@ -29,7 +39,7 @@ type ModalProps = {
     inputArtistName: (event: { target: { value: string } }) => void;
     responseArtist: ResponseArtist[];
     searchAlbum: (id: string, name: string) => void;
-    filterResponseAlbum: FilterResponseAlbum[]
+    filterResponseAlbum: ResponseAlbumType[]
     addAlbumArt: (id: string, name: string, image: string, artist: string) => void;
     isCheckedArray: IsCheckedArrayProps[];
     addIsChecked: (id: string) => void;
