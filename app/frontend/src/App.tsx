@@ -1,23 +1,60 @@
-import { useEffect, useCallback, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Modal } from './components/Modal.tsx';
 import { Header } from './common/Header.tsx';
 import { Introduction } from './components/Introduction.tsx';
 import { AddButton } from './components/AddButton.tsx';
 import { AlbumArtList } from './components/AlbumArtList.tsx';
 import { ResetArea } from './components/ResetArea.tsx';
+import { useDebounce } from './components/debounce.tsx';
+import html2canvas from 'html2canvas';
 
+type ResponseArtistType = {
+  id: string;
+  images: { url: string }[];
+  name: string;
+}
+
+type ResponseAlbumType = {
+  album_type: string;
+  id: string;
+  images: { url: string }[];
+  name: string;
+  release_date: string;
+  type: string;
+  artists: { id: string, name: string }[];
+}
+
+// type FilterResponseAlbum = {
+//   id: string;
+//   name: string;
+//   release_date: string;
+//   artists: { name: string }[];
+//   images: { url: string }[];
+// }
+
+
+type AlbumArtListType = {
+  id: string;
+  albumName: string;
+  albumArt: string;
+  albumArtist: string;
+}
+
+type IsCheckedArrayType = {
+  id: string;
+}
 export const App = () => {
-  const [isSelectStart, setIsSelectStart] = useState(false);
-  const [isModalOpen, setModalIsOpen] = useState(false);
+  const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
+  const [isModalOpen, setModalIsOpen] = useState<boolean>(false);
   const [addButtonVisible, setAddButtonVisible] = useState(false);
   const [artistName, setArtistName] = useState('');
   const [type, setType] = useState('all');
-  const [responseArtist, setResponseArtist] = useState([]);
-  const [responseAlbum, setResponseAlbum] = useState([]);
-  const [filterResponseAlbum, setFilterResponseAlbum] = useState([]);
+  const [responseArtist, setResponseArtist] = useState<ResponseArtistType[]>([]);
+  const [responseAlbum, setResponseAlbum] = useState<ResponseAlbumType[]>([]);
+  const [filterResponseAlbum, setFilterResponseAlbum] = useState<ResponseAlbumType[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
-  const [albumArtList, setAlbumArtList] = useState([]);
-  const [isCheckedArray, setIsCheckedArray] = useState([]);
+  const [albumArtList, setAlbumArtList] = useState<AlbumArtListType[]>([]);
+  const [isCheckedArray, setIsCheckedArray] = useState<IsCheckedArrayType[]>([]);
   const [resetButtonVisible, setResetButtonVisible] = useState(false);
 
   const selectStart = () => {
@@ -25,36 +62,24 @@ export const App = () => {
     setAddButtonVisible(true);
   }
 
-  const toggleModal = (toggleFlg) => {
+  const toggleModal = (toggleFlg: boolean) => {
     clearModal();
     setModalIsOpen(toggleFlg);
   }
 
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return (...args) => {
-      if (timeoutId) clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        func(...args);
-      }, delay);
-    };
+  const debounce = useDebounce(500);
+  const debounceSearch = (name: string) => {
+    debounce(() => {
+      searchArtist(name);
+    })
   };
 
-  const debounceSearch = useCallback(
-    debounce((name) => {
-      if (name) {
-        searchArtist(name);
-      }
-    }, 500),
-    []
-  );
-
-  const inputArtistName = (event) => {
+  const inputArtistName = (event: { target: { value: string } }) => {
     setArtistName(event.target.value);
     debounceSearch(event.target.value);
   }
 
-  const changeType = (typeValue) => {
+  const changeType = (typeValue: string) => {
     setType(typeValue);
     if (typeValue != 'all') {
       const filtered = responseAlbum.filter(album => album.album_type === typeValue);
@@ -67,11 +92,11 @@ export const App = () => {
 
   const scrollTop = () => {
     const modalWindow = document.getElementById('firstItems');
-    modalWindow.scrollIntoView(true);
+    modalWindow?.scrollIntoView(true);
   }
 
-  const addAlbumArt = (id, name, image, artist) => {
-    if (albumArtList.some((value) => value.id) === id) {
+  const addAlbumArt = (id: string, name: string, image: string, artist: string) => {
+    if (albumArtList.some((value) => value.id === id)) {
       deleteAlbum(id);
     } else {
       const newItem = [...albumArtList, { id: id, albumName: name, albumArt: image, albumArtist: artist }];
@@ -79,7 +104,7 @@ export const App = () => {
     }
   };
 
-  const addIsChecked = (id) => {
+  const addIsChecked = (id: string) => {
     setIsCheckedArray((prevCheckedArray) => {
       // すでに登録されているIDの場合配列から削除して一覧からも削除
       const isSameAlbum = prevCheckedArray.some((value) => value.id === id);
@@ -97,7 +122,7 @@ export const App = () => {
     });
   }
 
-  const deleteAlbum = (id) => {
+  const deleteAlbum = (id: string) => {
     const deleteArray = albumArtList.filter(album => album.id !== id);
     setAlbumArtList(deleteArray);
     const deleteIsChecked = isCheckedArray.filter(album => album.id !== id);
@@ -124,7 +149,7 @@ export const App = () => {
     setResetButtonVisible(false);
   }
 
-  const searchArtist = async (artistName) => {
+  const searchArtist = async (artistName: string) => {
     setResponseArtist([]);
     const params = new URLSearchParams({ 'artistName': artistName });
     try {
@@ -144,7 +169,7 @@ export const App = () => {
     }
   };
 
-  const searchAlbum = async (artistId, name) => {
+  const searchAlbum = async (artistId: string, name: string) => {
     setResponseArtist([]);
     setResponseAlbum([]);
     setFilterResponseAlbum([]);
@@ -174,26 +199,29 @@ export const App = () => {
   }
 
   const handleCapture = () => {
-    html2canvas(document.querySelector('.l-contentWrapper'), {
+    const element = document.querySelector('.l-contentWrapper') as HTMLElement
+    html2canvas(element, {
       useCORS: true
     }).then(canvas => {
-      var dataURL = canvas.toDataURL("image/png");
+      const dataURL = canvas.toDataURL("image/png");
       const blob = toBlob(dataURL);
-      const imageFile = new File([blob], "image.png", {
-        type: "image/png",
-      });
-      navigator.share({
-        text: "共有",
-        files: [imageFile],
-      }).then(() => {
-        console.log("success.");
-      }).catch((error) => {
-        console.log(error);
-      });
+      if (blob) {
+        const imageFile = new File([blob], "image.png", {
+          type: "image/png",
+        });
+        navigator.share({
+          text: "共有",
+          files: [imageFile],
+        }).then(() => {
+          console.log("success.");
+        }).catch((error) => {
+          console.log(error);
+        });
+      }
     });
   }
 
-  const toBlob = (base64) => {
+  const toBlob = (base64: string): Blob | null => {
     const decodedData = atob(base64.replace(/^.*,/, ""));
     const buffers = new Uint8Array(decodedData.length);
     for (let i = 0; i < decodedData.length; i++) {
@@ -205,6 +233,7 @@ export const App = () => {
       });
       return blob;
     } catch (e) {
+      console.log(e);
       return null;
     }
   }
@@ -256,11 +285,9 @@ export const App = () => {
             type={type}
             responseArtist={responseArtist}
             searchAlbum={searchAlbum}
-            responseAlbum={responseAlbum}
             filterResponseAlbum={filterResponseAlbum}
             errorMessage={errorMessage}
             addAlbumArt={addAlbumArt}
-            albumArtList={albumArtList}
             addIsChecked={addIsChecked}
             isCheckedArray={isCheckedArray}
             clearModal={clearModal}
