@@ -1,4 +1,4 @@
-
+import { useState } from 'react'
 import noImage from '../../public/images/noImage.png';
 import searchIcon from '../../public/images/search.png';
 
@@ -30,6 +30,10 @@ type IsCheckedArrayProps = {
     id: string;
 }
 
+type checkboxesType = {
+    id: string;
+}
+
 type ModalProps = {
     toggleModal: (toggle: boolean) => void;
     changeType: (typeValue: string) => void
@@ -50,11 +54,24 @@ type ModalProps = {
 export const Modal = (props: ModalProps) => {
     const { toggleModal, changeType, type, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, addAlbumArt, isCheckedArray, addIsChecked, clearModal, errorMessage } = props;
 
+    const [checkboxes, setCheckboxes] = useState<checkboxesType[]>([]);
+
     const selectType = (event: { target: { value: string; }; }) => changeType(event.target.value);
     const changeFlg = () => toggleModal(false);
     const addAlbumList = (id: string, name: string, image: string, artist: string) => { addAlbumArt(id, name, image, artist); }
     const isChecked = (id: string) => addIsChecked(id);
-    const isCheckedToggle = (id: string) => isCheckedArray.some((value) => value.id === id)
+    const isCheckedToggle = (id: string) => checkboxes.some((value) => value.id === id);
+
+    const test = (id: string) => {
+        if (checkboxes.some((value) => value.id === id)) {
+            const deleteArray = checkboxes.filter(value => value.id !== id);
+            setCheckboxes(deleteArray);
+
+        } else {
+            setCheckboxes([...checkboxes, { id: id }]);
+        }
+        console.log(checkboxes);
+    }
     return (
         <div className='modal-container'>
             <div className='modal-body'>
@@ -111,11 +128,13 @@ export const Modal = (props: ModalProps) => {
                                             <input type='checkbox'
                                                 id={album.id}
                                                 className={isCheckedToggle(album.id) ? 'selected' : 'select'}
-                                                checked={isCheckedToggle(album.id)}
                                                 onChange={() => {
                                                     addAlbumList(album.id, album.name, album.images.length !== 0 ? album.images[0].url : '', album.artists.map((value) => value.name).join(', '));
-                                                    isChecked(album.id);
-                                                }} />{isCheckedToggle(album.id) ? '選択中' : '選択'}
+                                                    // isChecked(album.id);
+                                                    test(album.id);
+                                                }}
+                                                checked={isCheckedToggle(album.id)}
+                                            />{isCheckedToggle(album.id) ? '選択中' : '選択'}
                                         </label>
                                     </li>
                                 ))}
