@@ -24,15 +24,6 @@ type ResponseAlbumType = {
   artists: { id: string, name: string }[];
 }
 
-// type FilterResponseAlbum = {
-//   id: string;
-//   name: string;
-//   release_date: string;
-//   artists: { name: string }[];
-//   images: { url: string }[];
-// }
-
-
 type AlbumArtListType = {
   id: string;
   albumName: string;
@@ -95,13 +86,20 @@ export const App = () => {
     modalWindow?.scrollIntoView(true);
   }
 
-  const addAlbumArt = (id: string, name: string, image: string, artist: string) => {
-    if (albumArtList.some((value) => value.id === id)) {
-      deleteAlbum(id);
-    } else {
-      const newItem = [...albumArtList, { id: id, albumName: name, albumArt: image, albumArtist: artist }];
-      setAlbumArtList(newItem);
-    }
+  const addAlbumArt = async (id: string, name: string, image: string, artist: string) => {
+    // if (albumArtList.some((value) => value.id === id)) {
+    //   deleteAlbum(id);
+    // } else {
+    //   const newItem = [...albumArtList, { id: id, albumName: name, albumArt: image, albumArtist: artist }];
+    //   setAlbumArtList(newItem);
+    // }
+    return new Promise((resolve) => {
+      console.log(`Added album art for ${name}`);
+      resolve(true);
+      // const newItem = [...albumArtList, { id: id, albumName: name, albumArt: image, albumArtist: artist }];
+      // setAlbumArtList(newItem);
+      resolve(true);
+    })
   };
 
   const addIsChecked = (id: string) => {
@@ -112,7 +110,9 @@ export const App = () => {
         return [...prevCheckedArray, { id: id }];
       } else {
         const deleteArray = albumArtList.filter(album => album.id !== id);
+
         setAlbumArtList(deleteArray);
+
         if (albumArtList.length < 10) {
           setResetButtonVisible(false);
           setAddButtonVisible(true);
@@ -123,6 +123,7 @@ export const App = () => {
   }
 
   const deleteAlbum = (id: string) => {
+    console.log('deleteAlbum');
     const deleteArray = albumArtList.filter(album => album.id !== id);
     setAlbumArtList(deleteArray);
     const deleteIsChecked = isCheckedArray.filter(album => album.id !== id);
@@ -292,6 +293,7 @@ export const App = () => {
             isCheckedArray={isCheckedArray}
             clearModal={clearModal}
             artistName={artistName}
+            deleteAlbum={deleteAlbum}
           />
         )}
       </main >

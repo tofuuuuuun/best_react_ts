@@ -49,28 +49,44 @@ type ModalProps = {
     addIsChecked: (id: string) => void;
     clearModal: () => void;
     errorMessage: string;
+    deleteAlbum: (id: string) => void;
 }
 
 export const Modal = (props: ModalProps) => {
-    const { toggleModal, changeType, type, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, addAlbumArt, isCheckedArray, addIsChecked, clearModal, errorMessage } = props;
+    const { toggleModal, changeType, type, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, addAlbumArt, isCheckedArray, addIsChecked, clearModal, errorMessage, deleteAlbum } = props;
 
     const [checkboxes, setCheckboxes] = useState<checkboxesType[]>([]);
 
     const selectType = (event: { target: { value: string; }; }) => changeType(event.target.value);
     const changeFlg = () => toggleModal(false);
-    const addAlbumList = (id: string, name: string, image: string, artist: string) => { addAlbumArt(id, name, image, artist); }
-    const isChecked = (id: string) => addIsChecked(id);
+
+    // const addAlbumList = (id: string, name: string, image: string, artist: string) => { addAlbumArt(id, name, image, artist); }
+    // const isChecked = (id: string) => addIsChecked(id);
     const isCheckedToggle = (id: string) => checkboxes.some((value) => value.id === id);
 
-    const test = (id: string) => {
-        if (checkboxes.some((value) => value.id === id)) {
-            const deleteArray = checkboxes.filter(value => value.id !== id);
-            setCheckboxes(deleteArray);
-
+    const test = (id: string, name: string, image: string, artist: string) => {
+        if (checkboxes.some(checkbox => checkbox.id === id)) {
+            console.log('true!!!!');
+            setCheckboxes(checkboxes.filter(value => value.id !== id));
         } else {
-            setCheckboxes([...checkboxes, { id: id }]);
+            console.log('false!!!!');
+            setCheckboxes((prev) => [...prev, { id: id }]);
+            addIsChecked(id);
+            addAlbumArt(id, name, image, artist);
+            console.log(checkboxes);
         }
-        console.log(checkboxes);
+
+        // setCheckboxes((prev) => {
+        //     return prev.map(v => v.id === id ? { id: id } : v);
+        //     if (checkboxes.some((value) => value.id === id)) {
+        //         const deleteArray = checkboxes.filter(value => value.id !== id);
+        //         return deleteArray;
+        //     } else {
+        //         console.log('72行目');
+        //         addAlbumArt(id, name, image, artist);
+        //         return [...prev, { id: id }];
+        //         // }
+        //     }
     }
     return (
         <div className='modal-container'>
@@ -128,12 +144,8 @@ export const Modal = (props: ModalProps) => {
                                             <input type='checkbox'
                                                 id={album.id}
                                                 className={isCheckedToggle(album.id) ? 'selected' : 'select'}
-                                                onChange={() => {
-                                                    addAlbumList(album.id, album.name, album.images.length !== 0 ? album.images[0].url : '', album.artists.map((value) => value.name).join(', '));
-                                                    // isChecked(album.id);
-                                                    test(album.id);
-                                                }}
-                                                checked={isCheckedToggle(album.id)}
+                                                checked={checkboxes.some((value) => value.id === album.id)}
+                                                onChange={() => test(album.id, album.name, album.images.length !== 0 ? album.images[0].url : '', album.artists.map((value) => value.name).join(', '))}
                                             />{isCheckedToggle(album.id) ? '選択中' : '選択'}
                                         </label>
                                     </li>
