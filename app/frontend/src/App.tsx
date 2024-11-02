@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Modal } from './components/Modal.tsx';
 import { Header } from './common/Header.tsx';
 import { Introduction } from './components/Introduction.tsx';
@@ -31,9 +31,6 @@ type AlbumArtListType = {
   albumArtist: string;
 }
 
-type IsCheckedArrayType = {
-  id: string;
-}
 export const App = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
   const [isModalOpen, setModalIsOpen] = useState<boolean>(false);
@@ -45,7 +42,6 @@ export const App = () => {
   const [filterResponseAlbum, setFilterResponseAlbum] = useState<ResponseAlbumType[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [albumArtList, setAlbumArtList] = useState<AlbumArtListType[]>([]);
-  const [isCheckedArray, setIsCheckedArray] = useState<IsCheckedArrayType[]>([]);
   const [resetButtonVisible, setResetButtonVisible] = useState(false);
 
   const selectStart = () => {
@@ -86,48 +82,20 @@ export const App = () => {
     modalWindow?.scrollIntoView(true);
   }
 
-  const addAlbumArt = async (id: string, name: string, image: string, artist: string) => {
-    // if (albumArtList.some((value) => value.id === id)) {
-    //   deleteAlbum(id);
-    // } else {
-    //   const newItem = [...albumArtList, { id: id, albumName: name, albumArt: image, albumArtist: artist }];
-    //   setAlbumArtList(newItem);
-    // }
-    return new Promise((resolve) => {
-      console.log(`Added album art for ${name}`);
-      resolve(true);
-      // const newItem = [...albumArtList, { id: id, albumName: name, albumArt: image, albumArtist: artist }];
-      // setAlbumArtList(newItem);
-      resolve(true);
-    })
-  };
-
-  const addIsChecked = (id: string) => {
-    setIsCheckedArray((prevCheckedArray) => {
-      // すでに登録されているIDの場合配列から削除して一覧からも削除
-      const isSameAlbum = prevCheckedArray.some((value) => value.id === id);
-      if (!isSameAlbum) {
-        return [...prevCheckedArray, { id: id }];
+  const handleChange = useCallback((id: string, albumName: string, albumArt: string, albumArtist: string) => {
+    setAlbumArtList((prevList) => {
+      const isSelected = prevList.some((item) => item.id === id);
+      if (isSelected) {
+        return prevList.filter((item) => item.id !== id);
       } else {
-        const deleteArray = albumArtList.filter(album => album.id !== id);
-
-        setAlbumArtList(deleteArray);
-
-        if (albumArtList.length < 10) {
-          setResetButtonVisible(false);
-          setAddButtonVisible(true);
-        }
-        return prevCheckedArray.filter(value => value.id !== id);
+        return [...prevList, { id, albumName, albumArt, albumArtist }];
       }
     });
-  }
+  }, []);
 
   const deleteAlbum = (id: string) => {
-    console.log('deleteAlbum');
     const deleteArray = albumArtList.filter(album => album.id !== id);
     setAlbumArtList(deleteArray);
-    const deleteIsChecked = isCheckedArray.filter(album => album.id !== id);
-    setIsCheckedArray(deleteIsChecked);
     setResetButtonVisible(false);
     if (albumArtList.length <= 10) {
       setResetButtonVisible(false);
@@ -145,7 +113,6 @@ export const App = () => {
   const resetAlbumList = () => {
     clearModal();
     setAlbumArtList([]);
-    setIsCheckedArray([])
     setAddButtonVisible(true);
     setResetButtonVisible(false);
   }
@@ -245,7 +212,9 @@ export const App = () => {
       setAddButtonVisible(false);
       setModalIsOpen(false);
     }
-  }, [albumArtList.length]);
+    console.log(albumArtList)
+
+  }, [albumArtList.length, albumArtList]);
 
 
   return (
@@ -288,12 +257,11 @@ export const App = () => {
             searchAlbum={searchAlbum}
             filterResponseAlbum={filterResponseAlbum}
             errorMessage={errorMessage}
-            addAlbumArt={addAlbumArt}
-            addIsChecked={addIsChecked}
-            isCheckedArray={isCheckedArray}
             clearModal={clearModal}
             artistName={artistName}
             deleteAlbum={deleteAlbum}
+            handleChange={handleChange}
+            albumArtList={albumArtList}
           />
         )}
       </main >
