@@ -55,6 +55,7 @@ export const App = () => {
   }
 
   const debounce = useDebounce(500);
+
   const debounceSearch = (name: string) => {
     debounce(() => {
       searchArtist(name);
@@ -66,6 +67,7 @@ export const App = () => {
     debounceSearch(event.target.value);
   }
 
+  // モーダルからアルバムタイプを切り替え、フィルタリングする
   const changeType = (typeValue: string) => {
     setType(typeValue);
     if (typeValue != 'all') {
@@ -167,7 +169,7 @@ export const App = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      setErrorMessage('アルバム情報の取得に失敗しました。');
+      setErrorMessage(`アルバム情報の取得に失敗しました。${error}`);
     }
   }
 
@@ -214,6 +216,7 @@ export const App = () => {
 
   useEffect(() => {
     if (albumArtList.length === 10) {
+      // 十枚選択したらリセットボタンとキャプチャボタンを表示する
       setResetButtonVisible(true);
       setAddButtonVisible(false);
       setModalIsOpen(false);
