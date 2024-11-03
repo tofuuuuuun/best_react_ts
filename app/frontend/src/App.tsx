@@ -121,6 +121,7 @@ export const App = () => {
 
   const searchArtist = async (artistName: string) => {
     setResponseArtist([]);
+    setErrorMessage('');
     const params = new URLSearchParams({ 'artistName': artistName });
     try {
       const response = await fetch(`https://rahi-lab.com/js/ajax/searchArtists.php?${params}`, {
@@ -141,6 +142,7 @@ export const App = () => {
 
   // アーティストアルバムを全件取得する。（取得後type切り替えを行なう）
   const searchAlbum = async (artistId: string, name: string) => {
+    setErrorMessage('');
     setResponseArtist([]);
     setResponseAlbum([]);
     setFilterResponseAlbum([]);

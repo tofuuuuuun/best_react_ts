@@ -21,7 +21,7 @@ export const AlbumArtList = (props: AlbumArtListProps) => {
                             <li className='albumListItem action' id={album.id} key={index} >
                                 <img className='l-albumArt m-bottom-05em' src={album.albumArt} />
                                 <span className='selectName'>{album.albumName}</span>
-                                <span>{album.albumArtist}</span>
+                                <span className='selectAlbumArtist'>{album.albumArtist}</span>
                                 <span className='albumRemove' onClick={() => deleteAlbum(album.id)}><span className='icon-close'></span></span>
                             </li>
                         ))}
