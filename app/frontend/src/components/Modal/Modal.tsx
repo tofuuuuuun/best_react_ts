@@ -1,7 +1,8 @@
 import { ModalAutocomplete } from './Autocomplete';
-import { SearchForm } from './SearchForm';
-import { ResultCheckboxButton } from './ResultCheckButton';
+import { SearchForm } from './SearchForm'
+import { SelectType } from './SelectType';
 import { ErrorMessage } from '../../error/ErrorMessage';
+import { ResponseAlbumList } from './ResponseAlbumList';
 
 type ResponseArtist = {
     id: string;
@@ -59,35 +60,15 @@ export const Modal = (props: ModalProps) => {
                     />
                     {filterResponseAlbum.length !== 0 && (
                         <div>
-                            <div className='ta-left m-bottom-05em p-top-1em'>
-                                <form id='type'>
-                                    <input type='radio' name='typeLabel' id='typeAll' value='all' checked={type === 'all'} onChange={selectType} />
-                                    <label htmlFor='typeAll' className='l-subButton bg-gray typeAll m-right-05em'>すべて</label>
-                                    <input type='radio' name='typeLabel' id='typeAlbum' value='album' checked={type === 'album'} onChange={selectType} />
-                                    <label htmlFor='typeAlbum' className='l-subButton bg-gray typeAlbum m-right-05em'>アルバム</label>
-                                    <input type='radio' name='typeLabel' id='typeSingleEP' value='single' checked={type === 'single'} onChange={selectType} />
-                                    <label htmlFor='typeSingleEP' className='l-subButton bg-gray typeSingleEP'>シングルとEP</label>
-                                </form>
-                            </div>
-                            <ul className='modalList'>
-                                {filterResponseAlbum.map((album, index) => (
-                                    <li className='albumItems' id={index === 0 ? 'firstItems' : ''} key={index} >
-                                        <img className='albumImage' src={album.images.length !== 0 ? album.images[0].url : ''} loading='lazy' />
-                                        <div className='l-albumInfo'>
-                                            <span className='albumName font-wb'>{album.name} ({album.release_date.substring(0, 4)})</span>
-                                            <span className='artistsName'>{album.artists.map((value) => value.name).join(',')}</span>
-                                        </div>
-                                        <ResultCheckboxButton
-                                            id={album.id}
-                                            name={album.name}
-                                            image={album.images[0]?.url}
-                                            artists={album.artists.map((value) => value.name).join(',')}
-                                            toggleDisplayFlg={albumArtList.some((item) => item.id === album.id)}
-                                            toggleAlbum={toggleAlbum}
-                                        />
-                                    </li>
-                                ))}
-                            </ul>
+                            <SelectType
+                                type={type}
+                                selectType={selectType}
+                            />
+                            <ResponseAlbumList
+                                toggleAlbum={toggleAlbum}
+                                filterResponseAlbum={filterResponseAlbum}
+                                albumArtList={albumArtList}
+                            />
                         </div>
                     )}
                 </div>

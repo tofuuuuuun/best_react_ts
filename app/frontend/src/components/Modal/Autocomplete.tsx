@@ -1,4 +1,4 @@
-import noImage from '../../public/images/noImage.png';
+import noImage from '../../../public/images/noImage.png';
 
 type ResponseArtist = {
     id: string;

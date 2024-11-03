@@ -1,4 +1,4 @@
-import searchIcon from '../../public/images/search.png';
+import searchIcon from '../../../public/images/search.png';
 
 type SearchFormProps = {
     artistName: string;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Modal } from './components/Modal.tsx';
+import { Modal } from './components/Modal/Modal.tsx';
 import { Header } from './common/Header.tsx';
 import { Introduction } from './components/Introduction.tsx';
 import { AddButton } from './components/AddButton.tsx';
