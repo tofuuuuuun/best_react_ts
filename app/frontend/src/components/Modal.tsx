@@ -1,5 +1,6 @@
 import noImage from '../../public/images/noImage.png';
 import searchIcon from '../../public/images/search.png';
+import { ModalCheckboxButton } from './ModalCheckButton';
 
 type ResponseArtist = {
     id: string;
@@ -30,12 +31,12 @@ type ModalProps = {
     clearModal: () => void;
     deleteAlbum: (id: string) => void;
     albumArtList: { id: string, albumName: string, albumArt: string, albumArtist: string }[];
-    handleChange: (id: string, albumName: string, albumArt: string, albumArtist: string) => void;
+    toggleAlbum: (id: string, albumName: string, albumArt: string, albumArtist: string) => void;
     errorMessage: string;
 }
 
 export const Modal = (props: ModalProps) => {
-    const { toggleModal, changeType, type, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, clearModal, albumArtList, handleChange, errorMessage } = props;
+    const { toggleModal, changeType, type, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, clearModal, albumArtList, toggleAlbum, errorMessage } = props;
 
     const selectType = (event: { target: { value: string; }; }) => changeType(event.target.value);
     const changeFlg = () => toggleModal(false);
@@ -91,16 +92,14 @@ export const Modal = (props: ModalProps) => {
                                             <span className='albumName font-wb'>{album.name} ({album.release_date.substring(0, 4)})</span>
                                             <span className='artistsName'>{album.artists.map((value) => value.name).join(',')}</span>
                                         </div>
-                                        <input
-                                            type="checkbox"
-                                            id={`checkbox-${album.id}`}
-                                            className={albumArtList.some((item) => item.id === album.id) ? 'selected' : 'select'}
-                                            checked={albumArtList.some((item) => item.id === album.id)}
-                                            onChange={() => handleChange(album.id, album.name, album.images[0]?.url, album.artists.map((value) => value.name).join(','))}
+                                        <ModalCheckboxButton
+                                            id={album.id}
+                                            name={album.name}
+                                            image={album.images[0]?.url}
+                                            artists={album.artists.map((value) => value.name).join(',')}
+                                            toggleDisplayFlg={albumArtList.some((item) => item.id === album.id)}
+                                            toggleAlbum={toggleAlbum}
                                         />
-                                        <label htmlFor={`checkbox-${album.id}`} className={albumArtList.some((item) => item.id === album.id) ? 'l-button bg-orange txt-white action ta-center' : 'l-button bg-turquoise txt-white action ta-center'}>
-                                            {albumArtList.some((item) => item.id === album.id) ? '選択中' : '選択'}
-                                        </label>
                                     </li>
                                 ))}
                             </ul>

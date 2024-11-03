@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import { Modal } from './components/Modal.tsx';
 import { Header } from './common/Header.tsx';
 import { Introduction } from './components/Introduction.tsx';
@@ -82,7 +82,7 @@ export const App = () => {
     modalWindow?.scrollIntoView(true);
   }
 
-  const handleChange = useCallback((id: string, albumName: string, albumArt: string, albumArtist: string) => {
+  const toggleAlbum = (id: string, albumName: string, albumArt: string, albumArtist: string) => {
     setAlbumArtList((prevList) => {
       const isSelected = prevList.some((item) => item.id === id);
       if (isSelected) {
@@ -91,7 +91,7 @@ export const App = () => {
         return [...prevList, { id, albumName, albumArt, albumArtist }];
       }
     });
-  }, []);
+  }
 
   const deleteAlbum = (id: string) => {
     const deleteArray = albumArtList.filter(album => album.id !== id);
@@ -212,9 +212,8 @@ export const App = () => {
       setAddButtonVisible(false);
       setModalIsOpen(false);
     }
-    console.log(albumArtList)
 
-  }, [albumArtList.length, albumArtList]);
+  }, [albumArtList.length]);
 
 
   return (
@@ -260,7 +259,7 @@ export const App = () => {
             clearModal={clearModal}
             artistName={artistName}
             deleteAlbum={deleteAlbum}
-            handleChange={handleChange}
+            toggleAlbum={toggleAlbum}
             albumArtList={albumArtList}
           />
         )}
