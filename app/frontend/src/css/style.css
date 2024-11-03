@@ -138,8 +138,7 @@ input[type="checkbox"]{display: none;}
 }
 
 .l-searchArtistImage{
-    width: 25%;
-    border-radius: 50%;
+    width: 30%;
 }
 
 .l-artistInfo{
@@ -303,8 +302,8 @@ input[type="checkbox"]{display: none;}
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 3%;
-    right: 7%;
+    top: 6%;
+    right: 31%;
     width: 40px;
     height: 40px;
     font-size: 40px;
@@ -445,8 +444,8 @@ input[type="radio"]:checked + label{
     background: #fff;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     overflow: auto;
 }
 
@@ -525,7 +524,7 @@ main {
     padding: 10px 15px;
 }
 .l-button {
-    width: 6em;
+    width: 4em;
     padding: 7px 14px;
 }
 
@@ -535,7 +534,7 @@ main {
     width: 75%;
 }
 
-.l-searchArtistImage { width: 25%; }
+.l-searchArtistImage { width: 30%; }
 .l-artistInfo { width: 60%; }
 .l-albumInfo{ width: 47%; }
 
@@ -612,7 +611,7 @@ main {
 .albumItems{ padding: 0.5em; }
 .albumImage{ width: 30%; }
 .albumName{ font-size: 1em; }
-
+.artistsName{font-size: 0.8em;}
 .selectName{
     font-size: 1.1em; font-weight: bold;
 }
