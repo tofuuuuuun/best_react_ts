@@ -1,6 +1,7 @@
-import noImage from '../../public/images/noImage.png';
-import searchIcon from '../../public/images/search.png';
-import { ModalCheckboxButton } from './ModalCheckButton';
+import { ModalAutocomplete } from './Autocomplete';
+import { SearchForm } from './SearchForm';
+import { ResultCheckboxButton } from './ResultCheckButton';
+import { ErrorMessage } from '../../error/ErrorMessage';
 
 type ResponseArtist = {
     id: string;
@@ -45,33 +46,17 @@ export const Modal = (props: ModalProps) => {
             <div className='modal-body'>
                 <div className='modal-close' onClick={changeFlg}><span className='icon-close'></span></div>
                 <div className='modal-content'>
-                    <div className='l-searchForm ta-left'>
-                        <div className='l-selectType'>
-                            <input type='text' name='artist' id='artistName' placeholder='アーティスト名' data-artist_id='' value={artistName} onChange={inputArtistName} />
-                            <div className='clear' onClick={() => clearModal()}><span className='icon-close'></span></div>
-                        </div>
-                        <div className='l-autocomplete'></div>
-                        <div className='p-left-1em'>
-                            <button className='l-buttonSearch txt-white bg-turquoise search action' onClick={() => searchArtist(artistName)}>
-                                <img src={searchIcon} alt='searchIcon' width='15' />
-                            </button>
-                        </div>
-                    </div>
-                    {errorMessage && <div className='errorMessage'>{errorMessage}</div>}
-                    {responseArtist.length !== 0 && (
-                        <div className='l-autocomplete'>
-                            <ul className='autocompleteList padding-all-1em'>
-                                {responseArtist.map((artist, index) => (
-                                    <li className='artistItems action' data-artist_id={artist.id} key={index} onClick={() => searchAlbum(artist.id, artist.name)}>
-                                        <img className='l-searchArtistImage artistImage' src={artist.images[0]?.url || noImage} loading='lazy' />
-                                        <div className='l-artistInfo'>
-                                            <span className='searchArtistName font-wb'>{artist.name}</span>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+                    <SearchForm
+                        artistName={artistName}
+                        inputArtistName={inputArtistName}
+                        clearModal={clearModal}
+                        searchArtist={searchArtist}
+                    />
+                    <ErrorMessage errorMessage={errorMessage} />
+                    <ModalAutocomplete
+                        responseArtist={responseArtist}
+                        searchAlbum={searchAlbum}
+                    />
                     {filterResponseAlbum.length !== 0 && (
                         <div>
                             <div className='ta-left m-bottom-05em p-top-1em'>
@@ -92,7 +77,7 @@ export const Modal = (props: ModalProps) => {
                                             <span className='albumName font-wb'>{album.name} ({album.release_date.substring(0, 4)})</span>
                                             <span className='artistsName'>{album.artists.map((value) => value.name).join(',')}</span>
                                         </div>
-                                        <ModalCheckboxButton
+                                        <ResultCheckboxButton
                                             id={album.id}
                                             name={album.name}
                                             image={album.images[0]?.url}

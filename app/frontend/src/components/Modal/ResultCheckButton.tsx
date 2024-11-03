@@ -7,7 +7,7 @@ type CheckboxButtonProps = {
     toggleAlbum: (id: string, name: string, image: string, artists: string) => void;
 }
 
-export const ModalCheckboxButton = (props: CheckboxButtonProps) => {
+export const ResultCheckboxButton = (props: CheckboxButtonProps) => {
     const { id, name, image, artists, toggleDisplayFlg, toggleAlbum } = props;
 
     return (
