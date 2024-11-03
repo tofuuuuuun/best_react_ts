@@ -1,4 +1,3 @@
-import { ModalAutocomplete } from './Autocomplete';
 import { SearchForm } from './SearchForm'
 import { SelectType } from './SelectType';
 import { ErrorMessage } from '../../error/ErrorMessage';
@@ -52,12 +51,10 @@ export const Modal = (props: ModalProps) => {
                         inputArtistName={inputArtistName}
                         clearModal={clearModal}
                         searchArtist={searchArtist}
-                    />
-                    <ErrorMessage errorMessage={errorMessage} />
-                    <ModalAutocomplete
                         responseArtist={responseArtist}
                         searchAlbum={searchAlbum}
                     />
+                    <ErrorMessage errorMessage={errorMessage} />
                     {filterResponseAlbum.length !== 0 && (
                         <div>
                             <SelectType

@@ -82,10 +82,12 @@ export const App = () => {
     modalWindow?.scrollIntoView(true);
   }
 
+  // アルバムアート一覧の表示切替を行う
   const toggleAlbum = (id: string, albumName: string, albumArt: string, albumArtist: string) => {
     setAlbumArtList((prevList) => {
       const isSelected = prevList.some((item) => item.id === id);
       if (isSelected) {
+        // すでに選択済みのアルバムを選択した場合、選択済みのアルバムを削除する
         return prevList.filter((item) => item.id !== id);
       } else {
         return [...prevList, { id, albumName, albumArt, albumArtist }];
@@ -137,6 +139,7 @@ export const App = () => {
     }
   };
 
+  // アーティストアルバムを全件取得する。（取得後type切り替えを行なう）
   const searchAlbum = async (artistId: string, name: string) => {
     setResponseArtist([]);
     setResponseAlbum([]);
@@ -166,8 +169,9 @@ export const App = () => {
     }
   }
 
+  // html2canvasを使用してキャプチャーを取得し、共有する
   const handleCapture = () => {
-    const element = document.querySelector('.l-contentWrapper') as HTMLElement
+    const element = document.querySelector('.l-albumList') as HTMLElement
     html2canvas(element, {
       useCORS: true
     }).then(canvas => {
