@@ -1,6 +1,4 @@
-type IntroductionProps = {
-    selectStart: () => void;
-}
+import { IntroductionProps } from '../types';
 
 export const Introduction = (props: IntroductionProps) => {
     const { selectStart } = props;

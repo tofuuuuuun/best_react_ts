@@ -1,15 +1,5 @@
 import noImage from '../../../public/images/noImage.png';
-
-type ResponseArtist = {
-    id: string;
-    name: string;
-    images: { url: string }[];
-}
-
-type ModalAutocompleteProps = {
-    responseArtist: ResponseArtist[];
-    searchAlbum: (id: string, name: string) => void;
-}
+import { ModalAutocompleteProps } from '../../types';
 
 export const Autocomplete = (props: ModalAutocompleteProps) => {
     const { responseArtist, searchAlbum } = props;

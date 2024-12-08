@@ -1,14 +1,4 @@
-type Album = {
-    id: string;
-    albumArt: string;
-    albumName: string;
-    albumArtist: string;
-}
-type AlbumArtListProps = {
-    isSelectStart: boolean;
-    albumArtList: Album[];
-    deleteAlbum: (id: string) => void;
-}
+import { AlbumArtListProps } from '../types';
 
 export const AlbumArtList = (props: AlbumArtListProps) => {
     const { albumArtList, deleteAlbum } = props;

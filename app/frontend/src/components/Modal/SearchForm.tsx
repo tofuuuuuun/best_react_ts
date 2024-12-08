@@ -1,20 +1,7 @@
 import searchIcon from '../../../public/images/search.png';
 import { Autocomplete } from './Autocomplete';
+import { SearchFormProps } from '../../types';
 
-type ResponseArtist = {
-    id: string;
-    name: string;
-    images: { url: string }[];
-}
-
-type SearchFormProps = {
-    artistName: string;
-    inputArtistName: (event: { target: { value: string } }) => void;
-    clearModal: () => void;
-    searchArtist: (artistName: string) => void;
-    responseArtist: ResponseArtist[];
-    searchAlbum: (id: string, name: string) => void;
-}
 
 export const SearchForm = (props: SearchFormProps) => {
     const { artistName, inputArtistName, clearModal, searchArtist, responseArtist, searchAlbum } = props;

@@ -1,7 +1,4 @@
-type AddButtonProps = {
-    isModalOpen: boolean;
-    setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { AddButtonProps } from '../types';
 
 export const AddButton = (props: AddButtonProps) => {
     const { setModalIsOpen, isModalOpen } = props;

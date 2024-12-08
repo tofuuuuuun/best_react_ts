@@ -6,30 +6,9 @@ import { AddButton } from './components/AddButton.tsx';
 import { AlbumArtList } from './components/AlbumArtList.tsx';
 import { ResetArea } from './components/ResetArea.tsx';
 import { useDebounce } from './components/debounce.tsx';
+import { ResponseArtistType, ResponseAlbumType, AlbumArtListType } from './types';
 import html2canvas from 'html2canvas';
 
-type ResponseArtistType = {
-  id: string;
-  images: { url: string }[];
-  name: string;
-}
-
-type ResponseAlbumType = {
-  album_type: string;
-  id: string;
-  images: { url: string }[];
-  name: string;
-  release_date: string;
-  type: string;
-  artists: { id: string, name: string }[];
-}
-
-type AlbumArtListType = {
-  id: string;
-  albumName: string;
-  albumArt: string;
-  albumArtist: string;
-}
 
 export const App = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);

@@ -221,7 +221,7 @@ input[type="checkbox"]{display: none;}
 
 /* 固有パーツ */
 .headerLogo{
-    width: 110px;
+    width: 25%;
     max-width: 100%;
 }
 
@@ -539,7 +539,7 @@ main {
 .l-artistInfo { width: 60%; }
 .l-albumInfo{ width: 47%; }
 
-.headerLogo { width: 58px; }
+.headerLogo { width: 70%; }
 .albumArtList,.albumAddButton {
     grid-template-columns: repeat(auto-fill, 170px);
     justify-items: center;

@@ -1,20 +1,6 @@
 import { ResultCheckboxButton } from './ResultCheckButton';
+import { ResponseAlbumListProps } from '../../types';
 
-type ResponseAlbumType = {
-    album_type: string;
-    id: string;
-    images: { url: string }[];
-    name: string;
-    release_date: string;
-    type: string;
-    artists: { id: string, name: string }[];
-}
-
-type ResponseAlbumListProps = {
-    toggleAlbum: (id: string, albumName: string, albumArt: string, albumArtist: string) => void;
-    filterResponseAlbum: ResponseAlbumType[];
-    albumArtList: { id: string, albumName: string, albumArt: string, albumArtist: string }[];
-}
 
 export const ResponseAlbumList = (props: ResponseAlbumListProps) => {
     const { toggleAlbum, filterResponseAlbum, albumArtList } = props;

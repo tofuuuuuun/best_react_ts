@@ -1,11 +1,4 @@
-type CheckboxButtonProps = {
-    id: string;
-    name: string;
-    image: string;
-    artists: string;
-    toggleDisplayFlg: boolean;
-    toggleAlbum: (id: string, name: string, image: string, artists: string) => void;
-}
+import { CheckboxButtonProps } from '../../types';
 
 export const ResultCheckboxButton = (props: CheckboxButtonProps) => {
     const { id, name, image, artists, toggleDisplayFlg, toggleAlbum } = props;

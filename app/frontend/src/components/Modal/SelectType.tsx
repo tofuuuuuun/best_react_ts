@@ -1,7 +1,4 @@
-type SelectTypeProps = {
-    type: string;
-    selectType: (e: React.ChangeEvent<HTMLInputElement>) => void
-}
+import { SelectTypeProps } from '../../types';
 
 export const SelectType = (props: SelectTypeProps) => {
     const { type, selectType } = props;
