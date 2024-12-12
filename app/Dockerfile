@@ -6,9 +6,6 @@ FROM node:${NODE_VER} AS builder
 WORKDIR /home/node/app
 RUN mkdir node_modules
 
-# 証明書のコピー（必要ならば使用）
-COPY ./frontend/certs /home/node/certs
-
 # パッケージインストールとソースコードのコピー
 COPY ./frontend/package.json ./
 # COPY ./frontend/yarn.lock yarn.lock ./
@@ -28,7 +25,9 @@ COPY --from=builder /home/node/app/dist /usr/share/nginx/html
 COPY ./frontend/nginx.conf /etc/nginx/conf.d/default.conf
 
 # 必要に応じて証明書をマウント（SSLを使う場合）
-# COPY ./frontend/certs /etc/ssl/certs
+COPY ./certs /etc/nginx/certs
+
+COPY ./frontend/public/favicon.ico /usr/share/nginx/html/
 
 # ポートの公開
 EXPOSE 80
