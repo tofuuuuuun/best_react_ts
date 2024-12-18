@@ -1,5 +1,5 @@
 <?php
-require_once('./spotifyToken.php');
+require_once('./token/spotifyToken.php');
 
 header('Content-type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: http://localhost:5173'); // 特定のオリジンを許可
