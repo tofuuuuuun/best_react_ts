@@ -105,7 +105,7 @@ export const App = () => {
     setErrorMessage('');
     const params = new URLSearchParams({ 'artistName': artistName });
     try {
-      const response = await fetch(`https://rahi-lab.com/js/ajax/searchArtists.php?${params}`, {
+      const response = await fetch(`https://rahi-lab.com/searchArtists.php?${params}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
