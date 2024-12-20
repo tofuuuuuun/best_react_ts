@@ -135,7 +135,7 @@ export const App = () => {
     });
     // TODO: サーバー側の実装もallメインで使用することを考慮した実装に修正する
     try {
-      const response = await fetch(`https://rahi-lab.com/js/ajax/searchSpotify.php?${params}`, {
+      const response = await fetch(`https://rahi-lab.com/searchSpotify.php?${params}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });

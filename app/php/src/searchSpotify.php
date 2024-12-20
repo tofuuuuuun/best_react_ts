@@ -2,7 +2,7 @@
 require_once('./token/spotifyToken.php');
 
 header('Content-type: application/json; charset=utf-8;');
-header('Access-Control-Allow-Origin: http://localhost:5173'); // 特定のオリジンを許可
+// header('Access-Control-Allow-Origin: http://localhost:5173'); // 特定のオリジンを許可
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');  // 許可するHTTPメソッド
 header('Access-Control-Allow-Headers: Content-Type');        // 許可するヘッダー
 
