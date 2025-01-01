@@ -80,7 +80,7 @@ input[type="checkbox"]{display: none;}
 .l-button {
     display: flex;
     justify-content: center;
-    width: 50px;
+    width: 90px;
     padding: 9px 18px;
     border: none;
     border-radius: 10px;
@@ -220,6 +220,10 @@ input[type="checkbox"]{display: none;}
 
 
 /* 固有パーツ */
+.contentWrapper{
+    padding-top: 6em;
+}
+
 .headerLogo{
     width: 25%;
     max-width: 100%;
@@ -317,7 +321,7 @@ input[type="checkbox"]{display: none;}
     width: 560px;
     top: 10%;
     background: #F1F8E9;
-    padding: 1em 1em 1em 1em;
+    padding: 1em;
     text-align: left;
     border-radius: 5px;
     box-shadow: 2px 2px 15px 1px #222222;
@@ -473,6 +477,15 @@ input[type="radio"]:checked + label{
     border-radius: 10px;
 }
 
+.listNameInput{
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid #6c6c6c;
+    font-size: 23px;
+    color: #f1f8e9;
+    text-align: center;
+}   
+
 
 /* エフェクト系 */
 .texture { background: url("../../public/images/texture.png"); animation: noise_anima 1.1s steps(10) infinite;}
@@ -500,6 +513,13 @@ input[type="radio"]:checked + label{
     100% { opacity: 0; }
 }
 
+@media (max-width:768px) {
+main{padding-bottom: 4em;}
+.headerLogo{ width: 45%; }
+.contentWrapper{padding-top: 3em;}
+.listNameInput{font-size: 23px;}
+}
+
 @media (max-width:640px) {
 html{ font-size: 12px;}
 main {
@@ -507,7 +527,10 @@ main {
     padding: 7em 0 2em 0;
 }
 
-.l-header{ height: auto;}
+.l-header{ 
+    height: auto;
+    background: #2a3332;
+}
 .l-contentWrapper{
     padding: 1em 1em 0 1em;
 }
@@ -542,8 +565,12 @@ main {
 .headerLogo { width: 70%; }
 .albumArtList,.albumAddButton {
     grid-template-columns: repeat(auto-fill, 170px);
+    grid-column-gap: 10px;
     justify-items: center;
     justify-content: center;
+}
+.contentWrapper{
+    padding-top: 1em;
 }
 
 .modal-container {
@@ -586,7 +613,7 @@ main {
 .modal-content {
     background: #F1F8E9;
     text-align: left;
-    padding: 1em 0.5em 1em 1em;
+    padding: 1em;
     border-radius: 5px;
     box-shadow: 2px 2px 15px 1px #222222;
 }
@@ -613,6 +640,10 @@ main {
 .artistsName{font-size: 0.8em;}
 .selectName{
     font-size: 1.1em; font-weight: bold;
+}
+
+.listNameInput{
+    font-size: 18px;
 }
 
 }
