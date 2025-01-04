@@ -200,7 +200,6 @@ export const App = () => {
       setAddButtonVisible(false);
       setModalIsOpen(false);
     }
-
   }, [albumArtList.length]);
 
 
