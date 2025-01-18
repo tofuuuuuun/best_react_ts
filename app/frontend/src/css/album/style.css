@@ -12,7 +12,7 @@ input[type="checkbox"]{display: none;}
 /* ベーススタイルここまで */
 
 /* 共通パーツ */
-.disp-block { display: block; }
+/* .disp-block { display: block; }
 .disp-inlineblock { display: inline-block; }
 .disp-inline { display: inline; }
 .disp-none{display: none!important;}
@@ -53,7 +53,7 @@ input[type="checkbox"]{display: none;}
 
 .ta-left { text-align: left; }
 .ta-center { text-align: center; }
-.ta-right { text-align: right; }
+.ta-right { text-align: right; } */
 
 /* 共通パーツ レイアウト */
 .l-common{
@@ -168,7 +168,7 @@ input[type="checkbox"]{display: none;}
 .icon-close {
     display: inline-block;
     vertical-align: middle;
-    color: #333;
+    color: #F1F8E9;
     line-height: 1;
     width: 1em;
     height: 0.1em;

@@ -2,7 +2,7 @@ import { SearchForm } from './SearchForm'
 import { SelectType } from './SelectType';
 import { ErrorMessage } from '../../error/ErrorMessage';
 import { ResponseAlbumList } from './ResponseAlbumList';
-import { ModalProps } from '../../types';
+import { ModalProps } from '../../types/types.ts';
 
 
 export const Modal = (props: ModalProps) => {

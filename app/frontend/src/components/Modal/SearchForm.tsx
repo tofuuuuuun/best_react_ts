@@ -1,6 +1,6 @@
-import searchIcon from '../../../public/images/search.png';
+import searchIcon from '../../../public/images/album/search.png';
 import { Autocomplete } from './Autocomplete';
-import { SearchFormProps } from '../../types';
+import { SearchFormProps } from '../../types/types.ts';
 
 
 export const SearchForm = (props: SearchFormProps) => {

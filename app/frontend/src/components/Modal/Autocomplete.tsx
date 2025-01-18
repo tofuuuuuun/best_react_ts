@@ -1,5 +1,5 @@
-import noImage from '../../../public/images/noImage.png';
-import { ModalAutocompleteProps } from '../../types';
+import noImage from '../../../public/images/album/noImage.png';
+import { ModalAutocompleteProps } from '../../types/types.ts';
 
 export const Autocomplete = (props: ModalAutocompleteProps) => {
     const { responseArtist, searchAlbum } = props;

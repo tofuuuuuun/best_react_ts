@@ -1,4 +1,4 @@
-import { AlbumArtListProps } from '../types';
+import { AlbumArtListProps } from '../types/types.ts';
 
 export const AlbumArtList = (props: AlbumArtListProps) => {
     const { albumArtList, deleteAlbum } = props;

@@ -1,5 +1,5 @@
 import { ResultCheckboxButton } from './ResultCheckButton';
-import { ResponseAlbumListProps } from '../../types';
+import { ResponseAlbumListProps } from '../../types/types.ts';
 
 
 export const ResponseAlbumList = (props: ResponseAlbumListProps) => {

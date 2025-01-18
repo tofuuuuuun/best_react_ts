@@ -5,10 +5,9 @@ import { Introduction } from './components/Introduction.tsx';
 import { AddButton } from './components/AddButton.tsx';
 import { AlbumArtList } from './components/AlbumArtList.tsx';
 import { ResetArea } from './components/ResetArea.tsx';
-import { useDebounce } from './components/debounce.tsx';
-import { ResponseArtistType, ResponseAlbumType, AlbumArtListType } from './types';
+import { useDebounce } from './common/debounce.tsx';
+import { ResponseArtistType, ResponseAlbumType, AlbumArtListType } from './types/types.ts';
 import html2canvas from 'html2canvas';
-
 
 export const App = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
@@ -227,7 +226,7 @@ export const App = () => {
           </div>
           {resetButtonVisible && (
             <ResetArea
-              resetAlbumList={resetAlbumList}
+              reset={resetAlbumList}
               handleCapture={handleCapture}
             />
           )}
