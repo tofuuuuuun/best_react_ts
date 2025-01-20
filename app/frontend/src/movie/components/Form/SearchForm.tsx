@@ -1,4 +1,4 @@
-import searchIcon from '../../../public/images/movie/search.png';
+import searchIcon from '../../../../public/images/movie/search.png';
 import { movieSearchFormProps } from '../../../types/types';
 
 

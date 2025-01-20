@@ -1,4 +1,4 @@
-import logoIcon from '../../public/images/movie/logo.svg';
+import logoIcon from '../../../public/images/movie/logo.svg';
 export const Header = () => {
     return (
         <>
