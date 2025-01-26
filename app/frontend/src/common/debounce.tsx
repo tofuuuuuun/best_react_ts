@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { Debounce } from "../types/types.ts";
+import { Debounce } from "/types/types";
 
 export const useDebounce = (timeout: number): Debounce => {
     const timer = useRef<ReturnType<typeof setTimeout> | null>(null);

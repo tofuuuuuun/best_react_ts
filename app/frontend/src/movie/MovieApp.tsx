@@ -1,18 +1,18 @@
-import { useEffect, useState, useCallback } from 'react'
-import { Modal } from './components/Modal/Modal.tsx';
-import { Header } from './common/Header.tsx';
-import { Introduction } from './components/Introduction.tsx';
-import { AddButton } from './components/AddButton.tsx';
-import { MoviePosterList } from './components/MoviePosterList.tsx';
-import { ResetArea } from './components/ResetArea.tsx';
-import { TOKEN } from './Constants.tsx';
 import html2canvas from 'html2canvas';
-import { ResponseMoviesType, ResponseTopRatedMoviesType } from '../types/types.ts';
+import { useCallback, useEffect, useState } from 'react';
+import { TOKEN } from '/movie/Constants';
+import { Header } from '/movie/common/Header';
+import { AddButton } from '/movie/components/AddButton';
+import { Introduction } from '/movie/components/Introduction';
+import { Modal } from '/movie/components/Modal/Modal';
+import { MoviePosterList } from '/movie/components/MoviePosterList';
+import { ResetArea } from '/movie/components/ResetArea';
+import { ResponseMoviesType, ResponseTopRatedMoviesType } from '/types/types';
 
 const INTRODUCTION_SELECTOR = '#introduction';
 const L_ALBUMLIST_SELECTOR = '.l-albumList';
 
-export const App = () => {
+export const MovieApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
   const [isModalOpen, setModalIsOpen] = useState<boolean>(false);
   const [addButtonVisible, setAddButtonVisible] = useState(false);

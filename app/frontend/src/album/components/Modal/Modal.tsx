@@ -1,8 +1,8 @@
-import { SearchForm } from './SearchForm'
-import { SelectType } from './SelectType';
-import { ErrorMessage } from '../../error/ErrorMessage';
-import { ResponseAlbumList } from './ResponseAlbumList';
-import { ModalProps } from '../../types/types.ts';
+import { ResponseAlbumList } from '/album/components/Modal/ResponseAlbumList';
+import { SearchForm } from '/album/components/Modal/SearchForm';
+import { SelectType } from '/album/components/Modal/SelectType';
+import { ErrorMessage } from '/error/ErrorMessage';
+import { ModalProps } from '/types/types';
 
 
 export const Modal = (props: ModalProps) => {

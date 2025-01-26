@@ -1,4 +1,4 @@
-import { IntroductionProps } from '../types/types.ts';
+import { IntroductionProps } from '/types/types';
 
 export const Introduction = (props: IntroductionProps) => {
     const { selectStart } = props;

@@ -1,5 +1,6 @@
-import { MoviePosterListProps } from '../../types/types';
-import NO_IMAGE from '../../../public/images/movie/no_image.png';
+import NO_IMAGE from '/public/images/movie/no_image.png';
+import { MoviePosterListProps } from '/types/types';
+
 const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
 
 export const MoviePosterList = (props: MoviePosterListProps) => {

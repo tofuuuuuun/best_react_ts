@@ -1,59 +1,8 @@
-html { font-size: 16px; font-family: "Noto Sans JP", sans-serif; font-style: normal; }
 body { margin: 0; background-color: #424242; }
 header { position: absolute; top: 0; width: 100%; text-align: left;}
-main { width: 1200px; max-width: 100%; margin: 0 auto; padding: 8em 0;}
-h1{ margin-block-start: 0; margin-block-end: 0; }
-ul { margin-block-start: 0; margin-block-end: 0; padding-left: 0; }
-li { list-style: none; }
 th,td { border-bottom: 1px solid #e6e6e6; padding: 1em 0.5em;}
-p { margin: 0; }
 input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
-input[type="checkbox"]{display: none;}
 /* ベーススタイルここまで */
-
-/* 共通パーツ */
-/* .disp-block { display: block; }
-.disp-inlineblock { display: inline-block; }
-.disp-inline { display: inline; }
-.disp-none{display: none!important;}
-
-
-.m-top-5px { margin-top: 5px; }
-.m-top-1em { margin-top: 1em; }
-.m-top-2em { margin-top: 2em; }
-.m-top-3em { margin-top: 3em; }
-
-.m-right-05em{margin-right: 0.5em;}
-.m-right-1em { margin-right: 1em; }
-.m-right-2em { margin-right: 2em; }
-.m-right-3em { margin-right: 3em; }
-
-.m-left-1em { margin-left: 1em; }
-.m-left-2em { margin-left: 2em;}
-.m-left-3em { margin-left: 3em;}
-
-.m-bottom-5px { margin-bottom:5px }
-.m-bottom-05em { margin-bottom: 0.5em; }
-.m-bottom-1em { margin-bottom: 1em; }
-.m-bottom-2em { margin-bottom: 2em; }
-.m-bottom-3em { margin-bottom: 3em; }
-.m-both-auto { margin-left: auto; margin-right: auto;}
-
-.padding-all-05em { padding: 0.5em; }
-.padding-all-1em { padding: 1em; }
-.p-top-1em{padding-top: 1em;}
-.p-top-2em{padding-top: 2em;}
-.p-top-3em{padding-top: 3em;}
-.p-left-05em{ padding-left: 0.5em; }
-.p-left-1em{ padding-left: 1em; }
-.p-left-2em{ padding-left: 2em; }
-.p-left-3em{ padding-left: 3em; }
-
-.font-wb { font-weight: bold; }
-
-.ta-left { text-align: left; }
-.ta-center { text-align: center; }
-.ta-right { text-align: right; } */
 
 /* 共通パーツ レイアウト */
 .l-common{
@@ -488,7 +437,7 @@ input[type="radio"]:checked + label{
 
 
 /* エフェクト系 */
-.texture { background: url("../../public/images/texture.png"); animation: noise_anima 1.1s steps(10) infinite;}
+.texture { background: url("/public/images/album/texture.png"); animation: noise_anima 1.1s steps(10) infinite;}
 @keyframes noise_anima {
 	from { background-position: 0 0; }
 	to { background-position: 123px 456px; }
@@ -511,13 +460,6 @@ input[type="radio"]:checked + label{
 @keyframes fadeOut {
     0% { opacity: 1; }
     100% { opacity: 0; }
-}
-
-@supports (padding: env(safe-area-inset-bottom)) {
-  body {
-    padding-bottom: env(safe-area-inset-bottom); /* 安全領域分のパディング */
-    background-color: #000; /* ジェスチャーバー背景色 */
-  }
 }
 
 @media (max-width:768px) {

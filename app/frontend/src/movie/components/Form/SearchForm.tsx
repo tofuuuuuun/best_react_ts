@@ -1,5 +1,5 @@
-import searchIcon from '../../../../public/images/movie/search.png';
-import { movieSearchFormProps } from '../../../types/types';
+import searchIcon from '/public/images/movie/search.png';
+import { movieSearchFormProps } from '/types/types';
 
 
 export const SearchForm = (props: movieSearchFormProps) => {

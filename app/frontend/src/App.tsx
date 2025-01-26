@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react'
-import { Modal } from './components/Modal/Modal.tsx';
-import { Header } from './common/Header.tsx';
-import { Introduction } from './components/Introduction.tsx';
-import { AddButton } from './components/AddButton.tsx';
-import { AlbumArtList } from './components/AlbumArtList.tsx';
-import { ResetArea } from './components/ResetArea.tsx';
-import { useDebounce } from './common/debounce.tsx';
-import { ResponseArtistType, ResponseAlbumType, AlbumArtListType } from './types/types.ts';
 import html2canvas from 'html2canvas';
+import { useEffect, useState } from 'react';
+import { AddButton } from '/album/components/AddButton';
+import { AlbumArtList } from '/album/components/AlbumArtList';
+import { Introduction } from '/album/components/Introduction';
+import { Modal } from '/album/components/Modal/Modal';
+import { ResetArea } from '/album/components/ResetArea';
+import { useDebounce } from '/common/debounce';
+import { Header } from '/common/Header';
+import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '/types/types';
 
 export const App = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
@@ -208,6 +208,12 @@ export const App = () => {
       <main>
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
+            {/* <Router>
+              <Link to='/movie'></Link>
+              <Routes>
+                <Route path='/movie' element={<MovieApp />} />
+              </Routes>
+            </Router> */}
             {!isSelectStart && (
               <Introduction selectStart={selectStart} />
             )}

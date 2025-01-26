@@ -1,4 +1,4 @@
-import { SelectTypeProps } from '../../types/types.ts';
+import { SelectTypeProps } from '/types/types';
 
 export const SelectType = (props: SelectTypeProps) => {
     const { type, selectType } = props;

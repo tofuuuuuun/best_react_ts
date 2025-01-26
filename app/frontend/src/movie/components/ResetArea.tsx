@@ -1,6 +1,6 @@
-import rotateIcon from '../../../public/images/movie/rotate.png';
-import cameraIcon from '../../../public/images/movie/camera.png';
-import { ResetAreaProps } from '../../types/types';
+import cameraIcon from '/public/images/movie/camera.png';
+import rotateIcon from '/public/images/movie/rotate.png';
+import { ResetAreaProps } from '/types/types';
 
 export const ResetArea = (props: ResetAreaProps) => {
     const { reset, handleCapture } = props;

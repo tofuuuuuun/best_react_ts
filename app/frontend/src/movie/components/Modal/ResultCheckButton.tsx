@@ -1,4 +1,4 @@
-import { movieCheckboxButtonProps } from '../../../types/types';
+import { movieCheckboxButtonProps } from '/types/types';
 
 export const ResultCheckboxButton = (props: movieCheckboxButtonProps) => {
     const { id, title, poster, toggleDisplayFlg, toggleAlbum } = props;

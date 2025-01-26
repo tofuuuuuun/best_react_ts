@@ -1,4 +1,4 @@
-import { AddButtonProps } from '../../types/types';
+import { AddButtonProps } from '/types/types';
 
 export const AddButton = (props: AddButtonProps) => {
     const { setModalIsOpen, isModalOpen } = props;

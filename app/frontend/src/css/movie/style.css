@@ -1,3 +1,8 @@
+body { margin: 0; background-color: #24272F; }
+header { position: absolute; top: 0; width: 100%; text-align: left; z-index: 1; background-color: #1a1c21; }
+th,td { border-bottom: 1px solid #e6e6e6; padding: 1em 0.5em;}
+input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
+
 .l-common{
     background-color: #2f303c;
     padding: 1em;
