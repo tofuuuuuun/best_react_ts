@@ -1,6 +1,6 @@
-import { ResultCheckboxButton } from './ResultCheckButton';
-import NO_IMAGE from '/public/images/movie/no_image.png';
-import { ResponseMoviesProps } from '/types/types';
+import NO_IMAGE from '@/images/movie/no_image.png';
+import { ResultCheckboxButton } from '@/movie/components/Modal/ResultCheckButton';
+import { ResponseMoviesProps } from '@/types/types';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
 

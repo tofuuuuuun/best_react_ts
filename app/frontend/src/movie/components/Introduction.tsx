@@ -1,4 +1,4 @@
-import { movieIntroductionProps } from '/types/types';
+import { movieIntroductionProps } from '@/types/types';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
 

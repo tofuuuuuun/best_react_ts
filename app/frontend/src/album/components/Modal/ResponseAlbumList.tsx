@@ -1,5 +1,5 @@
-import { ResultCheckboxButton } from '/album/components/Modal/ResultCheckButton';
-import { ResponseAlbumListProps } from '/types/types';
+import { ResultCheckboxButton } from '@/album/components/Modal/ResultCheckButton';
+import { ResponseAlbumListProps } from '@/types/types';
 
 
 export const ResponseAlbumList = (props: ResponseAlbumListProps) => {

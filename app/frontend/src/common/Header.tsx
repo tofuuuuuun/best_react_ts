@@ -1,4 +1,4 @@
-import logoIcon from '/public/album/logo.svg';
+import logoIcon from '@/images/album/logo.svg';
 
 export const Header = () => {
     return (

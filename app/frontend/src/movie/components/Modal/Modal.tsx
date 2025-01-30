@@ -1,7 +1,7 @@
-import { ErrorMessage } from '/error/ErrorMessage';
-import { SearchForm } from '/movie/components/Form/SearchForm';
-import { ResponseMovies } from '/movie/components/Modal/ResponseMovies';
-import { movieModalProps } from '/types/types';
+import { ErrorMessage } from '@/error/ErrorMessage';
+import { SearchForm } from '@/movie/components/Form/SearchForm';
+import { ResponseMovies } from '@/movie/components/Modal/ResponseMovies';
+import { movieModalProps } from '@/types/types';
 
 export const Modal = (props: movieModalProps) => {
     const { toggleModal, searchMovie, movieTitle, inputMovieTitle, responseMovies, clearModal, moviePosterList, toggleAlbum, errorMessage } = props;

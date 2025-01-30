@@ -1,13 +1,13 @@
+import { AddButton } from '@/album/components/AddButton';
+import { AlbumArtList } from '@/album/components/AlbumArtList';
+import { Introduction } from '@/album/components/Introduction';
+import { Modal } from '@/album/components/Modal/Modal';
+import { ResetArea } from '@/album/components/ResetArea';
+import { useDebounce } from '@/common/debounce';
+import { Header } from '@/common/Header';
+import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '@/types/types';
 import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
-import { AddButton } from '/album/components/AddButton';
-import { AlbumArtList } from '/album/components/AlbumArtList';
-import { Introduction } from '/album/components/Introduction';
-import { Modal } from '/album/components/Modal/Modal';
-import { ResetArea } from '/album/components/ResetArea';
-import { useDebounce } from '/common/debounce';
-import { Header } from '/common/Header';
-import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '/types/types';
 
 export const AlbumApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);

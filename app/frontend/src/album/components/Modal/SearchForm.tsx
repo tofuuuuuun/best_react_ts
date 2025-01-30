@@ -1,6 +1,6 @@
-import { Autocomplete } from '/album/components/Modal/Autocomplete';
-import searchIcon from '/public/images/album/search.png';
-import { SearchFormProps } from '/types/types';
+import { Autocomplete } from '@/album/components/Modal/Autocomplete';
+import searchIcon from '@/images/album/search.png';
+import { SearchFormProps } from '@/types/types';
 
 
 export const SearchForm = (props: SearchFormProps) => {

@@ -1,13 +1,13 @@
+import { TOKEN } from '@/movie/Constants';
+import { Header } from '@/movie/common/Header';
+import { AddButton } from '@/movie/components/AddButton';
+import { Introduction } from '@/movie/components/Introduction';
+import { Modal } from '@/movie/components/Modal/Modal';
+import { MoviePosterList } from '@/movie/components/MoviePosterList';
+import { ResetArea } from '@/movie/components/ResetArea';
+import { ResponseMoviesType, ResponseTopRatedMoviesType } from '@/types/types';
 import html2canvas from 'html2canvas';
 import { useCallback, useEffect, useState } from 'react';
-import { TOKEN } from '/movie/Constants';
-import { Header } from '/movie/common/Header';
-import { AddButton } from '/movie/components/AddButton';
-import { Introduction } from '/movie/components/Introduction';
-import { Modal } from '/movie/components/Modal/Modal';
-import { MoviePosterList } from '/movie/components/MoviePosterList';
-import { ResetArea } from '/movie/components/ResetArea';
-import { ResponseMoviesType, ResponseTopRatedMoviesType } from '/types/types';
 
 const INTRODUCTION_SELECTOR = '#introduction';
 const L_ALBUMLIST_SELECTOR = '.l-albumList';

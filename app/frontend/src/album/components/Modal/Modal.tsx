@@ -1,8 +1,8 @@
-import { ResponseAlbumList } from '/album/components/Modal/ResponseAlbumList';
-import { SearchForm } from '/album/components/Modal/SearchForm';
-import { SelectType } from '/album/components/Modal/SelectType';
-import { ErrorMessage } from '/error/ErrorMessage';
-import { ModalProps } from '/types/types';
+import { ResponseAlbumList } from '@/album/components/Modal/ResponseAlbumList';
+import { SearchForm } from '@/album/components/Modal/SearchForm';
+import { SelectType } from '@/album/components/Modal/SelectType';
+import { ErrorMessage } from '@/error/ErrorMessage';
+import { ModalProps } from '@/types/types';
 
 
 export const Modal = (props: ModalProps) => {
