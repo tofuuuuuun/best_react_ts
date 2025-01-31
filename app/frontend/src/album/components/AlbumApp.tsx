@@ -9,6 +9,8 @@ import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '@/types
 import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
 
+const TYPE = 'album';
+
 export const AlbumApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
   const [isModalOpen, setModalIsOpen] = useState<boolean>(false);
@@ -204,7 +206,7 @@ export const AlbumApp = () => {
 
   return (
     <>
-      <Header />
+      <Header type={TYPE} />
       <main>
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>

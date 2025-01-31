@@ -1,23 +1,15 @@
-import { AlbumApp } from '@/album/components/AlbumApp';
 import { Header } from '@/common/Header';
-import { MovieApp } from '@/movie/MovieApp';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { Home } from '@/Home';
+
+const TYPE = 'home';
 
 export const App = () => {
 
   return (
     <>
-      <Header />
+      <Header type={TYPE} />
       <main>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/album' element={<AlbumApp />} />
-            <Route path='/movie' element={<MovieApp />} />
-
-            <Link to='/album'>ALBUM</Link>
-            <Link to='/movie'>MOVIE</Link>
-          </Routes>
-        </BrowserRouter>
+        <Home />
       </main >
     </>
   )

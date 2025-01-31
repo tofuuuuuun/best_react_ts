@@ -1,16 +1,18 @@
-import { TOKEN } from '@/movie/Constants';
-import { Header } from '@/movie/common/Header';
+import { Header } from '@/common/Header';
 import { AddButton } from '@/movie/components/AddButton';
 import { Introduction } from '@/movie/components/Introduction';
 import { Modal } from '@/movie/components/Modal/Modal';
 import { MoviePosterList } from '@/movie/components/MoviePosterList';
 import { ResetArea } from '@/movie/components/ResetArea';
+import { TOKEN } from '@/movie/Constants';
 import { ResponseMoviesType, ResponseTopRatedMoviesType } from '@/types/types';
 import html2canvas from 'html2canvas';
 import { useCallback, useEffect, useState } from 'react';
 
 const INTRODUCTION_SELECTOR = '#introduction';
 const L_ALBUMLIST_SELECTOR = '.l-albumList';
+
+const TYPE = 'movie';
 
 export const MovieApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
@@ -190,7 +192,7 @@ export const MovieApp = () => {
 
   return (
     <>
-      <Header />
+      <Header type={TYPE} />
       <main>
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>

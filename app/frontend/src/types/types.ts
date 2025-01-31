@@ -14,6 +14,8 @@ export type ResetAreaProps = {
 
 export type Debounce = (fn: () => void) => void;
 
+export type headerProps = { type: string; }
+
 /**************************************** 
 * BEST MUSIC types
 **************************************** */
