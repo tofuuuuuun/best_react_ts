@@ -1,4 +1,5 @@
 import { Header } from '@/common/Header';
+import '@/css/movie/movieStyle.css';
 import { AddButton } from '@/movie/components/AddButton';
 import { Introduction } from '@/movie/components/Introduction';
 import { Modal } from '@/movie/components/Modal/Modal';

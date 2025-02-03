@@ -18,10 +18,6 @@ export const App = () => {
         <h1>Home</h1>
         <Link to='/album'>album</Link>
         <Link to='/movie'>movie</Link>
-        <ul>
-          <li>album</li>
-          <li>movie</li>
-        </ul>
       </main >
     </>
   )

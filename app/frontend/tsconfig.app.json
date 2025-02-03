@@ -10,11 +10,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "/*": [
+      "@/*": [
         "./src/*"
-      ],
-      "public/*": [
-        "./public/*"
       ]
     },
     "module": "ESNext",

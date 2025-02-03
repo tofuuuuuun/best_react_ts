@@ -15,11 +15,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "/*": [
+      "@/*": [
         "./src/*"
-      ],
-      "public/*": [
-        "./public/*"
       ]
     }
   },
