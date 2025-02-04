@@ -5,6 +5,7 @@ import { Modal } from '@/album/components/Modal/Modal';
 import { ResetArea } from '@/album/components/ResetArea';
 import { useDebounce } from '@/common/debounce';
 import { Header } from '@/common/Header';
+import '@/css/album/albumStyle.css';
 import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '@/types/types';
 import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
@@ -207,15 +208,9 @@ export const AlbumApp = () => {
   return (
     <>
       <Header type={TYPE} />
-      <main>
+      <main className='texture'>
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
-            {/* <Router>
-              <Link to='/movie'></Link>
-              <Routes>
-                <Route path='/movie' element={<MovieApp />} />
-              </Routes>
-            </Router> */}
             {!isSelectStart && (
               <Introduction selectStart={selectStart} />
             )}
