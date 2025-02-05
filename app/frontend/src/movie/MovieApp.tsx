@@ -194,7 +194,7 @@ export const MovieApp = () => {
   return (
     <>
       <Header type={TYPE} />
-      <main>
+      <div>
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
@@ -239,7 +239,7 @@ export const MovieApp = () => {
             errorMessage={errorMessage}
           />
         )}
-      </main >
+      </div >
     </>
   )
 }

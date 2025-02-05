@@ -208,7 +208,7 @@ export const AlbumApp = () => {
   return (
     <>
       <Header type={TYPE} />
-      <main className='texture'>
+      <div className='texture'>
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
@@ -252,7 +252,7 @@ export const AlbumApp = () => {
             albumArtList={albumArtList}
           />
         )}
-      </main >
+      </div >
     </>
   )
 }
