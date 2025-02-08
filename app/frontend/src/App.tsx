@@ -17,8 +17,8 @@ export const App = () => {
       </Routes>
       <main>
         <ul>
-          <li className='l-linkCard'><Link to='/album'>album</Link></li>
-          <li className='l-linkCard'><Link to='/movie'>movie</Link></li>
+          <li className='l-linkCard m-bottom-1em'><Link to='/album'>album</Link></li>
+          <li className='l-linkCard m-bottom-1em'><Link to='/movie'>movie</Link></li>
         </ul>
       </main >
     </>
