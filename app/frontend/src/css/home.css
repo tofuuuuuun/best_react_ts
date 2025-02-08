@@ -1,9 +1,23 @@
+.l-header{
+background-color: #24272F;
+
+}
+
+.linkWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
 .l-linkCard{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
     height: 100%;
     padding: 1rem;
     background-color: #24272F;
@@ -13,3 +27,11 @@
     transition: all 0.3s ease;
 }
 
+.l-linkCard:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.l-linkCard:visited{
+    color: #E7EEF0;
+}
