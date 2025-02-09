@@ -18,10 +18,12 @@ export const App = () => {
           <Route path='/album' element={<AlbumApp key={location.pathname} />} />
           <Route path='/movie' element={<MovieApp key={location.pathname} />} />
         </Routes>
-        <ul className='linkWrapper'>
-          <li className='l-linkCard m-bottom-1em'><Link to='/album'><img src={albumLogoIcon}></img></Link></li>
-          <li className='l-linkCard m-bottom-1em'><Link to='/movie'><img src={movieLogoIcon}></img></Link></li>
-        </ul>
+        {location.pathname === '/' && (
+          <ul className='linkWrapper'>
+            <li className='l-linkCard m-bottom-1em'><Link to='/album'><img src={albumLogoIcon}></img></Link></li>
+            <li className='l-linkCard m-bottom-1em'><Link to='/movie'><img src={movieLogoIcon}></img></Link></li>
+          </ul>
+        )}
       </main >
     </>
   )
