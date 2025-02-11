@@ -16,8 +16,8 @@ COPY ./frontend/package.json ./frontend/yarn.lock ./
 RUN yarn install
 
 # 環境変数ファイルをコピー
-COPY ./env/.env .env
-COPY ./env/.env.production .env.production
+ARG ENV_FILE=.env
+COPY ${ENV_FILE} .env
 
 # ソースコードのコピー
 COPY ./frontend ./ 

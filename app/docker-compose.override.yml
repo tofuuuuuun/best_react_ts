@@ -1,4 +1,7 @@
 services:
   react:
+    build:
+      args:
+        - ENV_FILE=.env.production
     environment:
-      - REACT_APP_API_BASE_URL=https://rahi-lab.com/
+      - VITE_API_BASE_URL=https://rahi-lab.com/
