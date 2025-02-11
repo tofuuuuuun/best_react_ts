@@ -10,10 +10,13 @@ import { ResponseMoviesType, ResponseTopRatedMoviesType } from '@/types/types';
 import html2canvas from 'html2canvas';
 import { useCallback, useEffect, useState } from 'react';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost';
 const INTRODUCTION_SELECTOR = '#introduction';
 const L_ALBUMLIST_SELECTOR = '.l-albumList';
-
 const TYPE = 'movie';
+
+console.log('API_BASE_URL:', API_BASE_URL);
+console.log('BASE:', process.env.REACT_APP_API_BASE_URL);
 
 export const MovieApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
@@ -81,19 +84,12 @@ export const MovieApp = () => {
   const searchMovie = async (movieTitle: string) => {
     setResponseMovies([]);
     setErrorMessage('');
-    // APIリクエスト
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: TOKEN
-      }
-    };
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(movieTitle)}&include_adult=false&language=ja-JA&region=JA&page=1`, options);
+      const response = await fetch(`${API_BASE_URL}/movie/searchMovie.php?movieTitle=${movieTitle}`);
       if (!response.ok) {
         throw new Error('ネットワークエラーが発生しました。');
       }
+
       const data = await response.json();
       setResponseMovies((prevState) => [...prevState, ...data["results"]]);
     } catch {

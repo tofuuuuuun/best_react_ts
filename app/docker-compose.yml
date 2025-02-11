@@ -7,12 +7,16 @@ services:
       dockerfile: Dockerfile
     tty: true
     volumes:
-      - ./frontend:/home/node/app
+      - ./frontend:/home/node/app/frontend
       - node_modules:/home/node/app/node_modules
-      - ./certs:/etc/nginx/certs # 証明書をマウント
+      - ./certs:/etc/nginx/certs
     ports:
       - "80:80"
       - "443:443"
+    depends_on:
+      - php
+    environment:
+      - REACT_APP_API_BASE_URL=http://localhost
 
   php:
     build: ./php

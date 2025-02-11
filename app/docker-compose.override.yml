@@ -1,0 +1,4 @@
+services:
+  react:
+    environment:
+      - REACT_APP_API_BASE_URL=https://rahi-lab.com/
