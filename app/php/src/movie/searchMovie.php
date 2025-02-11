@@ -2,7 +2,7 @@
 require_once('../token/tmdbToken.php');
 
 $movieTitle = '';
-$movieTitle = $_GET['movieTitle'] ? $_GET['movieTitle'] : '';
+$movieTitle = isset($_GET['movieTitle']) ? urldecode($_GET['movieTitle']) : '';
 
 $curl = curl_init();
 
@@ -15,7 +15,7 @@ curl_setopt_array($curl, [
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => [
-        "Authorization: {TMDB_TOKEN}",
+        "Authorization: {$TMDB_TOKEN}",
         "accept: application/json"
     ],
 ]);
@@ -26,7 +26,9 @@ $err = curl_error($curl);
 curl_close($curl);
 
 if ($err) {
-    echo "cURL Error #:" . $err;
+    echo json_encode(["error" => "cURL Error #:" . $err]);
 } else {
-    echo $response;
+    echo json_encode($response);
 }
+
+exit;
