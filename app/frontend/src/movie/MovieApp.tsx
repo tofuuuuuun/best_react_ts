@@ -15,8 +15,6 @@ const INTRODUCTION_SELECTOR = '#introduction';
 const L_ALBUMLIST_SELECTOR = '.l-albumList';
 const TYPE = 'movie';
 
-console.log(BASE_URL);
-
 export const MovieApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
   const [isModalOpen, setModalIsOpen] = useState<boolean>(false);
