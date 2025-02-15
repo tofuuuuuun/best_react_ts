@@ -2,17 +2,18 @@
 require_once('../token/tmdbToken.php');
 
 header('Content-type: application/json; charset=utf-8;');
-header('Access-Control-Allow-Origin: http://localhost'); // 特定のオリジンを許可
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');  // 許可するHTTPメソッド
-header('Access-Control-Allow-Headers: Content-Type, Authorization');        // 許可するヘッダー
+header('Access-Control-Allow-Origin: http://localhost');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 $pageArray = array();
 for ($i = 1; $i <= 5; $i++) {
-    $pageArray[] = rand(1, 20);
+    array_push($pageArray, rand(1, 20));
 }
 
+// APIから取得
 $curl = curl_init();
-
+$apiResults = [];
 foreach ($pageArray as $page) {
     curl_setopt_array($curl, [
         CURLOPT_URL => "https://api.themoviedb.org/3/movie/top_rated?language=ja-JA&page={$page}&region=JA",
@@ -27,16 +28,40 @@ foreach ($pageArray as $page) {
             "accept: application/json"
         ],
     ]);
-    $response .= curl_exec($curl);
+    $response = curl_exec($curl);
     $err = curl_error($curl);
+
+    if ($err) {
+        $apiResults[] = ["error" => "cURL Error #:" . $err];
+    } else {
+        $apiResults[] = $response;
+    }
 }
 
 curl_close($curl);
 
+// 画像のURLのみを抽出するしてフラットにする
+$posterURLs = [];
+foreach ($apiResults as $key => $value) {
+    $tmpValue = json_decode($value, true);
+    $posterURLs[] = array_map(
+        function ($topRateMovie) {
+            return $topRateMovie['poster_path'];
+        },
+        $tmpValue['results']
+    );
+}
+$flatPosterURLs = [];
+for ($i = 0; $i < count($posterURLs); $i++) {
+    foreach ($posterURLs[$i] as $key => $value) {
+        $flatPosterURLs[] = $value;
+    }
+}
+
 if ($err) {
     echo ["error" => "cURL Error #:" . $err];
 } else {
-    echo $response;
+    print_r($flatPosterURLs);
+    echo $flatPosterURLs;
 }
-
 exit;
