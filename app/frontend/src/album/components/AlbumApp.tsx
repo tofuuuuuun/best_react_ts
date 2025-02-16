@@ -1,6 +1,6 @@
 import { AddButton } from '@/album/components/AddButton';
 import { AlbumArtList } from '@/album/components/AlbumArtList';
-import { Introduction } from '@/album/components/Introduction';
+import { AlbumIntroduction } from '@/album/components/AlbumIntroduction';
 import { Modal } from '@/album/components/Modal/Modal';
 import { ResetArea } from '@/album/components/ResetArea';
 import { useDebounce } from '@/common/debounce';
@@ -212,7 +212,7 @@ export const AlbumApp = () => {
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
-              <Introduction selectStart={selectStart} />
+              <AlbumIntroduction selectStart={selectStart} />
             )}
             {addButtonVisible && (
               <AddButton

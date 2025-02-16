@@ -1,6 +1,6 @@
 import { IntroductionProps } from '@/types/types';
 
-export const Introduction = (props: IntroductionProps) => {
+export const AlbumIntroduction = (props: IntroductionProps) => {
     const { selectStart } = props;
 
     return (
