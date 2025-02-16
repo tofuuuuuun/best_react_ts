@@ -119,6 +119,9 @@ export type ResponseAlbumListProps = {
 /**************************************** 
 * BEST MOVIE types
 **************************************** */
+export type ResponseTopRatedMoviesType = {
+    poster_path: string;
+}
 export type movieIntroductionProps = {
     selectStart: () => void;
     randomURLList1: ResponseTopRatedMoviesType[];
@@ -147,9 +150,6 @@ export type movieSearchFormProps = {
     searchMovie: (title: string) => void;
 }
 
-export type ResponseTopRatedMoviesType = {
-    poster_path: string;
-}
 export type ResponseMoviesType = {
     id: string;
     title: string;

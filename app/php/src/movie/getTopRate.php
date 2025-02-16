@@ -37,7 +37,6 @@ foreach ($pageArray as $page) {
         $apiResults[] = $response;
     }
 }
-
 curl_close($curl);
 
 // 画像のURLのみを抽出するしてフラットにする
@@ -61,7 +60,6 @@ for ($i = 0; $i < count($posterURLs); $i++) {
 if ($err) {
     echo ["error" => "cURL Error #:" . $err];
 } else {
-    print_r($flatPosterURLs);
-    echo $flatPosterURLs;
+    echo json_encode($flatPosterURLs);
 }
 exit;

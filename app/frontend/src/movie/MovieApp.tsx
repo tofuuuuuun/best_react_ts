@@ -1,14 +1,13 @@
 import { Header } from '@/common/Header';
 import '@/css/movie/movieStyle.css';
 import { AddButton } from '@/movie/components/AddButton';
-import { Introduction } from '@/movie/components/Introduction';
 import { Modal } from '@/movie/components/Modal/Modal';
+import { MovieIntroduction } from '@/movie/components/MovieIntroduction';
 import { MoviePosterList } from '@/movie/components/MoviePosterList';
 import { ResetArea } from '@/movie/components/ResetArea';
-import { TOKEN } from '@/movie/Constants';
 import { ResponseMoviesType, ResponseTopRatedMoviesType } from '@/types/types';
 import html2canvas from 'html2canvas';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const INTRODUCTION_SELECTOR = '#introduction';
@@ -94,45 +93,33 @@ export const MovieApp = () => {
     }
   };
 
-  const getTopRatedMovies = useCallback(async () => {
-    const totalPages = [1, 2, 3, 4, 5];
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: TOKEN
-      }
-    };
+  const getTopRatedMovies = async () => {
     try {
-      Promise.all(
-        totalPages.map(page =>
-          fetch(`https://api.themoviedb.org/3/movie/top_rated?language=ja-JA&page=${page}&region=JA`, options)
-            .then(res => res.json())
-        )
-      )
-        .then(responses => {
-          const allResults = responses.flatMap(res => res.results);
+      const response = await fetch(`${BASE_URL}/movie/getTopRate.php?`);
+      if (!response.ok) {
+        throw new Error('ネットワークエラーが発生しました。');
+      }
+      const data = await response.json();
 
-          const getRandomMovies = (count: number) => {
-            const randomMovies = [];
-            for (let i = 0; i < count; i++) {
-              const randomIndex = Math.floor(Math.random() * allResults.length);
-              randomMovies.push(allResults[randomIndex]);
-            }
-            return randomMovies;
-          };
-          setRandomURLList1(getRandomMovies(10));
-          setRandomURLList2(getRandomMovies(10));
-          setRandomURLList3(getRandomMovies(10));
-          setRandomURLList4(getRandomMovies(10));
-        })
-        .catch(err => setErrorMessage(err.message));
+      const getRandomMovies = () => {
+        const maxCount = 10;
+        const randomMovies = [];
+        for (let i = 0; i < maxCount; i++) {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          randomMovies.push(data[randomIndex]);
+        }
+        return randomMovies;
+      };
+
+      setRandomURLList1(getRandomMovies());
+      setRandomURLList2(getRandomMovies());
+      setRandomURLList3(getRandomMovies());
+      setRandomURLList4(getRandomMovies());
     } catch {
       console.log('error');
       alert('エラーが発生しました。リロードし直してください。')
     }
-  }, []);
-
+  };
 
   // html2canvasを使用してキャプチャーを取得し、共有する
   const handleCapture = () => {
@@ -182,7 +169,7 @@ export const MovieApp = () => {
       setModalIsOpen(false);
     }
     getTopRatedMovies()
-  }, [moviePosterList, getTopRatedMovies]);
+  }, [moviePosterList]);
 
   return (
     <>
@@ -191,7 +178,7 @@ export const MovieApp = () => {
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
-              <Introduction
+              <MovieIntroduction
                 selectStart={selectStart}
                 randomURLList1={randomURLList1}
                 randomURLList2={randomURLList2}
