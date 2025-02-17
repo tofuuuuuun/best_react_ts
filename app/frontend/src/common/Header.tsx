@@ -9,11 +9,9 @@ export const Header = (props: headerProps) => {
 
     return (
         <>
-            <header>
-                <div className="l-header ta-center">
-                    <h1><img src={logoIcon} alt="best" className="headerLogo" /></h1>
-                </div>
-            </header>
+            <div className="l-header ta-center">
+                <h1><img src={logoIcon} alt="best" className="headerLogo" /></h1>
+            </div>
         </>
     );
 };
