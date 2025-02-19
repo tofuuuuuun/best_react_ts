@@ -1,5 +1,5 @@
 html { font-size: 16px; font-family: "Noto Sans JP", sans-serif; font-style: normal; }
-main { width: 1200px; max-width: 100%; margin: 0 auto; padding: 0 1em;}
+/* main { width: 1200px; max-width: 100%; margin: 0 auto; padding: 0 1em;} */
 h1{ margin-block-start: 0; margin-block-end: 0; }
 ul { margin-block-start: 0; margin-block-end: 0; padding-left: 0; }
 li { list-style: none; }
@@ -71,6 +71,8 @@ input[type="checkbox"]{display: none;}
 .bg-gray:hover{ background-color: #bfbac5; }
 
 .errorMessage{color: #ff0000;}
+
+.mainWrapper{width: 1200px; max-width: 100%; margin: 0 auto; padding: 0 1em;}
 
 @media (max-width:640px) {
 html{ font-size: 12px;}

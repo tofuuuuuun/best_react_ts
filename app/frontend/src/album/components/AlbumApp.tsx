@@ -208,7 +208,7 @@ export const AlbumApp = () => {
   return (
     <>
       <Header type={TYPE} />
-      <div className='texture'>
+      <div className='mainWrapper texture'>
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
