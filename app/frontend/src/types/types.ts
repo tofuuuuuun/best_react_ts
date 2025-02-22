@@ -5,11 +5,13 @@
 export type AddButtonProps = {
     isModalOpen: boolean;
     setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    type: string;
 }
 
 export type ResetAreaProps = {
     reset: () => void;
     handleCapture: () => void;
+    type: string;
 }
 
 export type Debounce = (fn: () => void) => void;
@@ -139,7 +141,7 @@ export type movieModalProps = {
     clearModal: () => void;
     deleteAlbum: (id: string) => void;
     moviePosterList: { id: string, title: string, poster_path: string }[];
-    toggleAlbum: (id: string, original_title: string, poster_path: string) => void;
+    toggleMovie: (id: string, original_title: string, poster_path: string) => void;
     errorMessage: string;
 }
 
@@ -177,11 +179,11 @@ export type movieCheckboxButtonProps = {
     title: string;
     poster: string;
     toggleDisplayFlg: boolean;
-    toggleAlbum: (id: string, title: string, poster: string) => void;
+    toggleMovie: (id: string, title: string, poster: string) => void;
 }
 
 export type ResponseMoviesProps = {
-    toggleAlbum: (id: string, title: string, poster: string) => void;
+    toggleMovie: (id: string, title: string, poster: string) => void;
     responseMovies: MovieType[];
     moviePosterList: { id: string, title: string, poster_path: string }[];
 }

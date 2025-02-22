@@ -1,10 +1,10 @@
+import { AddButton } from '@/common/AddButton';
 import { Header } from '@/common/Header';
+import { ResetArea } from '@/common/ResetArea';
 import '@/css/movie/movieStyle.css';
-import { AddButton } from '@/movie/components/AddButton';
 import { Modal } from '@/movie/components/Modal/Modal';
 import { MovieIntroduction } from '@/movie/components/MovieIntroduction';
 import { MoviePosterList } from '@/movie/components/MoviePosterList';
-import { ResetArea } from '@/movie/components/ResetArea';
 import { ResponseMoviesType, ResponseTopRatedMoviesType } from '@/types/types';
 import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
@@ -49,7 +49,7 @@ export const MovieApp = () => {
     setMovieTitle(value);
   }
 
-  const toggleAlbum = (id: string, title: string, poster: string) => {
+  const toggleMovie = (id: string, title: string, poster: string) => {
     setMoviePosterList((prevList) => {
       const isSelected = prevList.some((item) => item.id === id);
       if (isSelected) {
@@ -190,6 +190,7 @@ export const MovieApp = () => {
               <AddButton
                 isModalOpen={isModalOpen}
                 setModalIsOpen={setModalIsOpen}
+                type={TYPE}
               />)}
             {isSelectStart && (
               <MoviePosterList
@@ -202,6 +203,7 @@ export const MovieApp = () => {
             <ResetArea
               reset={resetMoviePosterList}
               handleCapture={handleCapture}
+              type={TYPE}
             />
           )}
         </div>
@@ -215,7 +217,7 @@ export const MovieApp = () => {
             movieTitle={movieTitle}
             clearModal={clearModal}
             deleteAlbum={deleteAlbum}
-            toggleAlbum={toggleAlbum}
+            toggleMovie={toggleMovie}
             errorMessage={errorMessage}
           />
         )}

@@ -1,10 +1,10 @@
-import { AddButton } from '@/album/components/AddButton';
 import { AlbumArtList } from '@/album/components/AlbumArtList';
 import { AlbumIntroduction } from '@/album/components/AlbumIntroduction';
 import { Modal } from '@/album/components/Modal/Modal';
-import { ResetArea } from '@/album/components/ResetArea';
+import { AddButton } from '@/common/AddButton';
 import { useDebounce } from '@/common/debounce';
 import { Header } from '@/common/Header';
+import { ResetArea } from '@/common/ResetArea';
 import '@/css/album/albumStyle.css';
 import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '@/types/types';
 import html2canvas from 'html2canvas';
@@ -208,7 +208,7 @@ export const AlbumApp = () => {
   return (
     <>
       <Header type={TYPE} />
-      <div className='mainWrapper texture'>
+      <div className='mainWrapper'>
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
@@ -218,6 +218,7 @@ export const AlbumApp = () => {
               <AddButton
                 isModalOpen={isModalOpen}
                 setModalIsOpen={setModalIsOpen}
+                type={TYPE}
               />)}
             {isSelectStart && (
               <AlbumArtList
@@ -231,6 +232,7 @@ export const AlbumApp = () => {
             <ResetArea
               reset={resetAlbumList}
               handleCapture={handleCapture}
+              type={TYPE}
             />
           )}
         </div>
