@@ -10,7 +10,7 @@ export const Header = (props: headerProps) => {
     return (
         <>
             <header className="l-header ta-center">
-                <h1><img src={logoIcon} alt="best" className="headerLogo" /></h1>
+                <h1 className='logoPosition'><img src={logoIcon} alt="best" className="headerLogo" /></h1>
             </header>
         </>
     );

@@ -10,7 +10,7 @@ export const MovieIntroduction = (props: movieIntroductionProps) => {
             <ul className={`l-gridPoster ${className}`} >
                 {
                     movies.map((value, index) => (
-                        value ? <li key={index}><img className='l-topRateMovies' src={`${BASE_URL}${value}`} /></li> : ''
+                        value ? <li key={index} className='topRateItem'><img className='l-topRateMovies' src={`${BASE_URL}${value}`} /></li> : ''
                     ))
                 }
             </ul >
