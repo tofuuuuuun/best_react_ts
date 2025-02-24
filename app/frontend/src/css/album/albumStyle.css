@@ -1,17 +1,6 @@
 /* 
 * レイアウトパーツ
 */
-.l-common{
-    background-color: #424242;
-    padding: 1em;
-}
-
-.l-header{
-    height: 100px;
-    padding: 1em 1em 0.5em 1em;
-    background-color: #151619;
-}
-
 .l-startText{
     width: 640px;
     margin: 0 auto;
@@ -29,16 +18,6 @@
 .l-albumArt::after{
     background-color: #f05d31;
     z-index: 100;
-}
-
-.l-button {
-    display: flex;
-    justify-content: center;
-    width: 90px;
-    padding: 9px 18px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
 }
 
 .l-subButton{
@@ -108,11 +87,6 @@
     padding-top: 4em;
 }
 
-.headerLogo{
-    width: 25%;
-    max-width: 100%;
-}
-
 .startButton{
     padding: 6px 12px;
     border: none;
@@ -129,24 +103,6 @@
     margin: 1em 0;
 }
 
-.addButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 2px 2px 15px 1px #1a1a1a;
-    background-color: #F1F8E9;
-    cursor: pointer;
-}
-
-.addButton:hover {
-    box-shadow: none;
-    transition-duration: 0.2s;
-    background-color: #d3dacb;
-    transform: scale(0.99,0.99) translateY(2px);
-}
-
 [name="artist"]{
     box-sizing: border-box;
     width: 100%;
@@ -160,14 +116,6 @@
     border: 1px solid #cacaca;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-}
-
-.clear{
-    position: absolute;
-    right: 11px;
-    top: 6px;
-    color: #424242;
-    cursor: pointer;
 }
 
 .albumItems {
@@ -317,26 +265,14 @@ input[type="radio"]:checked + label{
 }
 
 @media (max-width:768px) {
-main{padding-bottom: 4em;}
-.headerLogo{ width: 45%; }
+.headerLogo{
+    width: 45%;
+}
 .contentWrapper{padding-top: 3em;}
 .listNameInput{font-size: 23px;}
 }
 
 @media (max-width:640px) {
-html{ font-size: 12px;}
-main {
-    width: 100%;
-    padding: 7em 0 2em 0;
-}
-
-.l-header{ 
-    height: auto;
-    background: #2a3332;
-}
-.l-contentWrapper{
-    padding: 1em 1em 0 1em;
-}
 .l-albumArt {
     width: 140px;
     height: 140px;
@@ -365,15 +301,13 @@ main {
 .l-artistInfo { width: 60%; }
 .l-albumInfo{ width: 47%; }
 
-.headerLogo { width: 70%; }
+.l-startText{ width: auto; max-width: 100%; }
+
 .albumArtList,.albumAddButton {
     grid-template-columns: repeat(auto-fill, 170px);
     grid-column-gap: 10px;
     justify-items: center;
     justify-content: center;
-}
-.contentWrapper{
-    padding-top: 1em;
 }
 
 .typeLabel { font-size: 10px; }
@@ -393,7 +327,10 @@ main {
     
 }
 .albumItems{ padding: 0.5em; }
-.albumImage{ width: 30%; }
+.albumImage{
+    width: 30%;
+    border-radius: 5px;
+}
 .albumName{ font-size: 1em; }
 .artistsName{font-size: 0.8em;}
 .selectName{

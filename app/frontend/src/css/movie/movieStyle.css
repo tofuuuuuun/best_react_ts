@@ -1,27 +1,3 @@
-.l-common{
-    background-color: #2f303c;
-    padding: 1em;
-}
-
-.l-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    padding: 0.5em 1em;
-}
-
-.l-addButtonWrapper{
-    padding-top: 8em;
-}
-
-.l-addButton {
-    width: 220px;
-    height: 220px;
-    box-shadow: 2px 2px 15px 1px #1a1a1a;
-    border-radius: 5px;
-}
-
 .l-moviePoster {
     width: 220px;
     height: 330px;
@@ -40,16 +16,6 @@
 .l-moviePoster::after{
     background-color: #663399;
     z-index: 100;
-}
-
-.l-button {
-    display: flex;
-    justify-content: center;
-    width: 50px;
-    padding: 9px 18px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
 }
 
 .l-subButton{
@@ -142,65 +108,6 @@
     overflow: hidden;
 }
 
-.clear .icon-close{
-    color: #626669;
-}
-
-.icon-close {
-    display: inline-block;
-    vertical-align: middle;
-    color: #e9f1f8;
-    line-height: 1;
-    width: 1em;
-    height: 0.1em;
-    background: currentColor;
-    border-radius: 0.1em;
-    position: relative;
-    transform: rotate(45deg);
-}
-
-.icon-close::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: inherit;
-    transform: rotate(90deg);
-}
-
-.icon-add {
-    display: inline-block;
-    vertical-align: middle;
-    color: #663399;
-    line-height: 1;
-    width: 1.1em;
-    height: 0.2em;
-    font-size: 3em;
-    background: currentColor;
-    border-radius: 0.1em;
-    position: relative;
-    transform: rotate(90deg);
-}
-
-.icon-add::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: inherit;
-    transform: rotate(90deg);
-}
-
-.headerLogo{
-    width: 170px;
-    max-width: 100%;
-}
 .topText{ font-size: 60px; }
 .startButton{
     width: 115px;
@@ -223,24 +130,6 @@
     margin: 1em 0;
 }
 
-.addButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 2px 2px 15px 1px #1a1a1a;
-    background-color: #e9f1f8;
-    cursor: pointer;
-}
-
-.addButton:hover {
-    box-shadow: none;
-    transition-duration: 0.2s;
-    background-color: #e9f1f8;
-    transform: scale(0.99,0.99) translateY(2px);
-}
-
 [name="movie"]{
     box-sizing: border-box;
     width: 100%;
@@ -254,14 +143,6 @@
     border: 1px solid #cacaca;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-}
-
-.clear{
-    position: absolute;
-    right: 11px;
-    top: 6px;
-    color: #424242;
-    cursor: pointer;
 }
 
 .movieItems {
@@ -430,10 +311,6 @@
 
 
 @media (max-width:640px) {
-.l-header{ height: auto;}
-.l-contentWrapper{
-    padding: 1em 0.5em 0 0.5em;
-}
 .l-addButton {
     width: 140px;
     height: 140px;
@@ -455,10 +332,6 @@
 .l-buttonSearch {
     width: 4em;
     padding: 10px 15px;
-}
-.l-button {
-    width: 4em;
-    padding: 7px 14px;
 }
 
 .l-movieInfo{ width: 47%; }
@@ -488,8 +361,6 @@
     padding-top: 0;
 }
 
-
-.headerLogo { width: 120px; }
 .topText{
     font-size: 3em;
 }
@@ -513,7 +384,7 @@
     right: 16px;
     
 }
-.movieItems{ padding: 0.5em; }
+.movieItems{ padding: 1em; }
 .moviePoster{ width: 30%; }
 .movieTitle{ font-size: 1em; }
 .selectName{

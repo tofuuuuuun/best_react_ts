@@ -10,7 +10,7 @@ export const ResponseAlbumList = (props: ResponseAlbumListProps) => {
                 <li className='albumItems' id={index === 0 ? 'firstItems' : ''} key={index} >
                     <img className='albumImage' src={album.images.length !== 0 ? album.images[0].url : ''} loading='lazy' />
                     <div className='l-albumInfo'>
-                        <span className='albumName font-wb'>{album.name} ({album.release_date.substring(0, 4)})</span>
+                        <span className='albumName font-wb'>{album.name}   ({album.release_date.substring(0, 4)})</span>
                         <span className='artistsName'>{album.artists.map((value) => value.name).join(',')}</span>
                     </div>
                     <ResultCheckboxButton

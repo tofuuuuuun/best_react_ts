@@ -60,7 +60,7 @@ export const MovieApp = () => {
     });
   }
 
-  const deleteAlbum = (id: string) => {
+  const deleteMovie = (id: string) => {
     const deleteArray = moviePosterList.filter(movie => movie.id !== id);
     setMoviePosterList(deleteArray);
     setResetButtonVisible(false);
@@ -195,7 +195,7 @@ export const MovieApp = () => {
             {isSelectStart && (
               <MoviePosterList
                 moviePosterList={moviePosterList}
-                deleteAlbum={deleteAlbum}
+                deleteMovie={deleteMovie}
               />
             )}
           </div>
@@ -216,7 +216,7 @@ export const MovieApp = () => {
             moviePosterList={moviePosterList}
             movieTitle={movieTitle}
             clearModal={clearModal}
-            deleteAlbum={deleteAlbum}
+            deleteMovie={deleteMovie}
             toggleMovie={toggleMovie}
             errorMessage={errorMessage}
           />

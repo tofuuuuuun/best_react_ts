@@ -139,7 +139,7 @@ export type movieModalProps = {
     inputMovieTitle: (event: React.ChangeEvent<HTMLInputElement>) => void;
     responseMovies: MovieType[];
     clearModal: () => void;
-    deleteAlbum: (id: string) => void;
+    deleteMovie: (id: string) => void;
     moviePosterList: { id: string, title: string, poster_path: string }[];
     toggleMovie: (id: string, original_title: string, poster_path: string) => void;
     errorMessage: string;
@@ -171,7 +171,7 @@ export type Movie = {
 }
 export type MoviePosterListProps = {
     moviePosterList: Movie[];
-    deleteAlbum: (id: string) => void;
+    deleteMovie: (id: string) => void;
 }
 
 export type movieCheckboxButtonProps = {

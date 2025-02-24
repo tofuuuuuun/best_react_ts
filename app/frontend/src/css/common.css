@@ -1,5 +1,4 @@
 html { font-size: 16px; font-family: "Noto Sans JP", sans-serif; font-style: normal; }
-header { position: absolute; top: 0; width: 100%; text-align: left; z-index: 1; background-color: #1a1c21; }
 body { margin: 0; padding: 0; }
 h1{ margin-block-start: 0; margin-block-end: 0; }
 ul { margin-block-start: 0; margin-block-end: 0; padding-left: 0; }
@@ -74,23 +73,96 @@ input[type=radio]{display: none;}
 
 .bg-orange { background-color: #ff693a; }
 .bg-orange:hover{background-color: #f05d31;}
-
 .bg-turquoise { background-color: #009688; }
 .bg-turquoise:hover{ background-color: #00756a; }
-
 .bg-purple { background-color: #663399; }
 .bg-purple:hover{background-color: #572c82;}
-
 .bg-white { background-color: #e9f1f8; }
 .bg-white:hover{ background-color: #e9f1f8; }
-
 .bg-gray { background-color: #cdc8d3; }
 .bg-gray:hover{ background-color: #bfbac5; }
 
 .errorMessage{color: #ff0000;}
 
-.mainWrapper{width: 1200px; max-width: 100%; margin: 0 auto; padding: 0 1em;}
+.l-header{ 
+    height: auto;
+    background: #24272f;
+    margin-bottom: 2em;   
+}
 
+.l-contentWrapper{
+    padding: 0;
+}
+
+.l-common{
+    background-color: #2f303c;
+    padding: 1em;
+}
+
+.l-button {
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.l-addButtonWrapper{
+    padding-top: 8em;
+}
+
+.l-addButton {
+    width: 220px;
+    height: 220px;
+    box-shadow: 2px 2px 15px 1px #1a1a1a;
+    border-radius: 5px;
+}
+
+.l-resetButton {
+    width: 60%;
+    padding: 9px 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.mainWrapper{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.headerLogo {
+    width: 70%;
+}
+
+.addButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 15px 1px #1a1a1a;
+    background-color: #e9f1f8;
+    cursor: pointer;
+}
+
+.addButton:hover {
+    box-shadow: none;
+    transition-duration: 0.2s;
+    background-color: #e9f1f8;
+    transform: scale(0.99,0.99) translateY(2px);
+}
+
+.clear{
+    position: absolute;
+    right: 11px;
+    top: 6px;
+    color: #424242;
+    cursor: pointer;
+}
 
 .icon-close {
     display: inline-block;
@@ -223,9 +295,32 @@ input[type=radio]{display: none;}
 html{ font-size: 12px;}
 main {
     width: 100%;
-    padding: 7em 0 1em 0;
+}
+.l-button {
+    width: 60px;
+    padding: 7px 14px;
 }
 
+.l-resetButton {
+    width: 60%;
+    padding: 9px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.headerLogo { 
+    width: 70%;
+}
+
+.mainWrapper{
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.contentWrapper{
+    padding: 1em 0.5em;
+}
 
 .modal-container {
     position: fixed;
