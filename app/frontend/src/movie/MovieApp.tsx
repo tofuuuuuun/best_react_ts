@@ -176,29 +176,27 @@ export const MovieApp = () => {
       <Header type={TYPE} />
       <div className='mainWrapper'>
         <div className='contentWrapper'>
-          <div className='l-contentWrapper'>
-            {!isSelectStart && (
-              <MovieIntroduction
-                selectStart={selectStart}
-                randomURLList1={randomURLList1}
-                randomURLList2={randomURLList2}
-                randomURLList3={randomURLList3}
-                randomURLList4={randomURLList4}
-              />
-            )}
-            {addButtonVisible && (
-              <AddButton
-                isModalOpen={isModalOpen}
-                setModalIsOpen={setModalIsOpen}
-                type={TYPE}
-              />)}
-            {isSelectStart && (
-              <MoviePosterList
-                moviePosterList={moviePosterList}
-                deleteMovie={deleteMovie}
-              />
-            )}
-          </div>
+          {!isSelectStart && (
+            <MovieIntroduction
+              selectStart={selectStart}
+              randomURLList1={randomURLList1}
+              randomURLList2={randomURLList2}
+              randomURLList3={randomURLList3}
+              randomURLList4={randomURLList4}
+            />
+          )}
+          {addButtonVisible && (
+            <AddButton
+              isModalOpen={isModalOpen}
+              setModalIsOpen={setModalIsOpen}
+              type={TYPE}
+            />)}
+          {isSelectStart && (
+            <MoviePosterList
+              moviePosterList={moviePosterList}
+              deleteMovie={deleteMovie}
+            />
+          )}
           {resetButtonVisible && (
             <ResetArea
               reset={resetMoviePosterList}

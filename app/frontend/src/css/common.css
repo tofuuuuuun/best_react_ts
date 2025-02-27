@@ -308,6 +308,10 @@ main {
     margin-bottom: 1em;
 }
 
+.l-contentWrapper{
+    padding: 0 0.5em;
+}
+
 .l-button {
     width: 60px;
     padding: 7px 14px;
