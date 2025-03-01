@@ -7,23 +7,23 @@ import { Header } from '@/common/Header';
 import { ResetArea } from '@/common/ResetArea';
 import '@/css/album/albumStyle.css';
 import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '@/types/types';
-import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
-
-const TYPE = 'album';
+import { useLocation } from 'react-router-dom';
 
 export const AlbumApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
   const [isModalOpen, setModalIsOpen] = useState<boolean>(false);
   const [addButtonVisible, setAddButtonVisible] = useState(false);
   const [artistName, setArtistName] = useState('');
-  const [type, setType] = useState('all');
+  const [dataType, setDataType] = useState('all');
   const [responseArtist, setResponseArtist] = useState<ResponseArtistType[]>([]);
   const [responseAlbum, setResponseAlbum] = useState<ResponseAlbumType[]>([]);
   const [filterResponseAlbum, setFilterResponseAlbum] = useState<ResponseAlbumType[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [albumArtList, setAlbumArtList] = useState<AlbumArtListType[]>([]);
   const [resetButtonVisible, setResetButtonVisible] = useState(false);
+
+  const TYPE = useLocation().pathname;
 
   const selectStart = () => {
     setIsSelectStart(!isSelectStart);
@@ -50,7 +50,7 @@ export const AlbumApp = () => {
 
   // モーダルからアルバムタイプを切り替え、フィルタリングする
   const changeType = (typeValue: string) => {
-    setType(typeValue);
+    setDataType(typeValue);
     if (typeValue != 'all') {
       const filtered = responseAlbum.filter(album => album.album_type === typeValue);
       setFilterResponseAlbum(filtered);
@@ -129,13 +129,12 @@ export const AlbumApp = () => {
     setResponseArtist([]);
     setResponseAlbum([]);
     setFilterResponseAlbum([]);
-    setType('all');
+    setDataType('all');
     const params = new URLSearchParams({
       'artistName': name,
       'type': 'all',
       'artistId': artistId
     });
-    // TODO: サーバー側の実装もallメインで使用することを考慮した実装に修正する
     try {
       const response = await fetch(`https://rahi-lab.com/searchSpotify.php?${params}`, {
         method: 'GET',
@@ -151,47 +150,6 @@ export const AlbumApp = () => {
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage(`アルバム情報の取得に失敗しました。${error}`);
-    }
-  }
-
-  // html2canvasを使用してキャプチャーを取得し、共有する
-  const handleCapture = () => {
-    const element = document.querySelector('.l-albumList') as HTMLElement
-    html2canvas(element, {
-      useCORS: true
-    }).then(canvas => {
-      const dataURL = canvas.toDataURL("image/png");
-      const blob = toBlob(dataURL);
-      if (blob) {
-        const imageFile = new File([blob], "image.png", {
-          type: "image/png",
-        });
-        navigator.share({
-          text: "共有",
-          files: [imageFile],
-        }).then(() => {
-          console.log("success.");
-        }).catch((error) => {
-          console.log(error);
-        });
-      }
-    });
-  }
-
-  const toBlob = (base64: string): Blob | null => {
-    const decodedData = atob(base64.replace(/^.*,/, ""));
-    const buffers = new Uint8Array(decodedData.length);
-    for (let i = 0; i < decodedData.length; i++) {
-      buffers[i] = decodedData.charCodeAt(i);
-    }
-    try {
-      const blob = new Blob([buffers.buffer], {
-        type: "image/png",
-      });
-      return blob;
-    } catch (e) {
-      console.log(e);
-      return null;
     }
   }
 
@@ -231,7 +189,6 @@ export const AlbumApp = () => {
           {resetButtonVisible && (
             <ResetArea
               reset={resetAlbumList}
-              handleCapture={handleCapture}
               type={TYPE}
             />
           )}
@@ -242,7 +199,7 @@ export const AlbumApp = () => {
             searchArtist={searchArtist}
             inputArtistName={inputArtistName}
             changeType={changeType}
-            type={type}
+            dataType={dataType}
             responseArtist={responseArtist}
             searchAlbum={searchAlbum}
             filterResponseAlbum={filterResponseAlbum}

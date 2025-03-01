@@ -10,7 +10,7 @@ export const SearchForm = (props: SearchFormProps) => {
             <div className='l-selectType'>
                 <input
                     type='text'
-                    name={`formType`}
+                    name='form'
                     placeholder={`${formType === 'album' ? 'アーティスト名' : '映画名'}を入力してください`}
                     value={formType === 'album' ? artistName : movieTitle}
                     onChange={formType === 'album' ? inputArtistName : inputMovieTitle}
@@ -27,7 +27,7 @@ export const SearchForm = (props: SearchFormProps) => {
             </div>
             <div className='p-left-1em'>
                 <button
-                    className='l-buttonSearch txt-white bg-turquoise search action'
+                    className={`l-buttonSearch txt-white search action ${formType === 'album' ? 'bg-turquoise' : 'bg-purple'}`}
                     onClick={() => formType === 'album' ? searchArtist(artistName) : searchMovie(movieTitle)}
                 >
                     <img src={searchIcon} alt='searchIcon' width='15' />

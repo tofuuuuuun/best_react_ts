@@ -5,7 +5,7 @@ import { headerProps } from "@/types/types";
 
 export const Header = (props: headerProps) => {
     const { type } = props;
-    const logoIcon = type === 'album' ? albumLogoIcon : type === 'movie' ? movieLogoIcon : homeLogoIcon;
+    const logoIcon = type === '/album' ? albumLogoIcon : type === '/movie' ? movieLogoIcon : homeLogoIcon;
 
     return (
         <>

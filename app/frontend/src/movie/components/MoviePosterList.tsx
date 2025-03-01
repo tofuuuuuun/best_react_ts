@@ -9,7 +9,7 @@ export const MoviePosterList = (props: MoviePosterListProps) => {
     return (
         <>
             {moviePosterList.length != 0 && (
-                <div className='l-albumList l-common'>
+                <div className='l-common'>
                     <ul className='moviePosterList' id='target'>
                         {moviePosterList.map((movie, index) => (
                             <li className='movieListItem action' id={movie.id} key={index} >

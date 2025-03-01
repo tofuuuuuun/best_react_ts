@@ -12,7 +12,7 @@
 .l-albumArt {
     width: 220px;
     height: 220px;
-    box-shadow: 2px 2px 15px 1px #1a1a1a;
+    box-shadow: 1px 1px 15px 3px #333339;
     border-radius: 5px;
 }
 .l-albumArt::after{
@@ -20,47 +20,9 @@
     z-index: 100;
 }
 
-.l-subButton{
-    width: 3em;
-    padding: 2px 8px;
-    font-size: 14px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    
-}
-
-.action:active{ 
-    transform: scale(0.95);
-}
-
-.l-buttonSearch {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 7em;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.l-searchForm{
-    position: relative;
-    display: flex;
-}
-
 .l-albumInfo{
     display: flex;
     flex-direction: column;
-}
-
-.l-selectType{
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 80%;
 }
 
 .l-autocomplete{
@@ -99,12 +61,6 @@
     margin: 1em 0;
 }
 
-[name="artist"]{
-    box-sizing: border-box;
-    width: 100%;
-    height: 40px;
-    border-radius: 10px;
-}
 .selectWrapper{
     background-color: #e6e6e6 ;
     box-sizing: border-box;
@@ -224,7 +180,6 @@ input[type="radio"]:checked + label{
     font-weight: bold;
 }
 
-
 .listNameInput{
     border: none;
     background-color: transparent;
@@ -237,29 +192,6 @@ input[type="radio"]:checked + label{
 
 /* エフェクト系 */
 .texture { background: #181819 url("@/images/texture.png");}
-@keyframes noise_anima {
-	from { background-position: 0 0; }
-	to { background-position: 123px 456px; }
-}
-
-.fadeIn{
-    animation: fadeIn 2s; 
-    animation-fill-mode: both;
-}
-.fadeOut{
-    animation: fadeOut 1s;
-    animation-fill-mode: both;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
 
 @media (max-width:768px) {
 .headerLogo{
@@ -279,10 +211,6 @@ input[type="radio"]:checked + label{
     padding-right: 0;
 }
 
-.l-buttonSearch {
-    width: 4em;
-    padding: 10px 15px;
-}
 .l-button {
     width: 4em;
     padding: 7px 14px;
@@ -309,7 +237,6 @@ input[type="radio"]:checked + label{
 
 .typeLabel { font-size: 10px; }
 
-[name="artist"] { height: 35px; }
 .selectWrapper{
     box-sizing: border-box;
     height: 35px;

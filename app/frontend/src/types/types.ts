@@ -10,7 +10,6 @@ export type AddButtonProps = {
 
 export type ResetAreaProps = {
     reset: () => void;
-    handleCapture: () => void;
     type: string;
 }
 
@@ -29,7 +28,7 @@ export type IntroductionProps = {
 export type ModalProps = {
     toggleModal: (toggle: boolean) => void;
     changeType: (typeValue: string) => void
-    type: string;
+    dataType: string;
     searchArtist: (artistName: string) => void;
     artistName: string;
     inputArtistName: (event: { target: { value: string } }) => void;
@@ -45,11 +44,15 @@ export type ModalProps = {
 
 export type SearchFormProps = {
     artistName: string;
+    movieTitle: string;
     inputArtistName: (event: { target: { value: string } }) => void;
-    clearModal: () => void;
+    inputMovieTitle: (event: React.ChangeEvent<HTMLInputElement>) => void;
     searchArtist: (artistName: string) => void;
     responseArtist: ResponseArtist[];
     searchAlbum: (id: string, name: string) => void;
+    searchMovie: (title: string) => void;
+    clearModal: () => void;
+    type: string;
 }
 
 export type ModalAutocompleteProps = {
@@ -64,7 +67,7 @@ export type ResponseArtist = {
 }
 
 export type SelectTypeProps = {
-    type: string;
+    dataType: string;
     selectType: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
