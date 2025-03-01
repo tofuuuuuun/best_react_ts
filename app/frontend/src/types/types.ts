@@ -17,14 +17,6 @@ export type Debounce = (fn: () => void) => void;
 
 export type headerProps = { type: string; }
 
-/**************************************** 
-* BEST MUSIC types
-**************************************** */
-
-export type IntroductionProps = {
-    selectStart: () => void;
-}
-
 export type ModalProps = {
     toggleModal: (toggle: boolean) => void;
     changeType: (typeValue: string) => void
@@ -53,6 +45,13 @@ export type SearchFormProps = {
     searchMovie: (title: string) => void;
     clearModal: () => void;
     type: string;
+}
+/**************************************** 
+* BEST MUSIC types
+**************************************** */
+
+export type IntroductionProps = {
+    selectStart: () => void;
 }
 
 export type ModalAutocompleteProps = {

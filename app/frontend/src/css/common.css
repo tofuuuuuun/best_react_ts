@@ -10,6 +10,9 @@ input { padding: 0.5em 1em; border-radius: 0; border: 1px solid #cacaca; }
 input[type="checkbox"]{display: none;}
 input[type=radio]{display: none;}
 
+.font-zenMaru { font-family: "Zen Maru Gothic", serif; }
+.font-M_PLUS{ font-family: "M PLUS Rounded 1c", serif;}
+
 .disp-block { display: block; }
 .disp-inlineblock { display: inline-block; }
 .disp-inline { display: inline; }
