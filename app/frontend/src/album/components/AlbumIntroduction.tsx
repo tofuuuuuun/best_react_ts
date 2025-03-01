@@ -22,8 +22,9 @@ export const AlbumIntroduction = (props: IntroductionProps) => {
                 「このアルバム超オススメ！」って語り合ったり、<br />
                 友達のベスト10と見比べたりするのも楽しいはず。
             </p>
-
-            <button className='startButton bg-turquoise txt-white font-wb' onClick={() => selectStart()}>START</button>
+            <div className='ta-center m-bottom-2em'>
+                <button className='startButton bg-turquoise txt-white font-wb' onClick={() => selectStart()}>START</button>
+            </div>
         </div>
     )
 }
