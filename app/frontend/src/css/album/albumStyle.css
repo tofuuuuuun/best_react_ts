@@ -187,6 +187,7 @@ input[type="radio"]:checked + label{
     font-size: 23px;
     color: #f1f8e9;
     text-align: center;
+    width: 460px;
 }   
 
 
