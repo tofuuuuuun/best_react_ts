@@ -3,15 +3,28 @@ services:
     build:
       args:
         - NODE_VER=20.17.0-slim
+        - ENV_FILE=.env
       context: .
       dockerfile: Dockerfile
     tty: true
     volumes:
-      # - ./:/home/node/app
-      - ./frontend:/home/node/app
+      - ./frontend:/home/node/app/frontend
       - node_modules:/home/node/app/node_modules
+      - ./certs:/etc/nginx/certs
     ports:
-      - 5173:5173
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - php
+    environment:
+      - VITE_API_BASE_URL=http://localhost
+
+  php:
+    build: ./php
+    volumes:
+      - ./php/src:/var/www/html
+    expose:
+      - "9000"
 
 volumes:
   node_modules:

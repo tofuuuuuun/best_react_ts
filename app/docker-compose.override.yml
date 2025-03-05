@@ -1,0 +1,7 @@
+services:
+  react:
+    build:
+      args:
+        - ENV_FILE=.env.production
+    environment:
+      - VITE_API_BASE_URL=https://rahi-lab.com/

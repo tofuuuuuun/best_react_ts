@@ -1,0 +1,639 @@
+body { margin: 0; background-color: #24272F; }
+header { position: absolute; top: 0; width: 100%; text-align: left; z-index: 1; background-color: #1a1c21; }
+th,td { border-bottom: 1px solid #e6e6e6; padding: 1em 0.5em;}
+input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
+
+.l-common{
+    background-color: #2f303c;
+    padding: 1em;
+}
+
+.l-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    padding: 0.5em 1em;
+}
+
+.l-addButtonWrapper{
+    padding-top: 8em;
+}
+
+.l-addButton {
+    width: 220px;
+    height: 220px;
+    box-shadow: 2px 2px 15px 1px #1a1a1a;
+    border-radius: 5px;
+}
+
+.l-moviePoster {
+    width: 220px;
+    height: 330px;
+    box-shadow: 2px 2px 15px 1px #1a1a1a;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+.l-movieAddPoster {
+    width: 220px;
+    height: 220px;
+    box-shadow: 2px 2px 15px 1px #1a1a1a;
+    border-radius: 5px;
+}
+
+.l-moviePoster::after{
+    background-color: #663399;
+    z-index: 100;
+}
+
+.l-button {
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.l-subButton{
+    width: 3em;
+    padding: 2px 8px;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.action:active{ 
+    transform: scale(0.95);
+}
+
+.l-buttonSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7em;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.l-searchForm{
+    position: relative;
+    display: flex;
+}
+
+.l-movieInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.l-selectType{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+}
+
+.l-gridPosterWrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.l-gridPosterWrapper::after{
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 60%);
+    width: 100%;
+    height: 100vh;
+}
+
+.l-introductionWrapper{
+    position: relative;
+}
+
+.l-introductionText{
+    position: absolute;
+    top: 25%;
+    left: 15%;
+}
+
+.l-topRateMovies{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.l-gridPoster{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.girdPosterBlockWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.clear .icon-close{
+    color: #626669;
+}
+
+.icon-close {
+    display: inline-block;
+    vertical-align: middle;
+    color: #e9f1f8;
+    line-height: 1;
+    width: 1em;
+    height: 0.1em;
+    background: currentColor;
+    border-radius: 0.1em;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.icon-close::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+}
+
+.icon-add {
+    display: inline-block;
+    vertical-align: middle;
+    color: #663399;
+    line-height: 1;
+    width: 1.1em;
+    height: 0.2em;
+    font-size: 3em;
+    background: currentColor;
+    border-radius: 0.1em;
+    position: relative;
+    transform: rotate(90deg);
+}
+
+.icon-add::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+}
+
+.headerLogo{
+    width: 170px;
+    max-width: 100%;
+}
+.topText{ font-size: 60px; }
+.startButton{
+    width: 115px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.moviePoster{
+    border-radius: 5px;
+}
+
+.moviePosterList,.movieAddButton {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 220px);
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+.addButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 15px 1px #1a1a1a;
+    background-color: #e9f1f8;
+    cursor: pointer;
+}
+
+.addButton:hover {
+    box-shadow: none;
+    transition-duration: 0.2s;
+    background-color: #e9f1f8;
+    transform: scale(0.99,0.99) translateY(2px);
+}
+
+.fa-plus { font-size: 4em;}
+
+.modal-container {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 50%);
+    padding: 40px 20px;
+    overflow: auto;
+    
+    transition: .3s;
+    box-sizing: border-box;
+}
+
+.modal-container:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.modal-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-body {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.modal-close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 3%;
+    right: 14%;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.modal-content {
+    position: absolute;
+    max-width: 100%;
+    width: 560px;
+    top: 10%;
+    background: #24272F;
+    padding: 1em 1em 1em 1em;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px 1px #222222;
+}
+
+[name="movie"]{
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+}
+.selectWrapper{
+    background-color: #e6e6e6 ;
+    box-sizing: border-box;
+    height: 40px;
+    border: 1px solid #cacaca;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.clear{
+    position: absolute;
+    right: 11px;
+    top: 6px;
+    color: #424242;
+    cursor: pointer;
+}
+
+input[type=radio]{display: none;}
+
+.movieItems {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    border-top: 1px solid #B0BEC5;
+}
+
+.movieItems .l-movieInfo{ width: 17em; margin-right: auto; }
+.movieItems:first-child { border-top: none; }
+.movieItems:last-child { border-bottom: 1px solid #cacaca; }
+
+.movieListItem{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    color: #F1F8E9;
+}
+
+.movieListItem:hover{ opacity: 0.6; }
+
+.posterRemove{ display: none ;}
+
+.movieListItem:hover .posterRemove{
+    display: block;
+    position: absolute;
+    top: -8px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    color: #ff693a;
+    cursor: pointer;
+}
+
+.moviePoster {
+    width: 20%;
+    height: auto;
+    margin-right: 1em;
+}
+
+.movieTitle{ 
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.selectAlbumArtist{ font-size:0.9em; }
+
+.modalList{
+    color: #FAFAFA;
+    background-color: #2e323c;
+    height: 400px;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+#singleLabel{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 1px solid #bababa;
+}
+
+#albumLabel{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+
+.resetWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.counterText{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.modalList::-webkit-scrollbar, .autocompleteList::-webkit-scrollbar{
+    background: transparent;
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+}
+
+.modalList::-webkit-scrollbar-thumb, .autocompleteList::-webkit-scrollbar-thumb {
+    background-color: #663399;
+    border-radius: 10px;
+}
+
+.fadeIn{
+    animation: fadeIn 2s; 
+    animation-fill-mode: both;
+}
+.fadeOut{
+    animation: fadeOut 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.scroll-infinity__list--left1 {
+    animation: infinity-scroll-left1 80s infinite linear 0.5s both;
+}
+
+@keyframes infinity-scroll-left1{
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-100%);
+    }
+}
+
+.scroll-infinity__list--left2 {
+    animation: infinity-scroll-left2 79s infinite linear 0.5s both;
+}
+
+@keyframes infinity-scroll-left2{
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-100%);
+    }
+}
+
+.scroll-infinity__list--right1 {
+    animation: infinity-scroll-right1 80.5s infinite linear 0.5s both;
+}
+
+@keyframes infinity-scroll-right1{
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+.scroll-infinity__list--right2 {
+    animation: infinity-scroll-right2 78s infinite linear 0.5s both;
+}
+
+@keyframes infinity-scroll-right2 {
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width:640px) {
+.l-header{ height: auto;}
+.l-contentWrapper{
+    padding: 1em 0.5em 0 0.5em;
+}
+.l-addButton {
+    width: 140px;
+    height: 140px;
+}
+.l-moviePoster {
+    width: 160px;
+    height: 240px;
+}
+.l-movieAddPoster {
+    width: 140px;
+    height: 140px;
+}
+
+.l-albumList{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.l-buttonSearch {
+    width: 4em;
+    padding: 10px 15px;
+}
+.l-button {
+    width: 4em;
+    padding: 7px 14px;
+}
+
+.l-movieInfo{ width: 47%; }
+
+.l-overflowHidden{ overflow: hidden; }
+
+.l-gridPosterWrapper {
+    width: 715px;
+    height: 715px;
+    left: 0;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: rotate(25deg);
+}
+.l-gridPosterWrapper::after{
+    width: 832px;
+    height: 832px;
+}
+
+.l-introductionText{
+    top: 15%;
+    left: 3%;
+}
+
+.l-addButtonWrapper{
+    padding-top: 0;
+}
+
+
+.headerLogo { width: 120px; }
+.topText{
+    font-size: 3em;
+}
+.moviePosterList,.movieAddButton {
+    grid-template-columns: repeat(auto-fill, 170px);
+    justify-items: center;
+    justify-content: center;
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding:0;
+    overflow: auto;
+    transition: .3s;
+    box-sizing: border-box;
+}
+
+.modal-container:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.modal-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-body {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    max-width: 640px;
+    width: 90%;
+}
+
+.modal-close {
+    top: -45px;
+    right: 0;
+}
+
+.modal-content {
+    text-align: left;
+    padding: 1em 0.5em 1em 1em;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px 1px #222222;
+}
+
+[name="movie"] { height: 35px; }
+.selectWrapper{
+    box-sizing: border-box;
+    height: 35px;
+    padding: 0.2em;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.movieListItem:hover .posterRemove{
+    top: -7px;
+    right: 16px;
+    
+}
+.movieItems{ padding: 0.5em; }
+.moviePoster{ width: 30%; }
+.movieTitle{ font-size: 1em; }
+.selectName{
+    font-size: 1em; font-weight: bold;
+}
+
+}
