@@ -5,7 +5,7 @@ import { ResponseMoviesProps } from '@/types/types';
 const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
 
 export const ResponseMovies = (props: ResponseMoviesProps) => {
-    const { toggleAlbum, responseMovies, moviePosterList } = props;
+    const { toggleMovie, responseMovies, moviePosterList } = props;
     const setMoviePosterImage = (poster: string) => poster ? `${BASE_URL}${poster}` : NO_IMAGE;
     return (
         <ul className='modalList'>
@@ -20,7 +20,7 @@ export const ResponseMovies = (props: ResponseMoviesProps) => {
                         title={movie.title}
                         poster={movie.poster_path}
                         toggleDisplayFlg={moviePosterList.some((item) => item.id === movie.id)}
-                        toggleAlbum={toggleAlbum}
+                        toggleMovie={toggleMovie}
                     />
                 </li>
             ))

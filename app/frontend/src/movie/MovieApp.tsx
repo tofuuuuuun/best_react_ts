@@ -1,18 +1,16 @@
+import { AddButton } from '@/common/AddButton';
 import { Header } from '@/common/Header';
+import { ResetArea } from '@/common/ResetArea';
 import '@/css/movie/movieStyle.css';
-import { AddButton } from '@/movie/components/AddButton';
 import { Modal } from '@/movie/components/Modal/Modal';
 import { MovieIntroduction } from '@/movie/components/MovieIntroduction';
 import { MoviePosterList } from '@/movie/components/MoviePosterList';
-import { ResetArea } from '@/movie/components/ResetArea';
 import { ResponseMoviesType, ResponseTopRatedMoviesType } from '@/types/types';
-import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const INTRODUCTION_SELECTOR = '#introduction';
-const L_ALBUMLIST_SELECTOR = '.l-albumList';
-const TYPE = 'movie';
 
 export const MovieApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
@@ -27,6 +25,8 @@ export const MovieApp = () => {
   const [randomURLList2, setRandomURLList2] = useState<ResponseTopRatedMoviesType[]>([]);
   const [randomURLList3, setRandomURLList3] = useState<ResponseTopRatedMoviesType[]>([]);
   const [randomURLList4, setRandomURLList4] = useState<ResponseTopRatedMoviesType[]>([]);
+
+  const TYPE = useLocation().pathname;
 
   const selectStart = () => {
     const element = document.querySelector(INTRODUCTION_SELECTOR) as HTMLElement;
@@ -49,7 +49,7 @@ export const MovieApp = () => {
     setMovieTitle(value);
   }
 
-  const toggleAlbum = (id: string, title: string, poster: string) => {
+  const toggleMovie = (id: string, title: string, poster: string) => {
     setMoviePosterList((prevList) => {
       const isSelected = prevList.some((item) => item.id === id);
       if (isSelected) {
@@ -60,7 +60,7 @@ export const MovieApp = () => {
     });
   }
 
-  const deleteAlbum = (id: string) => {
+  const deleteMovie = (id: string) => {
     const deleteArray = moviePosterList.filter(movie => movie.id !== id);
     setMoviePosterList(deleteArray);
     setResetButtonVisible(false);
@@ -85,7 +85,6 @@ export const MovieApp = () => {
       if (!response.ok) {
         throw new Error('ネットワークエラーが発生しました。');
       }
-
       const data = await response.json();
       setResponseMovies((prevState) => [...prevState, ...data["results"]]);
     } catch {
@@ -110,7 +109,6 @@ export const MovieApp = () => {
         }
         return randomMovies;
       };
-
       setRandomURLList1(getRandomMovies());
       setRandomURLList2(getRandomMovies());
       setRandomURLList3(getRandomMovies());
@@ -120,47 +118,6 @@ export const MovieApp = () => {
       alert('エラーが発生しました。リロードし直してください。')
     }
   };
-
-  // html2canvasを使用してキャプチャーを取得し、共有する
-  const handleCapture = () => {
-    const element = document.querySelector(L_ALBUMLIST_SELECTOR) as HTMLElement
-    html2canvas(element, {
-      useCORS: true
-    }).then(canvas => {
-      const dataURL = canvas.toDataURL("image/png");
-      const blob = toBlob(dataURL);
-      if (blob) {
-        const imageFile = new File([blob], "image.png", {
-          type: "image/png",
-        });
-        navigator.share({
-          text: "共有",
-          files: [imageFile],
-        }).then(() => {
-          console.log("success.");
-        }).catch((error) => {
-          console.log(error);
-        });
-      }
-    });
-  }
-
-  const toBlob = (base64: string): Blob | null => {
-    const decodedData = atob(base64.replace(/^.*,/, ""));
-    const buffers = new Uint8Array(decodedData.length);
-    for (let i = 0; i < decodedData.length; i++) {
-      buffers[i] = decodedData.charCodeAt(i);
-    }
-    try {
-      const blob = new Blob([buffers.buffer], {
-        type: "image/png",
-      });
-      return blob;
-    } catch (e) {
-      console.log(e);
-      return null;
-    }
-  }
 
   useEffect(() => {
     if (moviePosterList.length === 10) {
@@ -176,7 +133,7 @@ export const MovieApp = () => {
       <Header type={TYPE} />
       <div className='mainWrapper'>
         <div className='contentWrapper'>
-          <div className='l-contentWrapper'>
+          <div className='l-contentWrapper m-bottom-1em'>
             {!isSelectStart && (
               <MovieIntroduction
                 selectStart={selectStart}
@@ -190,18 +147,19 @@ export const MovieApp = () => {
               <AddButton
                 isModalOpen={isModalOpen}
                 setModalIsOpen={setModalIsOpen}
+                type={TYPE}
               />)}
-            {isSelectStart && (
-              <MoviePosterList
-                moviePosterList={moviePosterList}
-                deleteAlbum={deleteAlbum}
-              />
-            )}
           </div>
+          {isSelectStart && (
+            <MoviePosterList
+              moviePosterList={moviePosterList}
+              deleteMovie={deleteMovie}
+            />
+          )}
           {resetButtonVisible && (
             <ResetArea
               reset={resetMoviePosterList}
-              handleCapture={handleCapture}
+              type={TYPE}
             />
           )}
         </div>
@@ -214,8 +172,8 @@ export const MovieApp = () => {
             moviePosterList={moviePosterList}
             movieTitle={movieTitle}
             clearModal={clearModal}
-            deleteAlbum={deleteAlbum}
-            toggleAlbum={toggleAlbum}
+            deleteMovie={deleteMovie}
+            toggleMovie={toggleMovie}
             errorMessage={errorMessage}
           />
         )}

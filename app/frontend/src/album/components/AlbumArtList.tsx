@@ -5,7 +5,7 @@ export const AlbumArtList = (props: AlbumArtListProps) => {
     return (
         <>
             {albumArtList.length != 0 && (
-                <div className='l-albumList l-common'>
+                <div className='l-common'>
                     <div className='ta-center m-bottom-2em p-top-1em'><input type='text' placeholder='BEST ALBUM' className='listNameInput'></input></div>
                     <ul className='albumArtList' id='target'>
                         {albumArtList.map((album, index) => (

@@ -1,24 +1,18 @@
-body { margin: 0; background-color: #424242; }
-header { position: absolute; top: 0; width: 100%; text-align: left;}
-th,td { border-bottom: 1px solid #e6e6e6; padding: 1em 0.5em;}
-input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
-/* ベーススタイルここまで */
-
-/* 共通パーツ レイアウト */
-.l-common{
-    background-color: #424242;
+/* 
+* レイアウトパーツ
+*/
+.l-startText{
+    width: 450px;
+    margin: 0 auto;
     padding: 1em;
-}
-
-.l-header{
-    height: 100px;
-    padding: 1em 1em 0.5em 1em;
+    background-color: #212122;
+    border-radius: 10px;
 }
 
 .l-albumArt {
     width: 220px;
     height: 220px;
-    box-shadow: 2px 2px 15px 1px #1a1a1a;
+    box-shadow: 1px 1px 15px 3px #333339;
     border-radius: 5px;
 }
 .l-albumArt::after{
@@ -26,57 +20,9 @@ input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
     z-index: 100;
 }
 
-.l-button {
-    display: flex;
-    justify-content: center;
-    width: 90px;
-    padding: 9px 18px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.l-subButton{
-    width: 3em;
-    padding: 2px 8px;
-    font-size: 14px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    
-}
-
-.action:active{ 
-    transform: scale(0.95);
-}
-
-.l-buttonSearch {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 7em;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.l-searchForm{
-    position: relative;
-    display: flex;
-}
-
 .l-albumInfo{
     display: flex;
     flex-direction: column;
-}
-
-.l-selectType{
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 80%;
 }
 
 .l-autocomplete{
@@ -88,6 +34,7 @@ input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
 
 .l-searchArtistImage{
     width: 30%;
+    border-radius: 5px;
 }
 
 .l-artistInfo{
@@ -95,98 +42,17 @@ input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
     padding-left: 1em;
 }
 
-.txt-white { color: #F1F8E9; }
-.txt-green {color: #009688;}
-.txt-orange {color: #ff693a;}
-
-/* 共通パーツ 背景色 */
-.bg-orange { background-color: #ff693a; }
-.bg-orange:hover{background-color: #f05d31;}
-
-.bg-turquoise { background-color: #009688; }
-.bg-turquoise:hover{ background-color: #00756a; }
-
-.bg-white { background-color: #F1F8E9; }
-.bg-white:hover{ background-color: #d6dccf; }
-
-.bg-gray { background-color: #ced3c8; }
-.bg-gray:hover{ background-color: #d6dccf; }
-
-.errorMessage{color: #ff0000;}
-
-.icon-close {
-    display: inline-block;
-    vertical-align: middle;
-    color: #F1F8E9;
-    line-height: 1;
-    width: 1em;
-    height: 0.1em;
-    background: currentColor;
-    border-radius: 0.1em;
-    position: relative;
-    transform: rotate(45deg);
-}
-
-.icon-close::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: inherit;
-    transform: rotate(90deg);
-}
-
-.icon-add {
-    display: inline-block;
-    vertical-align: middle;
-    color: #009688;
-    line-height: 1;
-    width: 1.1em;
-    height: 0.2em;
-    font-size: 3em;
-    background: currentColor;
-    border-radius: 0.1em;
-    position: relative;
-    transform: rotate(90deg);
-}
-
-.icon-add::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: inherit;
-    transform: rotate(90deg);
-}
-
 /* 共通パーツここまで */
 
-
 /* 固有パーツ */
-.contentWrapper{
-    padding-top: 6em;
-}
-
-.headerLogo{
-    width: 25%;
-    max-width: 100%;
-}
-
 .startButton{
-    /* width: 7em; */
-    padding: 12px 24px;
+    padding: 6px 12px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.albumArtList,.albumAddButton {
+.albumArtList {
     display: grid;
     grid-template-columns: repeat(auto-fill, 220px);
     grid-column-gap: 10px;
@@ -195,93 +61,6 @@ input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
     margin: 1em 0;
 }
 
-.addButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 2px 2px 15px 1px #1a1a1a;
-    background-color: #F1F8E9;
-    cursor: pointer;
-}
-
-.addButton:hover {
-    box-shadow: none;
-    transition-duration: 0.2s;
-    background-color: #d3dacb;
-    transform: scale(0.99,0.99) translateY(2px);
-}
-
-.fa-plus { font-size: 4em;}
-
-.modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    background: rgba(0, 0, 0, 50%);
-    padding: 40px 20px;
-    overflow: auto;
-    transition: .3s;
-    box-sizing: border-box;
-}
-
-.modal-container:before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-
-.modal-container.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-body {
-    position: relative;
-    display: grid;
-    justify-items: center;
-    vertical-align: middle;
-    width: 100%;
-}
-
-.modal-close {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 6%;
-    right: 31%;
-    width: 40px;
-    height: 40px;
-    font-size: 40px;
-    color: #fff;
-    cursor: pointer;
-}
-
-.modal-content {
-    position: absolute;
-    max-width: 100%;
-    width: 560px;
-    top: 10%;
-    background: #F1F8E9;
-    padding: 1em;
-    text-align: left;
-    border-radius: 5px;
-    box-shadow: 2px 2px 15px 1px #222222;
-}
-
-[name="artist"]{
-    box-sizing: border-box;
-    width: 100%;
-    height: 40px;
-    border-radius: 10px;
-}
 .selectWrapper{
     background-color: #e6e6e6 ;
     box-sizing: border-box;
@@ -290,16 +69,6 @@ input { padding: 0.5em; border-radius: 0; border: 1px solid #cacaca; }
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
-
-.clear{
-    position: absolute;
-    right: 11px;
-    top: 6px;
-    color: #424242;
-    cursor: pointer;
-}
-
-input[type=radio]{display: none;}
 
 .albumItems {
     display: flex;
@@ -357,6 +126,7 @@ input[type=radio]{display: none;}
 .modalList{
     background-color: #e7eaed;
     height: 400px;
+    padding-left: 5px;
     border-radius: 10px;
     overflow-y: auto;
 }
@@ -385,19 +155,15 @@ input[type="radio"]:checked + label{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    background-color: #fff;
+    background-color: #2e323c;
     border-radius:10px;
     padding: 5px 0 5px 5px;
     cursor: pointer;
 }
 
-.artistItems:last-child {
-    border-bottom: 1px solid #cacaca;
-}
-
 .autocompleteList{
     height: 200px;
-    background: #e7eaed;
+    background: #24272F;
     border-radius: 5px;
     overflow: auto;
     padding:1em 0.5em
@@ -414,18 +180,6 @@ input[type="radio"]:checked + label{
     font-weight: bold;
 }
 
-.modalList::-webkit-scrollbar, .autocompleteList::-webkit-scrollbar{
-    background: transparent;
-    width: 5px;
-    height: 5px;
-    border-radius: 10px;
-}
-
-.modalList::-webkit-scrollbar-thumb, .autocompleteList::-webkit-scrollbar-thumb {
-    background-color: #009688;
-    border-radius: 10px;
-}
-
 .listNameInput{
     border: none;
     background-color: transparent;
@@ -433,56 +187,22 @@ input[type="radio"]:checked + label{
     font-size: 23px;
     color: #f1f8e9;
     text-align: center;
+    width: 460px;
 }   
 
 
 /* エフェクト系 */
-.texture { background: url("@/images/album/texture.png"); animation: noise_anima 1.1s steps(10) infinite;}
-@keyframes noise_anima {
-	from { background-position: 0 0; }
-	to { background-position: 123px 456px; }
-}
-
-.fadeIn{
-    animation: fadeIn 2s; 
-    animation-fill-mode: both;
-}
-.fadeOut{
-    animation: fadeOut 1s;
-    animation-fill-mode: both;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
+.texture { background: #181819 url("@/images/texture.png");}
 
 @media (max-width:768px) {
-main{padding-bottom: 4em;}
-.headerLogo{ width: 45%; }
+.headerLogo{
+    width: 45%;
+}
 .contentWrapper{padding-top: 3em;}
 .listNameInput{font-size: 23px;}
 }
 
 @media (max-width:640px) {
-html{ font-size: 12px;}
-main {
-    width: 100%;
-    padding: 7em 0 2em 0;
-}
-
-.l-header{ 
-    height: auto;
-    background: #2a3332;
-}
-.l-contentWrapper{
-    padding: 1em 1em 0 1em;
-}
 .l-albumArt {
     width: 140px;
     height: 140px;
@@ -492,10 +212,6 @@ main {
     padding-right: 0;
 }
 
-.l-buttonSearch {
-    width: 4em;
-    padding: 10px 15px;
-}
 .l-button {
     width: 4em;
     padding: 7px 14px;
@@ -511,65 +227,17 @@ main {
 .l-artistInfo { width: 60%; }
 .l-albumInfo{ width: 47%; }
 
-.headerLogo { width: 70%; }
-.albumArtList,.albumAddButton {
-    grid-template-columns: repeat(auto-fill, 170px);
+.l-startText{ width: auto; max-width: 100%; }
+
+.albumArtList {
+    grid-template-columns: repeat(auto-fill, 160px);
     grid-column-gap: 10px;
     justify-items: center;
     justify-content: center;
 }
-.contentWrapper{
-    padding-top: 1em;
-}
-
-.modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding:0;
-    overflow: auto;
-    transition: .3s;
-    box-sizing: border-box;
-}
-
-.modal-container:before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-
-.modal-container.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-body {
-    position: absolute;
-    top: 30%;
-    left: 5%;
-    max-width: 640px;
-    width: 90%;
-}
-
-.modal-close {
-    top: -45px;
-    right: 0;
-}
-
-.modal-content {
-    background: #F1F8E9;
-    text-align: left;
-    padding: 1em;
-    border-radius: 5px;
-    box-shadow: 2px 2px 15px 1px #222222;
-}
 
 .typeLabel { font-size: 10px; }
 
-[name="artist"] { height: 35px; }
 .selectWrapper{
     box-sizing: border-box;
     height: 35px;
@@ -584,7 +252,10 @@ main {
     
 }
 .albumItems{ padding: 0.5em; }
-.albumImage{ width: 30%; }
+.albumImage{
+    width: 30%;
+    border-radius: 5px;
+}
 .albumName{ font-size: 1em; }
 .artistsName{font-size: 0.8em;}
 .selectName{
