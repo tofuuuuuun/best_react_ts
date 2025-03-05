@@ -39,7 +39,7 @@ export const MovieIntroduction = (props: movieIntroductionProps) => {
                     </div>
                 </div>
                 <div className='l-introductionText txt-white font-wb ta-left'>
-                    <p className='topText m-bottom-1em'>あなたの心に残る<br />映画、<br />10作品だけ選べますか？</p>
+                    <h1 className='topText m-bottom-1em'>映画の話をしよう。<br />あなたの"ベスト10"は？</h1>
                     <div className='l-startButtonWrapper ta-center'>
                         <button className='startButton bg-purple txt-white font-wb' onClick={() => selectStart()}>映画を選ぶ
                         </button>

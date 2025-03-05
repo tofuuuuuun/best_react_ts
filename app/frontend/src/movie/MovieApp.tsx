@@ -85,7 +85,6 @@ export const MovieApp = () => {
       if (!response.ok) {
         throw new Error('ネットワークエラーが発生しました。');
       }
-
       const data = await response.json();
       setResponseMovies((prevState) => [...prevState, ...data["results"]]);
     } catch {
@@ -110,7 +109,6 @@ export const MovieApp = () => {
         }
         return randomMovies;
       };
-
       setRandomURLList1(getRandomMovies());
       setRandomURLList2(getRandomMovies());
       setRandomURLList3(getRandomMovies());
