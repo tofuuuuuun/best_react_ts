@@ -5,7 +5,7 @@ import '@/css/movie/movieStyle.css';
 import { Modal } from '@/movie/components/Modal/Modal';
 import { MovieIntroduction } from '@/movie/components/MovieIntroduction';
 import { MoviePosterList } from '@/movie/components/MoviePosterList';
-import { ResponseMoviesType, ResponseTopRatedMoviesType } from '@/types/types';
+import { ResponseMoviesType, frontCoverArt } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -21,10 +21,10 @@ export const MovieApp = () => {
   const [moviePosterList, setMoviePosterList] = useState<ResponseMoviesType[]>([]);
   const [resetButtonVisible, setResetButtonVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [randomURLList1, setRandomURLList1] = useState<ResponseTopRatedMoviesType[]>([]);
-  const [randomURLList2, setRandomURLList2] = useState<ResponseTopRatedMoviesType[]>([]);
-  const [randomURLList3, setRandomURLList3] = useState<ResponseTopRatedMoviesType[]>([]);
-  const [randomURLList4, setRandomURLList4] = useState<ResponseTopRatedMoviesType[]>([]);
+  const [randomURLList1, setRandomURLList1] = useState<frontCoverArt[]>([]);
+  const [randomURLList2, setRandomURLList2] = useState<frontCoverArt[]>([]);
+  const [randomURLList3, setRandomURLList3] = useState<frontCoverArt[]>([]);
+  const [randomURLList4, setRandomURLList4] = useState<frontCoverArt[]>([]);
 
   const TYPE = useLocation().pathname;
 

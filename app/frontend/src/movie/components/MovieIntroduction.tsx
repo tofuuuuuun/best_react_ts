@@ -1,11 +1,11 @@
-import { movieIntroductionProps, ResponseTopRatedMoviesType } from '@/types/types';
+import { frontCoverArt, gridArtProps } from '@/types/types';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
 
-export const MovieIntroduction = (props: movieIntroductionProps) => {
+export const MovieIntroduction = (props: gridArtProps) => {
     const { selectStart, randomURLList1, randomURLList2, randomURLList3, randomURLList4 } = props;
 
-    const renderList = (movies: ResponseTopRatedMoviesType[], className: string) => {
+    const renderList = (movies: frontCoverArt[], className: string) => {
         return (
             <ul className={`l-gridPoster ${className}`} >
                 {

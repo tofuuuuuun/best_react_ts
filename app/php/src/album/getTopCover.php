@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $curl = curl_init();
 curl_setopt_array($curl, [
-    CURLOPT_URL => "https://api.spotify.com/v1/search?q=q%3D%E6%97%A5%E6%9C%AC%E3%83%88%E3%83%83%E3%83%9750&type=playlist&market=JP&limit=5",
+    CURLOPT_URL => "https://api.spotify.com/v1/search?q=japan+top+50&type=playlist&market=JP&limit=5&offset=0",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -28,11 +28,11 @@ curl_setopt_array($curl, [
 
 $response = curl_exec($curl);
 $responseArray = json_decode($response, true);
-$playlistId = $responseArray['playlists']['items'][3]['id'];
+$playlistId = $responseArray['playlists']['items'][4]['id'];
 
 $curl = curl_init();
 curl_setopt_array($curl, [
-    CURLOPT_URL => "https://api.spotify.com/v1/playlists/{$playlistId}/tracks",
+    CURLOPT_URL => "https://api.spotify.com/v1/playlists/{$playlistId}/tracks?fields=items%28track%28album%28images%28url%29%29%29",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -47,13 +47,23 @@ curl_setopt_array($curl, [
 $response = curl_exec($curl);
 $err = curl_error($curl);
 
-echo $response;
-exit;
-
 if ($err) {
-    $apiResults[] = ["error" => "cURL Error #:" . $err];
-} else {
-    $apiResults[] = $response;
+    echo json_encode(["error" => "cURL Error #:" . $err]);
+    exit;
 }
 
+// レスポンスを配列に変換
+$responseArray = json_decode($response, true);
+
+// 画像URLを取得
+$imageUrls = [];
+if (isset($responseArray['items'])) {
+    foreach ($responseArray['items'] as $item) {
+        if (isset($item['track']['album']['images'][0]['url'])) {
+            $imageUrls[] = $item['track']['album']['images'][0]['url'];
+        }
+    }
+}
+
+echo $imageUrls;
 exit;
