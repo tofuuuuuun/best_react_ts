@@ -30,5 +30,4 @@ if ($err) {
     $expiresIn = $responseArray['expires_in'];
 }
 
-
-echo $accessToken;
+return $accessToken;

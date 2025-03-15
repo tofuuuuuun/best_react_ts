@@ -1,6 +1,6 @@
 <?php
-header('Content-type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: http://localhost'); // 特定のオリジンを許可
+header('Content-type: application/json; charset=UTF-8');
+header('Access-Control-Allow-Origin: *'); // 特定のオリジンを許可
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');  // 許可するHTTPメソッド
 header('Access-Control-Allow-Headers: Content-Type, Authorization');        // 許可するヘッダー
 
@@ -65,5 +65,6 @@ if (isset($responseArray['items'])) {
     }
 }
 
-echo $imageUrls;
+echo json_encode($imageUrls);
+
 exit;
