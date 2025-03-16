@@ -1,16 +1,17 @@
 import { frontCoverArt, gridArtProps } from '@/types/types';
 
-const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
+export const Introduction = (props: gridArtProps) => {
+    const { selectStart, randomURLList1, randomURLList2, randomURLList3, randomURLList4, type } = props;
 
-export const MovieIntroduction = (props: gridArtProps) => {
-    const { selectStart, randomURLList1, randomURLList2, randomURLList3, randomURLList4 } = props;
+    const addButtonStyle = type === '/album' ? 'color-Green' : 'color-Purple';
+    const modeType = type === '/album' ? '音楽' : '映画';
 
-    const renderList = (movies: frontCoverArt[], className: string) => {
+    const renderList = (covers: frontCoverArt[], className: string) => {
         return (
             <ul className={`l-gridPoster ${className}`} >
                 {
-                    movies.map((value, index) => (
-                        value ? <li key={index} className='topRateItem'><img className='l-topRateMovies' src={`${BASE_URL}${value}`} /></li> : ''
+                    covers.map((value, index) => (
+                        value ? <li key={index} className='topRateItem'><img className='l-topRateMovies' src={`${value}`} /></li> : ''
                     ))
                 }
             </ul >
@@ -39,10 +40,9 @@ export const MovieIntroduction = (props: gridArtProps) => {
                     </div>
                 </div>
                 <div className='l-introductionText txt-white font-wb ta-left'>
-                    <h1 className='topText m-bottom-1em'>映画の話をしよう。<br />あなたの"ベスト10"は？</h1>
+                    <h1 className='topText m-bottom-1em'>{modeType}の話をしよう。<br />あなたの"ベスト10"は？</h1>
                     <div className='l-startButtonWrapper ta-center'>
-                        <button className='startButton bg-purple txt-white font-wb' onClick={() => selectStart()}>映画を選ぶ
-                        </button>
+                        <button className={`startButton ${addButtonStyle} bg-turquoise txt-white font-wb`} onClick={() => selectStart()}>START</button>
                     </div>
                 </div>
             </div >

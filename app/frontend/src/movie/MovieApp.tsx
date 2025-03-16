@@ -1,9 +1,9 @@
 import { AddButton } from '@/common/AddButton';
 import { Header } from '@/common/Header';
+import { Introduction } from '@/common/Introduction';
 import { ResetArea } from '@/common/ResetArea';
 import '@/css/movie/movieStyle.css';
 import { Modal } from '@/movie/components/Modal/Modal';
-import { MovieIntroduction } from '@/movie/components/MovieIntroduction';
 import { MoviePosterList } from '@/movie/components/MoviePosterList';
 import { ResponseMoviesType, frontCoverArt } from '@/types/types';
 import { useEffect, useState } from 'react';
@@ -94,12 +94,12 @@ export const MovieApp = () => {
 
   const getTopRatedMovies = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/movie/getTopRate.php?`);
+      const response = await fetch(`${BASE_URL}/movie/getTopRate.php`);
       if (!response.ok) {
         throw new Error('ネットワークエラーが発生しました。');
       }
       const data = await response.json();
-
+      console.log(data);
       const getRandomMovies = () => {
         const maxCount = 10;
         const randomMovies = [];
@@ -135,12 +135,13 @@ export const MovieApp = () => {
         <div className='contentWrapper'>
           <div className='l-contentWrapper m-bottom-1em'>
             {!isSelectStart && (
-              <MovieIntroduction
+              <Introduction
                 selectStart={selectStart}
                 randomURLList1={randomURLList1}
                 randomURLList2={randomURLList2}
                 randomURLList3={randomURLList3}
                 randomURLList4={randomURLList4}
+                type={TYPE}
               />
             )}
             {addButtonVisible && (

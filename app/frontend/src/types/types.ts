@@ -10,6 +10,7 @@ export type gridArtProps = {
     randomURLList2: frontCoverArt[];
     randomURLList3: frontCoverArt[];
     randomURLList4: frontCoverArt[];
+    type: string;
 }
 
 
