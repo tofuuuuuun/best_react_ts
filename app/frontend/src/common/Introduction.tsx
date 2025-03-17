@@ -7,11 +7,12 @@ export const Introduction = (props: gridArtProps) => {
     const modeType = type === '/album' ? '音楽' : '映画';
 
     const renderList = (covers: frontCoverArt[], className: string) => {
+        const base_url = type === '/album' ? '' : 'https://image.tmdb.org/t/p/w500/';
         return (
             <ul className={`l-gridPoster ${className}`} >
                 {
                     covers.map((value, index) => (
-                        value ? <li key={index} className='topRateItem'><img className='l-topRateMovies' src={`${value}`} /></li> : ''
+                        value ? <li key={index} className='topRateItem'><img className='l-topRateMovies' src={`${base_url}${value}`} /></li> : ''
                     ))
                 }
             </ul >

@@ -99,7 +99,6 @@ export const MovieApp = () => {
         throw new Error('ネットワークエラーが発生しました。');
       }
       const data = await response.json();
-      console.log(data);
       const getRandomMovies = () => {
         const maxCount = 10;
         const randomMovies = [];
