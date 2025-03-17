@@ -3,7 +3,7 @@ import { frontCoverArt, gridArtProps } from '@/types/types';
 export const Introduction = (props: gridArtProps) => {
     const { selectStart, randomURLList1, randomURLList2, randomURLList3, randomURLList4, type } = props;
 
-    const addButtonStyle = type === '/album' ? 'color-Green' : 'color-Purple';
+    const addButtonStyle = type === '/album' ? 'bg-turquoise' : 'bg-purple';
     const modeType = type === '/album' ? '音楽' : '映画';
 
     const renderList = (covers: frontCoverArt[], className: string) => {
@@ -43,7 +43,7 @@ export const Introduction = (props: gridArtProps) => {
                 <div className='l-introductionText txt-white font-wb ta-left'>
                     <h1 className='topText m-bottom-1em'>{modeType}の話をしよう。<br />あなたの"ベスト10"は？</h1>
                     <div className='l-startButtonWrapper ta-center'>
-                        <button className={`startButton ${addButtonStyle} bg-turquoise txt-white font-wb`} onClick={() => selectStart()}>START</button>
+                        <button className={`startButton ${addButtonStyle} txt-white font-wb`} onClick={() => selectStart()}>START</button>
                     </div>
                 </div>
             </div >
