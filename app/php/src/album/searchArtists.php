@@ -1,28 +1,43 @@
 <?php
-require_once('./token/spotifyToken.php');
+require_once('../token/spotifyToken.php');
 
-header('Content-type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: http://localhost'); // 特定のオリジンを許可
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');  // 許可するHTTPメソッド
-header('Access-Control-Allow-Headers: Content-Type, Authorization');        // 許可するヘッダー
+header('Content-type: application/json; charset=utf-8;');
+header('Access-Control-Allow-Origin: http://localhost');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
-// OPTIONSリクエストの処理
+
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    exit(0); // プリフライトリクエストを終了
+    exit(0);
 }
 $artistName = $_GET['artistName'] ?? "";
 
-$result = $api->search($artistName, 'artist');
-$result = $result->{'artists'};
+$curl = curl_init();
+curl_setopt_array($curl, [
+    CURLOPT_URL => "https://api.spotify.com/v1/search?q={$artistName}&type=artist&market=JP&limit=30&offset=0",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => [
+        "Authorization: Bearer $accessToken",
+        "accept: application/json"
+    ],
+]);
 
-$workResult = json_decode(json_encode($result), true);
+$response = curl_exec($curl);
+curl_close($curl);
 
-foreach ($workResult['items'] as $key => $value) {
-    $delArr = ['external_urls', 'followers', 'genres', 'href', 'popularity', 'type', 'uri'];
-    foreach ($delArr as $delKey => $delValue) {
-        unset($workResult['items'][$key][$delValue]);
-    }
-}
+$responseArray = json_decode($response, true);
 
-echo json_encode($workResult);
-exit;
+$filteredArtists = array_map(function ($artist) {
+    return [
+        'id' => $artist['id'],
+        'name' => $artist['name'],
+        'images' => $artist['images']
+    ];
+}, $responseArray['artists']['items'] ?? []);
+
+echo json_encode($filteredArtists);
