@@ -18,7 +18,7 @@ $cachedResult = "";
 $cacheKey = "artist_albums_" . ($artistId ?: md5($artistName)) . "_" . ($type ?: 'all');
 
 // 戻り値を格納する
-$allItems = []
+$allItems = [];
 
 // キャッシュに一致するデータが有れば返す
 $cachedResult = apcu_fetch($cacheKey);
@@ -105,7 +105,7 @@ if (isset($responseArray['next']) && $responseArray['next']) {
     }
 }
 
-apcu_store($cacheKey, $tmpResponse, 300);
+apcu_store($cacheKey, $allItems, 300);
 
-echo json_encode($tmpResponse);
+echo json_encode($allItems);
 exit;
