@@ -11,6 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0); // プリフライトリクエストを終了
 }
 
+$dateHour = new DateTime('now');
+$dateHour = $dateHour->format('YmdH');
+$cacheKey = "topRate_" . $dateHour;
+
+$cachedResult = apcu_fetch($cacheKey);
+if ($cachedResult) {
+    echo json_encode($cachedResult);
+    exit;
+}
+
 $curl = curl_init();
 curl_setopt_array($curl, [
     CURLOPT_URL => "https://api.spotify.com/v1/search?q=japan+top+50&type=playlist&market=JP&limit=5&offset=0",
@@ -64,6 +74,8 @@ if (isset($responseArray['items'])) {
         }
     }
 }
+
+apcu_store($cacheKey, $imageUrls, 3600);
 
 echo json_encode($imageUrls);
 

@@ -116,7 +116,7 @@ $filteredAllItems = array_map(function ($item) {
     ];
 }, $allItems);
 
-apcu_store($cacheKey, $filteredAllItems, 300);
+apcu_store($cacheKey, $filteredAllItems, 3600);
 
 echo json_encode($filteredAllItems);
 exit;

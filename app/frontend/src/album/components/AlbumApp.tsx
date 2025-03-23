@@ -118,13 +118,13 @@ export const AlbumApp = () => {
     setErrorMessage('');
     const params = new URLSearchParams({ 'artistName': artistName });
     try {
-      const response = await fetch(`https://rahi-lab.com/searchArtists.php?${params}`, {
+      const response = await fetch(`${BASE_URL}/album/searchArtists.php?${params}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
       if (response.ok) {
         const responseData = await response.json();
-        setResponseArtist([...responseArtist, ...responseData['items']]);
+        setResponseArtist([...responseArtist, ...responseData]);
       } else if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -141,20 +141,21 @@ export const AlbumApp = () => {
     setResponseAlbum([]);
     setFilterResponseAlbum([]);
     setDataType('all');
+
     const params = new URLSearchParams({
       'artistName': name,
       'type': 'all',
       'artistId': artistId
     });
     try {
-      const response = await fetch(`https://rahi-lab.com/searchSpotify.php?${params}`, {
+      const response = await fetch(`${BASE_URL}/album/searchArtistAlbum.php?${params}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
       if (response.ok) {
         const responseAlbumData = await response.json();
-        setResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData['items']]);
-        setFilterResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData['items']]);
+        setResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData]);
+        setFilterResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData]);
       } else if (!response.ok) {
         throw new Error('Network response was not ok');
       }
