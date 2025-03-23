@@ -1,6 +1,18 @@
 /**************************************** 
 * common types
 **************************************** */
+export type frontCoverArt = {
+    poster_path: string;
+}
+export type gridArtProps = {
+    selectStart: () => void;
+    randomURLList1: frontCoverArt[];
+    randomURLList2: frontCoverArt[];
+    randomURLList3: frontCoverArt[];
+    randomURLList4: frontCoverArt[];
+    type: string;
+}
+
 
 export type AddButtonProps = {
     isModalOpen: boolean;
@@ -123,16 +135,6 @@ export type ResponseAlbumListProps = {
 /**************************************** 
 * BEST MOVIE types
 **************************************** */
-export type ResponseTopRatedMoviesType = {
-    poster_path: string;
-}
-export type movieIntroductionProps = {
-    selectStart: () => void;
-    randomURLList1: ResponseTopRatedMoviesType[];
-    randomURLList2: ResponseTopRatedMoviesType[];
-    randomURLList3: ResponseTopRatedMoviesType[];
-    randomURLList4: ResponseTopRatedMoviesType[];
-}
 
 export type movieModalProps = {
     toggleModal: (toggle: boolean) => void;

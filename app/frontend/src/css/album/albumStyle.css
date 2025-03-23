@@ -264,6 +264,7 @@ input[type="radio"]:checked + label{
 
 .listNameInput{
     font-size: 18px;
+    width: 80%;
 }
 
 }

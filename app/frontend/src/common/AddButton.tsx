@@ -6,7 +6,7 @@ export const AddButton = (props: AddButtonProps) => {
     const modeType = type === '/album' ? '音楽' : '映画';
     return (
         <div>
-            <p className='txt-white textL1 ta-center m-bottom-1em'>あなただけの`${modeType}`ベスト10を選ぼう！</p>
+            <p className='txt-white textL1 ta-center m-bottom-1em'>あなただけの{modeType}ベスト10を選ぼう！</p>
             <button
                 className='l-addButton addButton action m-bottom-1em'
                 onClick={() => setModalIsOpen(!isModalOpen)}

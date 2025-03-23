@@ -1,14 +1,16 @@
 import { AlbumArtList } from '@/album/components/AlbumArtList';
-import { AlbumIntroduction } from '@/album/components/AlbumIntroduction';
 import { Modal } from '@/album/components/Modal/Modal';
 import { AddButton } from '@/common/AddButton';
 import { useDebounce } from '@/common/debounce';
 import { Header } from '@/common/Header';
+import { Introduction } from '@/common/Introduction';
 import { ResetArea } from '@/common/ResetArea';
 import '@/css/album/albumStyle.css';
-import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '@/types/types';
+import { AlbumArtListType, ResponseAlbumType, ResponseArtistType, frontCoverArt } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const AlbumApp = () => {
   const [isSelectStart, setIsSelectStart] = useState<boolean>(false);
@@ -22,6 +24,10 @@ export const AlbumApp = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [albumArtList, setAlbumArtList] = useState<AlbumArtListType[]>([]);
   const [resetButtonVisible, setResetButtonVisible] = useState(false);
+  const [randomURLList1, setRandomURLList1] = useState<frontCoverArt[]>([]);
+  const [randomURLList2, setRandomURLList2] = useState<frontCoverArt[]>([]);
+  const [randomURLList3, setRandomURLList3] = useState<frontCoverArt[]>([]);
+  const [randomURLList4, setRandomURLList4] = useState<frontCoverArt[]>([]);
 
   const TYPE = useLocation().pathname;
 
@@ -93,6 +99,11 @@ export const AlbumApp = () => {
     setArtistName('');
     setResponseArtist([]);
     setFilterResponseAlbum([]);
+
+    setRandomURLList1([]);
+    setRandomURLList2([]);
+    setRandomURLList3([]);
+    setRandomURLList4([]);
   }
 
   const resetAlbumList = () => {
@@ -107,13 +118,13 @@ export const AlbumApp = () => {
     setErrorMessage('');
     const params = new URLSearchParams({ 'artistName': artistName });
     try {
-      const response = await fetch(`https://rahi-lab.com/searchArtists.php?${params}`, {
+      const response = await fetch(`${BASE_URL}/album/searchArtists.php?${params}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
       if (response.ok) {
         const responseData = await response.json();
-        setResponseArtist([...responseArtist, ...responseData['items']]);
+        setResponseArtist([...responseArtist, ...responseData]);
       } else if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -130,20 +141,21 @@ export const AlbumApp = () => {
     setResponseAlbum([]);
     setFilterResponseAlbum([]);
     setDataType('all');
+
     const params = new URLSearchParams({
       'artistName': name,
       'type': 'all',
       'artistId': artistId
     });
     try {
-      const response = await fetch(`https://rahi-lab.com/searchSpotify.php?${params}`, {
+      const response = await fetch(`${BASE_URL}/album/searchArtistAlbum.php?${params}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
       if (response.ok) {
         const responseAlbumData = await response.json();
-        setResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData['items']]);
-        setFilterResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData['items']]);
+        setResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData]);
+        setFilterResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData]);
       } else if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -153,6 +165,35 @@ export const AlbumApp = () => {
     }
   }
 
+  const fetchTopRatedCover = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/album/getTopRate.php`);
+
+      if (!response.ok) {
+        throw new Error('ネットワークエラーが発生しました。');
+      }
+      const data = await response.json();
+
+      const getRandomCover = () => {
+        const maxCount = 10;
+        const randomCover = [];
+        for (let i = 0; i < maxCount; i++) {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          randomCover.push(data[randomIndex]);
+        }
+        return randomCover;
+      };
+
+      setRandomURLList1(getRandomCover());
+      setRandomURLList2(getRandomCover());
+      setRandomURLList3(getRandomCover());
+      setRandomURLList4(getRandomCover());
+    } catch (error) {
+      console.log(error);
+      alert('エラーが発生しました。リロードし直してください。')
+    }
+  };
+
   useEffect(() => {
     if (albumArtList.length === 10) {
       // 十枚選択したらリセットボタンとキャプチャボタンを表示する
@@ -160,6 +201,7 @@ export const AlbumApp = () => {
       setAddButtonVisible(false);
       setModalIsOpen(false);
     }
+    fetchTopRatedCover();
   }, [albumArtList.length]);
 
 
@@ -170,7 +212,14 @@ export const AlbumApp = () => {
         <div className='contentWrapper'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
-              <AlbumIntroduction selectStart={selectStart} />
+              <Introduction
+                selectStart={selectStart}
+                randomURLList1={randomURLList1}
+                randomURLList2={randomURLList2}
+                randomURLList3={randomURLList3}
+                randomURLList4={randomURLList4}
+                type={TYPE}
+              />
             )}
             {addButtonVisible && (
               <AddButton
