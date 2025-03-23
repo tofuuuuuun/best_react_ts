@@ -105,7 +105,18 @@ if (isset($responseArray['next']) && $responseArray['next']) {
     }
 }
 
-apcu_store($cacheKey, $allItems, 300);
+// 必要な値のみにフィルタリングする
+$filteredAllItems = array_map(function ($item) {
+    return [
+        'id' => $item['id'] ?? null,
+        'artists' => $item['artists'] ?? [],
+        'name' => $item['name'] ?? null,
+        'images' => $item['images'] ?? [],
+        'release_date' => $item['release_date'] ?? null
+    ];
+}, $allItems);
 
-echo json_encode($allItems);
+apcu_store($cacheKey, $filteredAllItems, 300);
+
+echo json_encode($filteredAllItems);
 exit;
