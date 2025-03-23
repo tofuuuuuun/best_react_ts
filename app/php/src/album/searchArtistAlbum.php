@@ -28,13 +28,11 @@ if ($cachedResult) {
 }
 
 // allでない場合はtypeで指定した形式を取得する
+$includeGroups = "include_groups=single,album,compilation,appears_on";
+
 if ($type != "all") {
     $includeGroups = "include_groups={$type}";
-} else {
-    $includeGroups = "include_groups=single,album,compilation,appears_on";
 }
-
-$includeGroups = "include_groups=single,album,compilation";
 
 // artistIdを使用してアルバム情報を取得する
 $curl = curl_init();
@@ -65,14 +63,6 @@ if (isset($responseArray['next']) && $responseArray['next']) {
         $offset = 50;
         $nextOffset = "offset=" . $offset * $i;
 
-        if ($type != "all") {
-            $includeGroups = "include_groups={$type}";
-        } else {
-            $includeGroups = "include_groups=single,album,compilation,appears_on";
-        }
-
-        $includeGroups = "include_groups=single,album,compilation";
-
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_URL => "https://api.spotify.com/v1/artists/{$artistId}/albums?{$includeGroups}&market=JP&{$nextOffset}&limit=50",
@@ -87,6 +77,7 @@ if (isset($responseArray['next']) && $responseArray['next']) {
                 "accept: application/json"
             ],
         ]);
+
         $response = curl_exec($curl);
         $responseArray = json_decode($response, true);
         curl_close($curl);
@@ -112,7 +103,8 @@ $filteredAllItems = array_map(function ($item) {
         'artists' => $item['artists'] ?? [],
         'name' => $item['name'] ?? null,
         'images' => $item['images'] ?? [],
-        'release_date' => $item['release_date'] ?? null
+        'release_date' => $item['release_date'] ?? null,
+        'album_type' => $item['album_type'] ?? null
     ];
 }, $allItems);
 

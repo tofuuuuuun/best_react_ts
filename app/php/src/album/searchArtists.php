@@ -10,7 +10,17 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization');
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
+
 $artistName = $_GET['artistName'] ?? "";
+
+$cacheKey = "artist_name_" . ($artistName ?: md5($artistName));
+
+// キャッシュに一致するデータが有れば返す
+$cachedResult = apcu_fetch($cacheKey);
+if ($cachedResult) {
+    echo json_encode($cachedResult);
+    exit;
+}
 
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -39,5 +49,7 @@ $filteredArtists = array_map(function ($artist) {
         'images' => $artist['images']
     ];
 }, $responseArray['artists']['items'] ?? []);
+
+apcu_store($cacheKey, $filteredArtists, 300);
 
 echo json_encode($filteredArtists);
