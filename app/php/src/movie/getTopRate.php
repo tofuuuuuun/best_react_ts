@@ -11,6 +11,16 @@ for ($i = 1; $i <= 5; $i++) {
     array_push($pageArray, rand(1, 20));
 }
 
+$dateHour = new DateTime('now');
+$dateHour = $dateHour->format('YmdH');
+$cacheKey = "topRate_" . $dateHour;
+
+$cachedResult = apcu_fetch($cacheKey);
+if ($cachedResult) {
+    echo json_encode($cachedResult);
+    exit;
+}
+
 // APIから取得
 $curl = curl_init();
 $apiResults = [];
@@ -56,6 +66,8 @@ for ($i = 0; $i < count($posterURLs); $i++) {
         $flatPosterURLs[] = $value;
     }
 }
+
+apcu_store($cacheKey, $flatPosterURLs, 3600);
 
 if ($err) {
     echo ["error" => "cURL Error #:" . $err];
