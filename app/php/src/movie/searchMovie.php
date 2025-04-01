@@ -1,10 +1,10 @@
 <?php
-require_once('../token/tmdbToken.php');
-
 header('Content-type: application/json; charset=utf-8;');
 header('Access-Control-Allow-Origin: http://localhost'); // 特定のオリジンを許可
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');  // 許可するHTTPメソッド
 header('Access-Control-Allow-Headers: Content-Type, Authorization');        // 許可するヘッダー
+
+$tmdbToken = getenv('TMDB_API_KEY');
 
 $cacheKey = "";
 $cachedResult = "";
@@ -31,7 +31,7 @@ curl_setopt_array($curl, [
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => [
-        "Authorization: " . TMDB_TOKEN,
+        "Authorization: " . $tmdbToken,
         "accept: application/json"
     ],
 ]);
