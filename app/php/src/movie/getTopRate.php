@@ -1,10 +1,10 @@
 <?php
-require_once('../token/tmdbToken.php');
-
 header('Content-type: application/json; charset=utf-8;');
 header('Access-Control-Allow-Origin: http://localhost');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
+$tmdbToken = getenv('TMDB_API_KEY');
 
 $pageArray = array();
 for ($i = 1; $i <= 5; $i++) {
@@ -34,7 +34,7 @@ foreach ($pageArray as $page) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => [
-            "Authorization: " . TMDB_TOKEN,
+            "Authorization: " . $tmdbToken,
             "accept: application/json"
         ],
     ]);

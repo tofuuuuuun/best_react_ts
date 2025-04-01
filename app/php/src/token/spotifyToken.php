@@ -1,9 +1,18 @@
-<?
-$clientId = 'your_client_id';
-$clientSecret = 'your_client_secret';
+<?php
+$clientId = getenv('SPOTIFY_CLIENT_ID');
+$clientSecret = getenv('SPOTIFY_CLIENT_SECRET');
+
+$cacheKey = 'spotify_access_token';
+$cacheExpiryKey = 'spotify_access_token_expiry';
+
+$accessToken = apcu_fetch($cacheKey);
+if ($accessToken) {
+    return $accessToken;
+}
+
+$currentTime = time();
 
 $curl = curl_init();
-
 curl_setopt_array($curl, [
     CURLOPT_URL => "https://accounts.spotify.com/api/token",
     CURLOPT_RETURNTRANSFER => true,
@@ -19,15 +28,15 @@ $err = curl_error($curl);
 
 curl_close($curl);
 
-$accessToken = '';
-
 if ($err) {
     echo "cURL Error #:" . $err;
 } else {
     $responseArray = json_decode($response, true);
     $accessToken = $responseArray['access_token'];
-    $tokenType = $responseArray['token_type'];
     $expiresIn = $responseArray['expires_in'];
+    $expiryTime = $currentTime + $expiresIn;
 }
+
+apcu_store($cacheKey, $accessToken, 3600);
 
 return $accessToken;
