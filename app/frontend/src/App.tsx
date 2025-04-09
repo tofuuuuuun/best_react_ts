@@ -21,8 +21,8 @@ export const App = () => {
           <>
             <Header type={TYPE} />
             <ul className='linkWrapper'>
-              <li className='l-linkCard m-bottom-1em'><Link to='/album'><img src={albumLogoIcon}></img></Link></li>
-              <li className='l-linkCard m-bottom-1em'><Link to='/movie'><img src={movieLogoIcon}></img></Link></li>
+              <li className='l-linkCard'><Link to='/album' className='linkCard ta-center'><img src={albumLogoIcon}></img></Link></li>
+              <li className='l-linkCard'><Link to='/movie' className='linkCard ta-center'><img src={movieLogoIcon}></img></Link></li>
             </ul>
           </>
         )}

@@ -1,10 +1,10 @@
+import { SearchForm } from '@/common/SearchForm';
 import { ErrorMessage } from '@/error/ErrorMessage';
-import { SearchForm } from '@/movie/components/Form/SearchForm';
 import { ResponseMovies } from '@/movie/components/Modal/ResponseMovies';
 import { movieModalProps } from '@/types/types';
 
 export const Modal = (props: movieModalProps) => {
-    const { toggleModal, searchMovie, movieTitle, inputMovieTitle, responseMovies, clearModal, moviePosterList, toggleAlbum, errorMessage } = props;
+    const { toggleModal, searchMovie, movieTitle, inputMovieTitle, responseMovies, clearModal, moviePosterList, toggleMovie, errorMessage } = props;
     const closeModal = () => toggleModal(false);
     const MAX_ALBUM = 10;
     return (
@@ -13,17 +13,23 @@ export const Modal = (props: movieModalProps) => {
                 <div className='modal-close' onClick={closeModal}><span className='icon-close'></span></div>
                 <div className='modal-content'>
                     <SearchForm
+                        artistName=''
+                        inputArtistName={() => { }}
+                        searchArtist={() => { }}
+                        responseArtist={[]}
+                        searchAlbum={() => { }}
                         movieTitle={movieTitle}
                         inputMovieTitle={inputMovieTitle}
                         clearModal={clearModal}
                         searchMovie={searchMovie}
+                        type='movie'
                     />
                     <div className='txt-white'><p>あと{MAX_ALBUM - moviePosterList.length}枚選ぼう</p></div>
                     <ErrorMessage errorMessage={errorMessage} />
                     {responseMovies.length !== 0 && (
                         <div className='m-top-1em'>
                             <ResponseMovies
-                                toggleAlbum={toggleAlbum}
+                                toggleMovie={toggleMovie}
                                 responseMovies={responseMovies}
                                 moviePosterList={moviePosterList}
                             />

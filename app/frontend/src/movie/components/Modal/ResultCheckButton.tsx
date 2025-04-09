@@ -1,9 +1,9 @@
 import { movieCheckboxButtonProps } from '@/types/types';
 
 export const ResultCheckboxButton = (props: movieCheckboxButtonProps) => {
-    const { id, title, poster, toggleDisplayFlg, toggleAlbum } = props;
-    const handleAlbum = () => {
-        toggleAlbum(id, title, poster);
+    const { id, title, poster, toggleDisplayFlg, toggleMovie } = props;
+    const handleMovie = () => {
+        toggleMovie(id, title, poster);
     }
     return (
         <>
@@ -12,12 +12,14 @@ export const ResultCheckboxButton = (props: movieCheckboxButtonProps) => {
                 id={`checkbox-${id}`}
                 className={toggleDisplayFlg ? 'selected' : 'select'}
                 checked={toggleDisplayFlg}
-                onChange={handleAlbum}
+                onChange={handleMovie}
                 aria-checked={toggleDisplayFlg}
             />
-            <label htmlFor={`checkbox-${id}`} className={toggleDisplayFlg ? 'l-button bg-purple txt-white action ta-center' : 'l-button bg-gray txt-navy action ta-center'}>
+            <label
+                htmlFor={`checkbox-${id}`}
+                className={`l-button action ta-center ${toggleDisplayFlg ? ' txt-white bg-orange ' : 'txt-navy bg-gray'}`} >
                 {toggleDisplayFlg ? '選択中' : '選択'}
-            </label>
+            </label >
         </>
     )
 }

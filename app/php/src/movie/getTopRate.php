@@ -1,14 +1,24 @@
 <?php
-require_once('../token/tmdbToken.php');
-
 header('Content-type: application/json; charset=utf-8;');
 header('Access-Control-Allow-Origin: http://localhost');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
+$tmdbToken = getenv('TMDB_API_KEY');
+
 $pageArray = array();
 for ($i = 1; $i <= 5; $i++) {
     array_push($pageArray, rand(1, 20));
+}
+
+$dateHour = new DateTime('now');
+$dateHour = $dateHour->format('YmdH');
+$cacheKey = "topRate_" . $dateHour;
+
+$cachedResult = apcu_fetch($cacheKey);
+if ($cachedResult) {
+    echo json_encode($cachedResult);
+    exit;
 }
 
 // APIから取得
@@ -24,7 +34,7 @@ foreach ($pageArray as $page) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => [
-            "Authorization: " . TMDB_TOKEN,
+            "Authorization: " . $tmdbToken,
             "accept: application/json"
         ],
     ]);
@@ -56,6 +66,8 @@ for ($i = 0; $i < count($posterURLs); $i++) {
         $flatPosterURLs[] = $value;
     }
 }
+
+apcu_store($cacheKey, $flatPosterURLs, 3600);
 
 if ($err) {
     echo ["error" => "cURL Error #:" . $err];

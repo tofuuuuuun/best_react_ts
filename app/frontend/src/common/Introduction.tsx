@@ -1,16 +1,18 @@
-import { movieIntroductionProps, ResponseTopRatedMoviesType } from '@/types/types';
+import { frontCoverArt, gridArtProps } from '@/types/types';
 
-const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
+export const Introduction = (props: gridArtProps) => {
+    const { selectStart, randomURLList1, randomURLList2, randomURLList3, randomURLList4, type } = props;
 
-export const MovieIntroduction = (props: movieIntroductionProps) => {
-    const { selectStart, randomURLList1, randomURLList2, randomURLList3, randomURLList4 } = props;
+    const addButtonStyle = type === '/album' ? 'bg-turquoise' : 'bg-purple';
+    const modeType = type === '/album' ? '音楽' : '映画';
 
-    const renderList = (movies: ResponseTopRatedMoviesType[], className: string) => {
+    const renderList = (covers: frontCoverArt[], className: string) => {
+        const base_url = type === '/album' ? '' : 'https://image.tmdb.org/t/p/w500/';
         return (
             <ul className={`l-gridPoster ${className}`} >
                 {
-                    movies.map((value, index) => (
-                        value ? <li key={index}><img className='l-topRateMovies' src={`${BASE_URL}${value}`} /></li> : ''
+                    covers.map((value, index) => (
+                        value ? <li key={index} className='topRateItem'><img className='l-topRateMovies' src={`${base_url}${value}`} /></li> : ''
                     ))
                 }
             </ul >
@@ -39,10 +41,9 @@ export const MovieIntroduction = (props: movieIntroductionProps) => {
                     </div>
                 </div>
                 <div className='l-introductionText txt-white font-wb ta-left'>
-                    <p className='topText m-bottom-1em'>あなたの心に残る<br />映画、<br />10作品だけ選べますか？</p>
+                    <h1 className='topText m-bottom-1em'>{modeType}の話をしよう。<br />あなたの"ベスト10"は？</h1>
                     <div className='l-startButtonWrapper ta-center'>
-                        <button className='startButton bg-purple txt-white font-wb' onClick={() => selectStart()}>映画を選ぶ
-                        </button>
+                        <button className={`startButton ${addButtonStyle} txt-white font-wb`} onClick={() => selectStart()}>START</button>
                     </div>
                 </div>
             </div >

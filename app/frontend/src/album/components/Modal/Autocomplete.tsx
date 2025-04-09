@@ -12,7 +12,7 @@ export const Autocomplete = (props: ModalAutocompleteProps) => {
                             <li className='artistItems action p-left-05em m-bottom-5px' data-artist_id={artist.id} key={index} onClick={() => searchAlbum(artist.id, artist.name)}>
                                 <img className='l-searchArtistImage artistImage' src={artist.images[0]?.url || noImage} loading='lazy' />
                                 <div className='l-artistInfo'>
-                                    <span className='searchArtistName font-wb'>{artist.name}</span>
+                                    <span className='searchArtistName  txt-white font-wb'>{artist.name}</span>
                                 </div>
                             </li>
                         ))}

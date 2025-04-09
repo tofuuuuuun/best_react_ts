@@ -1,33 +1,38 @@
 /**************************************** 
 * common types
 **************************************** */
+export type frontCoverArt = {
+    poster_path: string;
+}
+export type gridArtProps = {
+    selectStart: () => void;
+    randomURLList1: frontCoverArt[];
+    randomURLList2: frontCoverArt[];
+    randomURLList3: frontCoverArt[];
+    randomURLList4: frontCoverArt[];
+    type: string;
+}
+
 
 export type AddButtonProps = {
     isModalOpen: boolean;
     setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    type: string;
 }
 
 export type ResetAreaProps = {
     reset: () => void;
-    handleCapture: () => void;
+    type: string;
 }
 
 export type Debounce = (fn: () => void) => void;
 
 export type headerProps = { type: string; }
 
-/**************************************** 
-* BEST MUSIC types
-**************************************** */
-
-export type IntroductionProps = {
-    selectStart: () => void;
-}
-
 export type ModalProps = {
     toggleModal: (toggle: boolean) => void;
     changeType: (typeValue: string) => void
-    type: string;
+    dataType: string;
     searchArtist: (artistName: string) => void;
     artistName: string;
     inputArtistName: (event: { target: { value: string } }) => void;
@@ -43,11 +48,22 @@ export type ModalProps = {
 
 export type SearchFormProps = {
     artistName: string;
+    movieTitle: string;
     inputArtistName: (event: { target: { value: string } }) => void;
-    clearModal: () => void;
+    inputMovieTitle: (event: React.ChangeEvent<HTMLInputElement>) => void;
     searchArtist: (artistName: string) => void;
     responseArtist: ResponseArtist[];
     searchAlbum: (id: string, name: string) => void;
+    searchMovie: (title: string) => void;
+    clearModal: () => void;
+    type: string;
+}
+/**************************************** 
+* BEST MUSIC types
+**************************************** */
+
+export type IntroductionProps = {
+    selectStart: () => void;
 }
 
 export type ModalAutocompleteProps = {
@@ -62,7 +78,7 @@ export type ResponseArtist = {
 }
 
 export type SelectTypeProps = {
-    type: string;
+    dataType: string;
     selectType: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -119,16 +135,6 @@ export type ResponseAlbumListProps = {
 /**************************************** 
 * BEST MOVIE types
 **************************************** */
-export type ResponseTopRatedMoviesType = {
-    poster_path: string;
-}
-export type movieIntroductionProps = {
-    selectStart: () => void;
-    randomURLList1: ResponseTopRatedMoviesType[];
-    randomURLList2: ResponseTopRatedMoviesType[];
-    randomURLList3: ResponseTopRatedMoviesType[];
-    randomURLList4: ResponseTopRatedMoviesType[];
-}
 
 export type movieModalProps = {
     toggleModal: (toggle: boolean) => void;
@@ -137,9 +143,9 @@ export type movieModalProps = {
     inputMovieTitle: (event: React.ChangeEvent<HTMLInputElement>) => void;
     responseMovies: MovieType[];
     clearModal: () => void;
-    deleteAlbum: (id: string) => void;
+    deleteMovie: (id: string) => void;
     moviePosterList: { id: string, title: string, poster_path: string }[];
-    toggleAlbum: (id: string, original_title: string, poster_path: string) => void;
+    toggleMovie: (id: string, original_title: string, poster_path: string) => void;
     errorMessage: string;
 }
 
@@ -169,7 +175,7 @@ export type Movie = {
 }
 export type MoviePosterListProps = {
     moviePosterList: Movie[];
-    deleteAlbum: (id: string) => void;
+    deleteMovie: (id: string) => void;
 }
 
 export type movieCheckboxButtonProps = {
@@ -177,11 +183,11 @@ export type movieCheckboxButtonProps = {
     title: string;
     poster: string;
     toggleDisplayFlg: boolean;
-    toggleAlbum: (id: string, title: string, poster: string) => void;
+    toggleMovie: (id: string, title: string, poster: string) => void;
 }
 
 export type ResponseMoviesProps = {
-    toggleAlbum: (id: string, title: string, poster: string) => void;
+    toggleMovie: (id: string, title: string, poster: string) => void;
     responseMovies: MovieType[];
     moviePosterList: { id: string, title: string, poster_path: string }[];
 }
