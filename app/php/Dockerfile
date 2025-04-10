@@ -18,9 +18,6 @@ RUN pecl install apcu && docker-php-ext-enable apcu
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini
 RUN echo "apc.enable_cli=1" >> /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini
 
-# Composerをコピー
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
 # PHP設定ファイルをコピー（必要に応じて）
 COPY ./php.ini /usr/local/etc/php/
 
