@@ -27,7 +27,7 @@ jobs:
       - name: SSH and deploy to VPS
         run: |
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" << 'EOF'
-            cd /var/www/test/best_react_ts
+            cd /var/www/test/best_react_ts/app
             git pull origin dev
             docker compose down
             docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d
