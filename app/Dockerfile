@@ -31,8 +31,6 @@ FROM nginx:alpine
 # ビルド成果物をNginxの配信ディレクトリにコピー
 COPY --from=builder /home/node/app/frontend/dist /var/www/nginx/html
 
-COPY ./nginx /etc/nginx/
-
 # ポートの公開
 EXPOSE 80
 
