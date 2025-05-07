@@ -26,6 +26,10 @@ jobs:
           echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" >> .env
           echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" >> .env
 
+      - name: Send .env to VPS
+        run: |
+          scp -o StrictHostKeyChecking=no .env "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}":/var/www/test/best_react_ts/app/.env
+
       - name: Add known_hosts
         run: |
           ssh-keyscan -H "${{ secrets.VPS_IP }}" >> ~/.ssh/known_hosts
