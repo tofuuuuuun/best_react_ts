@@ -34,8 +34,8 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" << 'EOF'
             cd /var/www/test/best_react_ts/app
-            git fetch origin
-            git reset --hard origin/dev
+            sudo git fetch origin
+            sudo git reset --hard origin/dev
             docker compose down
             docker compose --env-file .env -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
           EOF
