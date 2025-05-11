@@ -31,13 +31,17 @@ jobs:
             cd /var/www/test/best_react_ts/app
             sudo git fetch origin
             sudo git reset --hard origin/dev
-            
 
-            export SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}
-            export SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}
-            export TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}
+            export SPOTIFY_CLIENT_ID="${{ secrets.SPOTIFY_CLIENT_ID }}"
+            export SPOTIFY_CLIENT_SECRET="${{ secrets.SPOTIFY_CLIENT_SECRET }}
+            export TMDB_API_KEY="${{ secrets.TMDB_API_KEY }}"
 
             docker compose down
             docker builder prune -f
-            docker compose -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
+
+            env \
+              SPOTIFY_CLIENT_ID="${{ secrets.SPOTIFY_CLIENT_ID }}" \
+              SPOTIFY_CLIENT_SECRET="${{ secrets.SPOTIFY_CLIENT_SECRET }}" \
+              TMDB_API_KEY="${{ secrets.TMDB_API_KEY }}" \
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
           EOF
