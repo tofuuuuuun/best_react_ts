@@ -27,19 +27,27 @@ jobs:
 
       - name: SSH and deploy to VPS
         run: |
-          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" <<EOF
+          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" <<'EOF'
             cd /var/www/test/best_react_ts/app
+
+            sed -i '/^SPOTIFY_CLIENT_ID=/d' .env.test || true
+            sed -i '/^SPOTIFY_CLIENT_SECRET=/d' .env.test || true
+            sed -i '/^TMDB_API_KEY=/d' .env.test || true
+
+            echo "SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}" >> .env.test
+            echo "SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}" >> .env.test
+            echo "TMDB_API_KEY=${TMDB_API_KEY}" >> .env.test
+
             sudo git fetch origin
             sudo git reset --hard origin/dev
 
-            export SPOTIFY_CLIENT_ID="${{ secrets.SPOTIFY_CLIENT_ID }}"
-            export SPOTIFY_CLIENT_SECRET="${{ secrets.SPOTIFY_CLIENT_SECRET }}"
-            export TMDB_API_KEY="${{ secrets.TMDB_API_KEY }}"
-
-            export COMPOSE_PROJECT_NAME=app
-
             docker compose down
             docker builder prune -f
+
+            set -o allexport
+            source .env.test
+            set +o allexport
+
             docker compose -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
             docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
           EOF
