@@ -12,7 +12,7 @@ services:
       - /etc/ssl/certs/fullchain.pem:/etc/nginx/certs/fullchain.pem:ro
       - /etc/ssl/private/letsencrypt33366955.key:/etc/nginx/certs/letsencrypt.key:ro
     ports:
-      - "8080:80"
+      - "8081:80"
       - "8443:8443"
     depends_on:
       - php
