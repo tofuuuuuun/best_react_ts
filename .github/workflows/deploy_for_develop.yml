@@ -34,13 +34,13 @@ jobs:
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" <<EOF
             cd /var/www/test/best_react_ts/app
 
-            sed -i '/^SPOTIFY_CLIENT_ID=/d' .env.test || true
-            sed -i '/^SPOTIFY_CLIENT_SECRET=/d' .env.test || true
-            sed -i '/^TMDB_API_KEY=/d' .env.test || true
+            sed -i '/^SPOTIFY_CLIENT_ID=/d' .env || true
+            sed -i '/^SPOTIFY_CLIENT_SECRET=/d' .env || true
+            sed -i '/^TMDB_API_KEY=/d' .env || true
 
-            echo "SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}" >> .env.test
-            echo "SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}" >> .env.test
-            echo "TMDB_API_KEY=${TMDB_API_KEY}" >> .env.test
+            echo "SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}" >> .env
+            echo "SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}" >> .env
+            echo "TMDB_API_KEY=${TMDB_API_KEY}" >> .env
 
             sudo git fetch origin
             sudo git reset --hard origin/dev
