@@ -26,8 +26,12 @@ jobs:
         shell: bash
 
       - name: SSH and deploy to VPS
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: |
-          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" <<'EOF'
+          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" <<EOF
             cd /var/www/test/best_react_ts/app
 
             sed -i '/^SPOTIFY_CLIENT_ID=/d' .env.test || true
