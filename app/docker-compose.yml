@@ -32,9 +32,9 @@ services:
         SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
         TMDB_API_KEY: ${TMDB_API_KEY}
       context: ./php
-      dockerfile: ./php/Dockerfile
+      dockerfile: ./Dockerfile
     volumes:
-      - ./php/src:/var/www/html
+      - ./src:/var/www/html
     expose:
       - "9000"
     environment:
