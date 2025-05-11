@@ -39,9 +39,8 @@ jobs:
             docker compose down
             docker builder prune -f
 
-            env \
-              SPOTIFY_CLIENT_ID="${{ secrets.SPOTIFY_CLIENT_ID }}" \
-              SPOTIFY_CLIENT_SECRET="${{ secrets.SPOTIFY_CLIENT_SECRET }}" \
-              TMDB_API_KEY="${{ secrets.TMDB_API_KEY }}" \
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
+            SPOTIFY_CLIENT_ID="${{ secrets.SPOTIFY_CLIENT_ID }}" \
+            SPOTIFY_CLIENT_SECRET="${{ secrets.SPOTIFY_CLIENT_SECRET }}" \
+            TMDB_API_KEY="${{ secrets.TMDB_API_KEY }}" \
+            docker compose -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
           EOF
