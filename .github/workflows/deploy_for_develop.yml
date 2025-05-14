@@ -49,7 +49,7 @@ jobs:
             docker builder prune -f
 
             set -o allexport
-            source .env.test
+            source .env
             set +o allexport
 
             docker compose --env-file .env -f docker-compose.yml -f docker-compose.dev.yml up --build -d
