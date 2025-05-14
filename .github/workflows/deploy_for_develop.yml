@@ -26,29 +26,20 @@ jobs:
         shell: bash
 
       - name: SSH and deploy to VPS
-        env:
-          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
-          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: |
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" <<EOF
             cd /var/www/test/best_react_ts/app
 
-            sed -i '/^SPOTIFY_CLIENT_ID=/d' .env || true
-            sed -i '/^SPOTIFY_CLIENT_SECRET=/d' .env || true
-            sed -i '/^TMDB_API_KEY=/d' .env || true
-
-            echo "SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}" >> .env
-            echo "SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}" >> .env
-            echo "TMDB_API_KEY=${TMDB_API_KEY}" >> .env
-
-            cat .env
-
-            sudo git fetch origin
-            sudo git reset --hard origin/dev
+            echo "SPOTIFY_CLIENT_ID=${{secrets.SPOTIFY_CLIENT_ID }}" >> .env
+            echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET}}" >> .env
+            echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" >> .env
 
             docker compose down
             docker builder prune -f
+
+            sudo git fetch origin
+            sudo git reset --hard origin/dev
+            sudo git pull origin dev
 
             set -o allexport
             source .env
