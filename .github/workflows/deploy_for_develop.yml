@@ -46,6 +46,12 @@ jobs:
           sudo git reset --hard origin/dev
           sudo git pull origin dev
 
+          sudo rm -f .env
+          echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env > /dev/null
+          echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env > /dev/null
+          echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env > /dev/null
+          echo "VITE_API_BASE_URL=https://dev.rahi-lab.com" | sudo tee -a .env > /dev/null
+
           echo "==== .env内容再確認 ===="
           cat .env
 
