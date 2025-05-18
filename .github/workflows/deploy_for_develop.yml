@@ -27,9 +27,9 @@ jobs:
 
       - name: Get Secrets
         run: |
-            echo "SPOTIFY_CLIENT_ID=test" > .env
-            echo "SPOTIFY_CLIENT_SECRET=test" >> .env
-            echo "TMDB_API_KEY=test" >> .env
+            echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" > .env
+            echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" >> .env
+            echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" >> .env
         shell: bash
 
       - name: Debug secrets
