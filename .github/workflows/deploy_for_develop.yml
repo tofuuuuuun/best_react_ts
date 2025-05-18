@@ -25,14 +25,21 @@ jobs:
           ssh-keyscan -H "${{ secrets.VPS_IP }}" >> ~/.ssh/known_hosts
         shell: bash
 
+      - name: Get Secrets
+        run: |
+            echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" > .env
+            echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" > .env
+            echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" > .env
+        shell: bash
+
+      - name: Debug secrets
+        run: |
+          echo "TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}"
+
       - name: SSH and deploy to VPS
         run: |
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" "
             cd /var/www/test/best_react_ts/app
-
-            echo \"SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}\" | sudo tee -a .env
-            echo \"SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}\" | sudo tee -a .env
-            echo \"TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}\" | sudo tee -a .env
 
             docker compose down
             docker builder prune -f
