@@ -1,7 +1,9 @@
 <?php
 $clientId = getenv('SPOTIFY_CLIENT_ID');
 $clientSecret = getenv('SPOTIFY_CLIENT_SECRET');
-
+print_r($clientId);
+print_r($clientSecret);
+exit;
 $cacheKey = 'spotify_access_token';
 $cacheExpiryKey = 'spotify_access_token_expiry';
 
