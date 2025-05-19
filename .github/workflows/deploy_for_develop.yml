@@ -30,15 +30,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" 'bash -s' <<EOF
           cd /var/www/test/best_react_ts/app
 
-          sudo rm -f .env
-          echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env
-          echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env
-          echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
-          echo "VITE_API_BASE_URL=https://dev.rahi-lab.com" | sudo tee -a .env
-
-          echo "==== .env内容確認 ===="
-          cat .env
-
           docker compose down
           docker builder prune -f
 
@@ -47,13 +38,10 @@ jobs:
           sudo git pull origin dev
 
           sudo rm -f .env
-          echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env > /dev/null
-          echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env > /dev/null
-          echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env > /dev/null
-          echo "VITE_API_BASE_URL=https://dev.rahi-lab.com" | sudo tee -a .env > /dev/null
-
-          echo "==== .env内容再確認 ===="
-          cat .env
+          echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env
+          echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env
+          echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
+          echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" | sudo tee -a .env
 
           docker compose --env-file .env -f docker-compose.yml -f docker-compose.dev.yml up --build -d
           EOF
