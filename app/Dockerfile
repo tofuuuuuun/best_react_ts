@@ -29,7 +29,7 @@ RUN yarn build
 FROM nginx:alpine
 
 # ビルド成果物をNginxの配信ディレクトリにコピー
-COPY --from=builder /home/node/app/frontend/dist /var/www/nginx/html
+COPY --from=builder /home/node/app/frontend/dist /var/www/html
 
 # ポートの公開
 EXPOSE 80
