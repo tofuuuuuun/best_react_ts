@@ -34,7 +34,7 @@ services:
       context: ./php
       dockerfile: ./Dockerfile
     volumes:
-      - ./src:/var/www/html
+      - ./php/src:/var/www/html
     expose:
       - "9000"
     environment:
