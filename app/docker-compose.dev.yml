@@ -13,7 +13,7 @@ services:
       - /etc/ssl/private/letsencrypt33366955.key:/etc/nginx/certs/letsencrypt33366955.key:ro
       - /home/deploy_user/.htpasswd:/etc/nginx/htpasswd:ro
     ports:
-      - "8080:80"
+      - "8081:80"
       - "8443:443"
     depends_on:
       - php
@@ -26,7 +26,6 @@ services:
       - ./php/src:/var/www/html
     expose:
       - "9000"
-    environment:
     environment:
       - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
       - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
