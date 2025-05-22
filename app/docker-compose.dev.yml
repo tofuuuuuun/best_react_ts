@@ -13,10 +13,20 @@ services:
       - /etc/ssl/private/letsencrypt33366955.key:/etc/nginx/certs/letsencrypt33366955.key:ro
       - /home/deploy_user/.htpasswd:/etc/nginx/htpasswd:ro
     ports:
-      - "8081:80"
-      - "8443:8443"
+      - "8080:80"
+      - "8443:443"
     depends_on:
       - php
+    environment:
+      - VITE_API_BASE_URL=http://php:9000
+
+  php:
+    build: ./php
+    volumes:
+      - ./php/src:/var/www/html
+    expose:
+      - "9000"
+    environment:
     environment:
       - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
       - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $dateHour = new DateTime('now');
 $dateHour = $dateHour->format('YmdH');
-$cacheKey = "topRate_" . $dateHour;
+$cacheKey = "albumTopRate_" . $dateHour;
 
 $cachedResult = apcu_fetch($cacheKey);
 if ($cachedResult) {

@@ -13,7 +13,7 @@ for ($i = 1; $i <= 5; $i++) {
 
 $dateHour = new DateTime('now');
 $dateHour = $dateHour->format('YmdH');
-$cacheKey = "topRate_" . $dateHour;
+$cacheKey = "movieTopRate_" . $dateHour;
 
 $cachedResult = apcu_fetch($cacheKey);
 if ($cachedResult) {
