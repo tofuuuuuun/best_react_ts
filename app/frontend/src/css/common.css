@@ -95,6 +95,13 @@ input[type=radio]{display: none;}
     padding-right: 1em;
 }
 
+.inner-container {
+    max-width: 864px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5em;
+}
+
 .l-header{ 
     height: auto;
     /* background: #24272f; */
