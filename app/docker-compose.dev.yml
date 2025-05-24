@@ -17,8 +17,6 @@ services:
       - "8443:8443"
     depends_on:
       - php
-    environment:
-      - VITE_API_BASE_URL=http://php:9000
 
   php:
     build: ./php
