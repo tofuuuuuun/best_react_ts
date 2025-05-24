@@ -87,9 +87,18 @@ input[type=radio]{display: none;}
 
 .errorMessage{color: #ff0000;}
 
+.l-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 .l-header{ 
     height: auto;
-    background: #24272f;
+    /* background: #24272f; */
+    background: transparent;
     margin-bottom: 2em;
     padding: 1em 0;
 }
