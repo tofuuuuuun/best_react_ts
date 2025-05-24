@@ -2,7 +2,7 @@ import { AlbumApp } from '@/album/components/AlbumApp';
 import { Header } from '@/common/Header';
 import '@/css/home.css';
 import albumLogoIcon from '@/images/album/logo.svg';
-import mainImage from '@/images/home/main.png';
+import mainImage from '@/images/main.png';
 import movieLogoIcon from '@/images/movie/logo.svg';
 import { MovieApp } from '@/movie/MovieApp';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
