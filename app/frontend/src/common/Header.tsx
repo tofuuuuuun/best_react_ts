@@ -10,18 +10,19 @@ import { Link, Route, Routes } from 'react-router-dom';
 export const Header = (props: headerProps) => {
     const { type } = props;
     const logoIcon = type === '/album' ? albumLogoIcon : type === '/movie' ? movieLogoIcon : homeLogoIcon;
+    const homeLogoClass = type === '/' ? 'homeLogo' : '';
 
     return (
         <>
             <header className="l-header ta-center">
-                <h1 className='logoPosition'><img src={logoIcon} alt="best" className="headerLogo" /></h1>
+                <h1 className='logoPosition'><img src={logoIcon} alt="best" className={`headerLogo ${homeLogoClass}`} /></h1>
                 <Routes location={location}>
                     <Route path="/" element={
                         <>
                             <ul className='linkWrapper'>
-                                <li className='l-linkCard'><Link to='/' className='linkCard ta-center'>TOP</Link></li>
-                                <li className='l-linkCard'><Link to='/album' className='linkCard ta-center'>MUSIC</Link></li>
-                                <li className='l-linkCard'><Link to='/movie' className='linkCard ta-center'>MOVIE</Link></li>
+                                <li className=''><Link to='/' className='ta-center'>TOP</Link></li>
+                                <li className=''><Link to='/album' className='ta-center'>MUSIC</Link></li>
+                                <li className=''><Link to='/movie' className='ta-center'>MOVIE</Link></li>
                             </ul>
                         </>
                     } />
