@@ -103,8 +103,11 @@ input[type=radio]{display: none;}
 }
 
 .l-header{ 
+    width: 100%;
+    max-width: 1200px;
     height: auto;
-    /* background: #24272f; */
+    display: flex;
+    justify-content: space-between;
     background: transparent;
     margin-bottom: 2em;
     padding: 1em 0;
@@ -199,6 +202,12 @@ input[type=radio]{display: none;}
 .headerLogo {
     width: 200px;
     height: auto;
+}
+
+.navText{
+    font-size: 1.2em;
+    color: #e9f1f8;
+    font-weight: bold;
 }
 
 .addButton {

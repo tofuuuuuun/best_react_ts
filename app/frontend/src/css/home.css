@@ -43,6 +43,11 @@ background-color: #24272F;
     padding: 1em;
 }
 
+.mainText{
+    font-size: 64px;
+}
+
+
 @media screen and (max-width: 640px){
     .l-linkCard{
         width: 90%;

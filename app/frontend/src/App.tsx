@@ -18,8 +18,8 @@ export const App = () => {
             <>
               <Header type={TYPE} />
               <div className='l-container mainContainer'>
-                <div className='inner-container'>
-                  <h2 className='txt-white ta-center'>好きなものを語りたいときに、ちょっと便利なリスト</h2>
+                <div className='inner-container m-bottom-2em'>
+                  <h2 className='txt-white ta-center mainText'>選ぶ、並べる、見える "好き"</h2>
                   <p className='textM1 txt-white m-bottom-1em'>このサイトは、テーマごとに好きな作品を10作品だけ選んで並べるWebサービスです。</p>
                   <p className='textM1 txt-white m-bottom-1em'>「ベストアルバム10枚」「泣ける映画10選」など‥‥ 自分だけのリストを気軽につくれます。</p>
                   <p className='textM1 txt-white m-bottom-1em'>ユーザー登録は必要ありません。</p>
