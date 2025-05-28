@@ -69,8 +69,8 @@ $responseArray = json_decode($response, true);
 $imageUrls = [];
 if (isset($responseArray['items'])) {
     foreach ($responseArray['items'] as $item) {
-        if (isset($item['track']['album']['images'][0]['url'])) {
-            $imageUrls[] = $item['track']['album']['images'][0]['url'];
+        if (isset($item['track']['album']['images'][1]['url'])) {
+            $imageUrls[] = $item['track']['album']['images'][1]['url'];
         }
     }
 }
