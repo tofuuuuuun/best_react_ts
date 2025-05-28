@@ -11,7 +11,7 @@ export const Header = (props: headerProps) => {
 
     return (
         <>
-            <header className="l-header ta-center">
+            <header className="l-header ta-center m-both-auto">
                 <h1 className='logoPosition'><img src={logoIcon} alt="best" className={`headerLogo ${homeLogoClass}`} /></h1>
                 <nav>
                     <ul className='linkWrapper'>

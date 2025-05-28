@@ -63,16 +63,14 @@ input[type=radio]{display: none;}
 .textL1{font-size: 1.5em;}
 .textXL1{font-size: 2em;}
 
-.txt-white { color: #e9f1f8; }
+.txt-white { color: #F1F8E9; }
 .txt-navy {color: #24272F;}
+.txt-orange {color: #ff693a;}
+.txt-green {color: #009688;}
 .txt-orange {color: #ff693a;}
 
 .color-Green{ color: #009688; }
 .color-Purple{ color: #663399; }
-
-.txt-white { color: #F1F8E9; }
-.txt-green {color: #009688;}
-.txt-orange {color: #ff693a;}
 
 .bg-orange { background-color: #ff693a; }
 .bg-orange:hover{background-color: #f05d31;}
@@ -86,6 +84,12 @@ input[type=radio]{display: none;}
 .bg-gray:hover{ background-color: #bfbac5; }
 
 .errorMessage{color: #ff0000;}
+
+.lh-1 { line-height: 1; }
+.lh-1_5 { line-height: 1.5; }
+.lh-2 { line-height: 2; }
+.lh-2_5 { line-height: 2.5; }
+
 
 .l-container {
     width: 100%;

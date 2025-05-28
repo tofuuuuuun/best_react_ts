@@ -20,12 +20,12 @@ export const App = () => {
               <div className='l-container mainContainer'>
                 <div className='inner-container m-bottom-2em'>
                   <h2 className='txt-white ta-center mainText'>選ぶ、並べる、見える "好き"</h2>
-                  <p className='textM1 txt-white m-bottom-1em'>このサイトは、テーマごとに好きな作品を10作品だけ選んで並べるWebサービスです。</p>
-                  <p className='textM1 txt-white m-bottom-1em'>「ベストアルバム10枚」「泣ける映画10選」など‥‥ 自分だけのリストを気軽につくれます。</p>
-                  <p className='textM1 txt-white m-bottom-1em'>ユーザー登録は必要ありません。</p>
-                  <p className='textM1 txt-white m-bottom-1em'>作品のカバー画像も自動で表示されるので、見た目にもわかりやすく。</p>
-                  <p className='textM1 txt-white m-bottom-1em'>話のきっかけや、誰かとの共有にも使えます。</p>
-                  <p className='textM1 txt-white m-bottom-1em'>ただ並べてみるだけでも、あなたの「これが好き」が少しはっきり見えてくるかもしれません。</p>
+                  <p className='textM1 txt-white m-bottom-1em lh-2'>このサイトは、テーマごとに好きな作品を10作品だけ選んで並べるWebサービスです。</p>
+                  <p className='textM1 txt-white m-bottom-1em lh-2'>「ベストアルバム10枚」「泣ける映画10選」など‥‥ 自分だけのリストを気軽につくれます。</p>
+                  <p className='textM1 txt-white m-bottom-1em lh-2'>ユーザー登録は必要ありません。</p>
+                  <p className='textM1 txt-white m-bottom-1em lh-2'>作品のカバー画像も自動で表示されるので、見た目にもわかりやすく。</p>
+                  <p className='textM1 txt-white m-bottom-1em lh-2'>話のきっかけや、誰かとの共有にも使えます。</p>
+                  <p className='textM1 txt-white m-bottom-1em lh-2'>ただ並べてみるだけでも、あなたの「これが好き」が少しはっきり見えてくるかもしれません。</p>
                 </div>
               </div>
               <ul className='linkWrapper'>
