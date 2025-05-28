@@ -64,7 +64,7 @@ if ($err) {
 
 // レスポンスを配列に変換
 $responseArray = json_decode($response, true);
-print_r($responseArray);
+print_r($responseArray['items']);
 exit;
 // 画像URLを取得
 $imageUrls = [];
