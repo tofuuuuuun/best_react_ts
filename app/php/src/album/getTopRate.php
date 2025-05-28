@@ -64,14 +64,14 @@ if ($err) {
 
 // レスポンスを配列に変換
 $responseArray = json_decode($response, true);
-print_r($responseArray['items']);
-exit;
+
 // 画像URLを取得
 $imageUrls = [];
 if (isset($responseArray['items'])) {
     foreach ($responseArray['items'] as $item) {
         if (isset($item['track']['album']['images'][0]['url'])) {
-            $imageUrls[] = $item['track']['album']['images'][0]['url'];
+            // $imageUrls[] = $item['track']['album']['images'][0]['url'];
+            print_r($item['track']['album']['images']);
         }
     }
 }
