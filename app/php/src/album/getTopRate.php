@@ -70,8 +70,7 @@ $imageUrls = [];
 if (isset($responseArray['items'])) {
     foreach ($responseArray['items'] as $item) {
         if (isset($item['track']['album']['images'][0]['url'])) {
-            // $imageUrls[] = $item['track']['album']['images'][0]['url'];
-            print_r($item['track']['album']['images']);
+            $imageUrls[] = $item['track']['album']['images'][0]['url'];
         }
     }
 }
