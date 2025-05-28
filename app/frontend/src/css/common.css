@@ -113,8 +113,7 @@ input[type=radio]{display: none;}
     display: flex;
     justify-content: space-between;
     background: transparent;
-    margin-bottom: 2em;
-    padding: 1em 0;
+    padding: 2em 0;
 }
 
 .l-contentWrapper{
@@ -206,6 +205,15 @@ input[type=radio]{display: none;}
 .headerLogo {
     width: 200px;
     height: auto;
+}
+
+.navWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    margin-top: 2em;
 }
 
 .navText{
