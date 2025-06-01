@@ -176,10 +176,11 @@ export const AlbumApp = () => {
 
         for (let i = 0; i < maxCount; i++) {
           const randomIndex = Math.floor(Math.random() * data.length);
-          // if (randomCover.some((cover) => cover.poster_path === data[randomIndex].poster_path)) {
-          //   i--;
-          //   continue;
-          // }
+          // 重複があった場合にはやり直す
+          if (randomCover.some(cover => cover === data[randomIndex])) {
+            i--;
+            continue;
+          }
           randomCover.push(data[randomIndex]);
         }
 

@@ -12,7 +12,14 @@ export const Introduction = (props: gridArtProps) => {
             <ul className={`l-gridPoster ${className}`} >
                 {
                     covers.map((value, index) => (
-                        value ? <li key={index} className='topRateItem'><img className='l-topRateMovies' src={`${base_url}${value}`} /></li> : ''
+                        value ? (
+                            <li key={index} className='topRateItem'>
+                                <img
+                                    className='l-topRate'
+                                    src={`${base_url}${value}`}
+                                />
+                            </li>
+                        ) : ''
                     ))
                 }
             </ul >
