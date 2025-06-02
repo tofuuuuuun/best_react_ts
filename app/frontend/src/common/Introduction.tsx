@@ -17,6 +17,7 @@ export const Introduction = (props: gridArtProps) => {
                                 <img
                                     className='l-topRate'
                                     src={`${base_url}${value}`}
+                                    loading={index >= 4 ? "lazy" : "eager"}
                                 />
                             </li>
                         ) : ''

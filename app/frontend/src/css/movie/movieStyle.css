@@ -69,7 +69,6 @@
 }
 .topRateItem:last-child{ margin-bottom: 1em; }
 
-.topText{ font-size: 60px; }
 .startButton{
     width: 115px;
     padding: 12px 24px;
@@ -278,9 +277,6 @@
     left: 3%;
 }
 
-.topText{
-    font-size: 3em;
-}
 .moviePosterList {
     grid-template-columns: repeat(auto-fill, 170px);
     justify-items: center;
