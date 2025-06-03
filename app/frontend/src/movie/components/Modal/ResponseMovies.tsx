@@ -11,7 +11,7 @@ export const ResponseMovies = (props: ResponseMoviesProps) => {
         <ul className='modalList'>
             {responseMovies.map((movie, index) => (
                 <li className={`movieItems ${index === 0 ? 'first-item' : ''}`} key={index} >
-                    <img className='moviePoster' src={setMoviePosterImage(movie.poster_path)} loading='lazy' />
+                    <img className='moviePoster' src={setMoviePosterImage(movie.poster_path)} loading={index >= 2 ? "lazy" : "eager"} />
                     <div className='l-movieInfo'>
                         <span className='movieTitle p-all-1em font-wb'>{movie.title}</span>
                     </div>
