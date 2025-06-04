@@ -10,6 +10,7 @@ export const MoviePosterList = (props: MoviePosterListProps) => {
         <>
             {moviePosterList.length != 0 && (
                 <div className='l-common'>
+                    <div className='ta-center m-bottom-2em p-top-1em'><input type='text' placeholder='このリストに名前をつけよう' className='listNameInput'></input></div>
                     <ul className='moviePosterList' id='target'>
                         {moviePosterList.map((movie, index) => (
                             <li className='movieListItem action' id={movie.id} key={index} >
