@@ -9,6 +9,7 @@ export const Modal = (props: ModalProps) => {
 
     const selectType = (event: { target: { value: string; }; }) => changeType(event.target.value);
     const changeFlg = () => toggleModal(false);
+    const MAX_ALBUM = 10;
     return (
         <div className='modal-container'>
             <div className='modal-body'>
@@ -26,6 +27,7 @@ export const Modal = (props: ModalProps) => {
                         searchAlbum={searchAlbum}
                         type='album'
                     />
+                    <div className='txt-white'><p>あと{MAX_ALBUM - albumArtList.length}作品</p></div>
                     <ErrorMessage errorMessage={errorMessage} />
                     {filterResponseAlbum.length !== 0 && (
                         <div>

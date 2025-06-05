@@ -18,7 +18,7 @@ export const App = () => {
             <>
               <Header type={TYPE} />
               <div className='l-container mainContainer'>
-                <div className='inner-container m-bottom-2em'>
+                <div className='inner-container_top m-bottom-2em'>
                   <div className='m-bottom-2em'><h2 className='txt-white mainText'>選ぶ、並べる、<br className='disp-Sp' />見えてくる  "好き"</h2></div>
 
                   <div className=''>

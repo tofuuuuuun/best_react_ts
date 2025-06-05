@@ -122,7 +122,6 @@ input[type=radio]{display: none;}
 
 .l-common{
     background-color: #1a1a1b;
-    padding: 1em;
 }
 
 .l-topRate{
@@ -147,7 +146,6 @@ input[type=radio]{display: none;}
 .l-addButton {
     width: 220px;
     height: 220px;
-    box-shadow: 2px 2px 15px 1px #1a1a1a;
     border-radius: 5px;
 }
 
@@ -240,13 +238,11 @@ input[type=radio]{display: none;}
     align-items: center;
     border-radius: 5px;
     border: none;
-    box-shadow: 2px 2px 15px 1px #09090b;
     background-color: #24272f;
     cursor: pointer;
 }
 
 .addButton:hover {
-    box-shadow: none;
     transition-duration: 0.2s;
     background-color: #1b1d23;
     transform: scale(0.99,0.99) translateY(2px);
@@ -384,7 +380,6 @@ input[type=radio]{display: none;}
     padding: 1em 1em 1em 1em;
     text-align: left;
     border-radius: 5px;
-    box-shadow: 6px 4px 5px 1px #0b0b0d;
 }
 .modalList::-webkit-scrollbar, .autocompleteList::-webkit-scrollbar{
     background: transparent;
@@ -417,17 +412,6 @@ input[type=radio]{display: none;}
     animation-fill-mode: both;
 }
 
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
 @media (max-width:640px) {
 html{ font-size: 12px;}
 main {
@@ -439,7 +423,6 @@ main {
 
 .l-contentWrapper{
     max-width: 100%;
-    padding: 0 1em;
 }
 
 .l-button {
@@ -477,7 +460,11 @@ main {
     width: 60%;
 }
 
-.inner-container {
+.innerContent{
+    padding: 0 1em;
+}
+
+.inner-container_top {
     width: 100%;
     margin: 0 auto;
     padding: 2em 0 1em 0;
@@ -534,7 +521,6 @@ main {
     text-align: left;
     padding: 1em;
     border-radius: 5px;
-    box-shadow: 2px 2px 15px 1px #222222;
 }
 
 [name="form"] { height: 35px; }
