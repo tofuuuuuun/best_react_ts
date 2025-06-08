@@ -7,16 +7,16 @@ export const Introduction = (props: gridArtProps) => {
     const modeType = type === '/album' ? '音楽' : '映画';
 
     const renderList = (covers: frontCoverArt[], className: string) => {
-        const base_url = type === '/album' ? '' : 'https://image.tmdb.org/t/p/w500/';
+        const base_url = type === '/album' ? '' : 'https://image.tmdb.org/t/p/w200/';
         return (
             <ul className={`l-gridPoster ${className}`} >
                 {
                     covers.map((value, index) => (
                         value ? (
-                            <li key={index} className='topRateItem'>
+                            <li key={value.id} className='topRateItem' >
                                 <img
                                     className='l-topRate'
-                                    src={`${base_url}${value}`}
+                                    src={`${base_url}${value.poster_path}`}
                                     loading={index >= 4 ? "lazy" : "eager"}
                                 />
                             </li>
@@ -29,7 +29,7 @@ export const Introduction = (props: gridArtProps) => {
 
     return (
         <>
-            <div id='introduction' className='l-introductionWrapper l-overflowHidden startText ta-center fadeIn'>
+            <div id='introduction' className='l-introductionWrapper l-overflowHidden startText ta-center'>
                 <div className='l-gridPosterWrapper'>
                     <div className='girdPosterBlockWrapper m-right-1em'>
                         {renderList(randomURLList1, 'scroll-infinity__list--left1 infinity-scroll-left1')}

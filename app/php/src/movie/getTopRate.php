@@ -50,28 +50,24 @@ foreach ($pageArray as $page) {
 curl_close($curl);
 
 // 画像のURLのみを抽出するしてフラットにする
-$posterURLs = [];
+$posterData = [];
 foreach ($apiResults as $key => $value) {
     $tmpValue = json_decode($value, true);
-    $posterURLs[] = array_map(
-        function ($topRateMovie) {
-            return $topRateMovie['poster_path'];
-        },
-        $tmpValue['results']
-    );
-}
-$flatPosterURLs = [];
-for ($i = 0; $i < count($posterURLs); $i++) {
-    foreach ($posterURLs[$i] as $key => $value) {
-        $flatPosterURLs[] = $value;
+    foreach ($tmpValue['results'] as $movie) {
+        if (isset($movie['id']) && isset($movie['poster_path'])) {
+            $posterData[] = [
+                'id' => $movie['id'],
+                'poster_path' => $movie['poster_path']
+            ];
+        }
     }
 }
 
-apcu_store($cacheKey, $flatPosterURLs, 3600);
+apcu_store($cacheKey, $posterData, 3600);
 
 if ($err) {
     echo ["error" => "cURL Error #:" . $err];
 } else {
-    echo json_encode($flatPosterURLs);
+    echo json_encode($posterData);
 }
 exit;

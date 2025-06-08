@@ -42,7 +42,7 @@ $playlistId = $responseArray['playlists']['items'][4]['id'];
 
 $curl = curl_init();
 curl_setopt_array($curl, [
-    CURLOPT_URL => "https://api.spotify.com/v1/playlists/{$playlistId}/tracks?fields=items%28track%28album%28images%28url%29%29%29",
+    CURLOPT_URL => "https://api.spotify.com/v1/playlists/{$playlistId}/tracks?fields=items%28track%28id%2Calbum%28images%28url%29%29%29",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -66,17 +66,23 @@ if ($err) {
 $responseArray = json_decode($response, true);
 
 // 画像URLを取得
-$imageUrls = [];
+$imageData = [];
 if (isset($responseArray['items'])) {
     foreach ($responseArray['items'] as $item) {
-        if (isset($item['track']['album']['images'][0]['url'])) {
-            $imageUrls[] = $item['track']['album']['images'][0]['url'];
+        if (
+            isset($item['track']['album']['images'][0]['url']) &&
+            isset($item['track']['id'])
+        ) {
+            $imageData[] = [
+                'id' => $item['track']['id'],
+                'poster_path' => $item['track']['album']['images'][0]['url']
+            ];
         }
     }
 }
 
-apcu_store($cacheKey, $imageUrls, 3600);
+apcu_store($cacheKey, $imageData, 3600);
 
-echo json_encode($imageUrls);
+echo json_encode($imageData);
 
 exit;
