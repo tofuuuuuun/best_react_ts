@@ -137,6 +137,7 @@ input[type=radio]{display: none;}
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
 
 .l-addButtonWrapper{

@@ -1,9 +1,15 @@
 import { ResultCheckboxButton } from '@/album/components/Modal/ResultCheckButton';
 import { ResponseAlbumListProps } from '@/types/types';
+import React, { useMemo } from 'react';
 
 
-export const ResponseAlbumList = (props: ResponseAlbumListProps) => {
+export const ResponseAlbumList = React.memo(((props: ResponseAlbumListProps) => {
     const { toggleAlbum, filterResponseAlbum, albumArtList } = props;
+
+    const albumIdSet = useMemo(
+        () => new Set(albumArtList.map(item => item.id)),
+        [albumArtList]);
+
     return (
         <ul className='modalList'>
             {filterResponseAlbum.map((album, index) => (
@@ -18,11 +24,11 @@ export const ResponseAlbumList = (props: ResponseAlbumListProps) => {
                         name={album.name}
                         image={album.images[0]?.url}
                         artists={album.artists.map((value) => value.name).join(',')}
-                        toggleDisplayFlg={albumArtList.some((item) => item.id === album.id)}
+                        toggleDisplayFlg={albumIdSet.has(album.id)}
                         toggleAlbum={toggleAlbum}
                     />
                 </li>
             ))}
         </ul>
     );
-}
+}))
