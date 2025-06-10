@@ -122,6 +122,7 @@ input[type=radio]{display: none;}
 
 .l-common{
     background-color: #1a1a1b;
+    padding-bottom: 1em;
 }
 
 .l-topRate{
