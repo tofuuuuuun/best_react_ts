@@ -2,7 +2,12 @@
 $images = fetch_album_images_from_api();
 
 // ファイルに保存
-file_put_contents('/var/www/html/topAlbumImage.json', json_encode($images, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+$result = file_put_contents('/var/www/html/topAlbumImage.json', json_encode($images, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+if ($result === false) {
+    echo "Error saving images to file.";
+} else {
+    echo "Images saved successfully.";
+}
 
 function fetch_album_images_from_api()
 {
