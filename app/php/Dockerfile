@@ -24,3 +24,5 @@ COPY ./php.ini /usr/local/etc/php/
 # ソースコードをコピー
 COPY ./src /var/www/html
 RUN chmod +x /var/www/html/saveImages.sh
+
+RUN chown -R deploy_user:deploy_user /var/www/html
