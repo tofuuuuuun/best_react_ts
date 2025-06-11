@@ -28,6 +28,10 @@ function fetch_album_images_from_api()
     ]);
 
     $response = curl_exec($curl);
+
+    print_r($response);
+    exit;
+
     $responseArray = json_decode($response, true);
     $playlistId = $responseArray['playlists']['items'][4]['id'];
 
