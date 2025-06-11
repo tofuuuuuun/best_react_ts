@@ -33,8 +33,6 @@ services:
         TMDB_API_KEY: ${TMDB_API_KEY}
       context: ./php
       dockerfile: ./Dockerfile
-    volumes:
-      - ./php/src:/var/www/html
     expose:
       - "9000"
     environment:
