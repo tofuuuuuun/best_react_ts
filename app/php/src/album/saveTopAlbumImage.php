@@ -77,5 +77,8 @@ function fetch_album_images_from_api()
             }
         }
     }
+    print_r($imageData);
+    exit;
+
     return $imageData;
 }
