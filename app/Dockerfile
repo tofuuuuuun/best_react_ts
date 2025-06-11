@@ -25,6 +25,12 @@ RUN mkdir node_modules
 COPY ./frontend/package.json ./frontend/yarn.lock ./
 RUN yarn install
 
+# 証明書とNginxの設定ファイルをコピー
+COPY ./frontend/nginx.test.conf /etc/nginx/conf.d/default.conf
+COPY ./frontend/certs/fullchain.pem /etc/nginx/certs/fullchain.pem
+COPY ./frontend/certs/privkey.pem /etc/nginx/certs/privkey.pem
+COPY ./frontend/.htpasswd /etc/nginx/htpasswd
+
 # 環境変数ファイルをコピー
 ARG ENV_FILE=.env
 COPY ${ENV_FILE} .env
