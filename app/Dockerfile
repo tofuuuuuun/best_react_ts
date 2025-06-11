@@ -27,9 +27,10 @@ RUN yarn install
 
 # 証明書とNginxの設定ファイルをコピー
 COPY ./frontend/nginx.test.conf /etc/nginx/conf.d/default.conf
-COPY ./frontend/certs/fullchain.pem /etc/nginx/certs/fullchain.pem
-COPY ./frontend/certs/privkey.pem /etc/nginx/certs/privkey.pem
-COPY ./frontend/.htpasswd /etc/nginx/htpasswd
+COPY /etc/ssl/certs/fullchain.pem /etc/nginx/certs/fullchain.pem
+COPY /etc/ssl/private/letsencrypt33366955.key /etc/nginx/certs/letsencrypt33366955.key:ro
+COPY /home/deploy_user/.htpasswd /etc/nginx/htpasswd
+
 
 # 環境変数ファイルをコピー
 ARG ENV_FILE=.env
