@@ -3,6 +3,9 @@ $images = fetch_album_images_from_api();
 
 // ファイルに保存
 $result = file_put_contents('/var/www/html/topAlbumImage.json', json_encode($images, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+print_r($result);
+exit;
+
 if ($result === false) {
     error_log('Failed to write topAlbumImage.json');
     error_log('Failed to write topAlbumImage.json' . PHP_EOL, 3, '/var/www/html/debug.log');
@@ -74,8 +77,6 @@ function fetch_album_images_from_api()
             }
         }
     }
-    print_r($imageData);
-    exit;
 
     return $imageData;
 }
