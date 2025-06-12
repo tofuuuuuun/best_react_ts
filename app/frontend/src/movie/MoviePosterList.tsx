@@ -1,7 +1,7 @@
 import NO_IMAGE from '@/images/movie/no_image.png';
 import { MoviePosterListProps } from '@/types/types';
 
-const BASE_URL = 'https://image.tmdb.org/t/p/w500/';
+const BASE_URL = 'https://image.tmdb.org/t/p/w200/';
 
 export const MoviePosterList = (props: MoviePosterListProps) => {
     const { moviePosterList, deleteMovie } = props;
