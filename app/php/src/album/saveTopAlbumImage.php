@@ -31,10 +31,10 @@ function fetch_album_images_from_api()
     ]);
 
     $response = curl_exec($curl);
-
     $responseArray = json_decode($response, true);
+    $responseCount = count($responseArray['playlists']['items']);
     $playlistId = "";
-    for ($i = 0; $i < count($responseArray['playlists']['items']); $i++) {
+    for ($i = 0; $i < $responseCount; $i++) {
         if (isset($responseArray['playlists']['items'][$i]['id'])) {
             $playlistId = $responseArray['playlists']['items'][$i]['id'];
         }
