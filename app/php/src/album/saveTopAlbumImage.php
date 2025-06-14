@@ -3,8 +3,6 @@ $images = fetch_album_images_from_api();
 
 // ファイルに保存
 $result = file_put_contents('/var/www/html/topAlbumImage.json', json_encode($images, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
-print_r($result);
-exit;
 
 if ($result === false) {
     error_log('Failed to write topAlbumImage.json');
@@ -17,7 +15,7 @@ function fetch_album_images_from_api()
 
     $curl = curl_init();
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://api.spotify.com/v1/search?q=%E3%83%88%E3%83%83%E3%83%9750%EF%BC%88%E6%97%A5%E6%9C%AC%EF%BC%89&type=playlist&market=JP&limit=5&offset=0",
+        CURLOPT_URL => "https://api.spotify.com/v1/search?q=%E3%83%88%E3%83%83%E3%83%9750%EF%BC%88%E6%97%A5%E6%9C%AC%EF%BC%89&type=playlist&market=JP&limit=1&offset=0",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -32,13 +30,24 @@ function fetch_album_images_from_api()
 
     $response = curl_exec($curl);
     $responseArray = json_decode($response, true);
-    $responseCount = count($responseArray['playlists']['items']);
-    $playlistId = "";
-    for ($i = 0; $i < $responseCount; $i++) {
-        if (isset($responseArray['playlists']['items'][$i]['id'])) {
-            $playlistId = $responseArray['playlists']['items'][$i]['id'];
-        }
+
+    if (!isset($responseArray['playlists']['items']) || !is_array($responseArray['playlists']['items'])) {
+        error_log('Failed to fetch playlists from Spotify API');
+        error_log('Failed to fetch playlists from Spotify API' . PHP_EOL, 3, '/var/www/html/debug.log');
+        return [];
     }
+
+    if (
+        !isset($responseArray['playlists']['items']) ||
+        !is_array($responseArray['playlists']['items']) ||
+        !isset($responseArray['playlists']['items'][0]['id'])
+    ) {
+        error_log('Spotify API playlists.items[0].id not found: ' . print_r($responseArray, true));
+        return [];
+    }
+
+    $playlistId = "";
+    $playlistId = $responseArray['playlists']['items'][0]['id'];
 
     $curl = curl_init();
     curl_setopt_array($curl, [

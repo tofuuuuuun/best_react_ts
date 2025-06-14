@@ -32,8 +32,8 @@ if ($err) {
     echo "cURL Error #:" . $err;
 } else {
     $responseArray = json_decode($response, true);
-    $accessToken = $responseArray['access_token'] ? $responseArray['access_token'] : $cacheKey;
-    $expiresIn = $responseArray['expires_in'] ? $responseArray['expires_in'] : "3600";
+    $accessToken = isset($responseArray['access_token']) ? $responseArray['access_token'] : $cacheKey;
+    $expiresIn = isset($responseArray['expires_in']) ? $responseArray['expires_in'] : "3600";
     $expiryTime = $currentTime + $expiresIn;
 }
 
