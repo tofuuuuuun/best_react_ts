@@ -17,7 +17,7 @@ function fetch_album_images_from_api()
 
     $curl = curl_init();
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://api.spotify.com/v1/search?q=japan+top+50&type=playlist&market=JP&limit=5&offset=0",
+        CURLOPT_URL => "https://api.spotify.com/v1/search?q=%E3%83%88%E3%83%83%E3%83%9750%EF%BC%88%E6%97%A5%E6%9C%AC%EF%BC%89&type=playlist&market=JP&limit=5&offset=0",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -33,7 +33,12 @@ function fetch_album_images_from_api()
     $response = curl_exec($curl);
 
     $responseArray = json_decode($response, true);
-    $playlistId = $responseArray['playlists']['items'][4]['id'];
+    $playlistId = "";
+    for ($i = 0; $i < count($responseArray['playlists']['items']); $i++) {
+        if (isset($responseArray['playlists']['items'][$i]['id'])) {
+            $playlistId = $responseArray['playlists']['items'][$i]['id'];
+        }
+    }
 
     $curl = curl_init();
     curl_setopt_array($curl, [

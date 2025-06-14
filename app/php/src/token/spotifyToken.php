@@ -4,6 +4,7 @@ $clientSecret = getenv('SPOTIFY_CLIENT_SECRET');
 $cacheKey = 'spotify_access_token';
 $cacheExpiryKey = 'spotify_access_token_expiry';
 
+$accessToken = array();
 $accessToken = apcu_fetch($cacheKey);
 if ($accessToken) {
     return $accessToken;
@@ -26,6 +27,9 @@ $response = curl_exec($curl);
 $err = curl_error($curl);
 
 curl_close($curl);
+
+$expiresIn = "";
+$expiryTime = 0;
 
 if ($err) {
     echo "cURL Error #:" . $err;
