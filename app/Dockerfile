@@ -39,13 +39,7 @@ RUN yarn build
 FROM nginx:alpine
 
 # ビルド成果物をNginxの配信ディレクトリにコピー
-COPY --from=builder /home/node/app/frontend/dist /usr/share/nginx/html
-
-# Nginx設定のカスタマイズ
-COPY ./frontend/nginx.conf /etc/nginx/conf.d/default.conf
-
-# SSL証明書をコピー
-COPY ./certs /etc/nginx/certs
+COPY --from=builder /home/node/app/frontend/dist /var/www/html
 
 # ポートの公開
 EXPOSE 80

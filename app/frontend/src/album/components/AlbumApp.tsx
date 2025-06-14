@@ -54,7 +54,6 @@ export const AlbumApp = () => {
     debounceSearch(event.target.value);
   }
 
-  // モーダルからアルバムタイプを切り替え、フィルタリングする
   const changeType = (typeValue: string) => {
     setDataType(typeValue);
     if (typeValue != 'all') {
@@ -71,12 +70,10 @@ export const AlbumApp = () => {
     modalWindow?.scrollIntoView(true);
   }
 
-  // アルバムアート一覧の表示切替を行う
   const toggleAlbum = (id: string, albumName: string, albumArt: string, albumArtist: string) => {
     setAlbumArtList((prevList) => {
       const isSelected = prevList.some((item) => item.id === id);
       if (isSelected) {
-        // すでに選択済みのアルバムを選択した場合、選択済みのアルバムを削除する
         return prevList.filter((item) => item.id !== id);
       } else {
         return [...prevList, { id, albumName, albumArt, albumArtist }];
@@ -134,7 +131,6 @@ export const AlbumApp = () => {
     }
   };
 
-  // アーティストアルバムを全件取得する。（取得後type切り替えを行なう）
   const searchAlbum = async (artistId: string, name: string) => {
     setErrorMessage('');
     setResponseArtist([]);
@@ -176,11 +172,18 @@ export const AlbumApp = () => {
 
       const getRandomCover = () => {
         const maxCount = 10;
-        const randomCover = [];
+        const randomCover: frontCoverArt[] = [];
+
         for (let i = 0; i < maxCount; i++) {
           const randomIndex = Math.floor(Math.random() * data.length);
+          // 重複があった場合にはやり直す
+          if (randomCover.some(cover => cover === data[randomIndex])) {
+            i--;
+            continue;
+          }
           randomCover.push(data[randomIndex]);
         }
+
         return randomCover;
       };
 
@@ -196,7 +199,6 @@ export const AlbumApp = () => {
 
   useEffect(() => {
     if (albumArtList.length === 10) {
-      // 十枚選択したらリセットボタンとキャプチャボタンを表示する
       setResetButtonVisible(true);
       setAddButtonVisible(false);
       setModalIsOpen(false);

@@ -18,8 +18,11 @@ RUN pecl install apcu && docker-php-ext-enable apcu
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini
 RUN echo "apc.enable_cli=1" >> /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini
 
-# PHP設定ファイルをコピー（必要に応じて）
+# PHP設定ファイルをコピー
 COPY ./php.ini /usr/local/etc/php/
 
 # ソースコードをコピー
 COPY ./src /var/www/html
+RUN chmod +x /var/www/html/saveImages.sh
+
+RUN chown -R www-data:www-data /var/www/html

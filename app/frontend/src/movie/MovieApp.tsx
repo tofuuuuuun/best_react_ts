@@ -4,7 +4,7 @@ import { Introduction } from '@/common/Introduction';
 import { ResetArea } from '@/common/ResetArea';
 import '@/css/movie/movieStyle.css';
 import { Modal } from '@/movie/components/Modal/Modal';
-import { MoviePosterList } from '@/movie/components/MoviePosterList';
+import { MoviePosterList } from '@/movie/MoviePosterList';
 import { ResponseMoviesType, frontCoverArt } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';

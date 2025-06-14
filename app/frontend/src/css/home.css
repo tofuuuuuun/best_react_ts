@@ -1,3 +1,7 @@
+.homeLogo{
+    width: 150px;
+}
+
 .l-header{
 background-color: #24272F;
 }
@@ -16,7 +20,7 @@ background-color: #24272F;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 450px;
     height: 100%;
     background-color: #212122;
     color: #E7EEF0;
@@ -39,9 +43,19 @@ background-color: #24272F;
     padding: 1em;
 }
 
+.mainText{
+    font-size: 56px;
+    text-align: center;
+}
+
+
 @media screen and (max-width: 640px){
     .l-linkCard{
         width: 90%;
     }
     
+    .mainText{
+        font-size: 32px;
+        text-align: left;
+    }
 }

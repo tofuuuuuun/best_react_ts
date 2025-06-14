@@ -1,30 +1,44 @@
+# services:
+#   react:
+#     build:
+#       args:
+#         - NODE_VER=23-alpine3.20
+#       context: .
+#       dockerfile: Dockerfile
+#     tty: true
+#     volumes:
+#       - ./:/home/node/app
+
 services:
   react:
     build:
       args:
-        - NODE_VER=20.17.0-slim
-        - ENV_FILE=.env
+        - NODE_VER=23-alpine3.20
       context: .
       dockerfile: Dockerfile
     tty: true
     volumes:
       - ./frontend:/home/node/app/frontend
       - node_modules:/home/node/app/node_modules
-      - ./certs:/etc/nginx/certs
-    ports:
-      - "80:80"
-      - "443:443"
     depends_on:
       - php
     environment:
-      - VITE_API_BASE_URL=http://localhost
+      - VITE_API_BASE_URL=${VITE_API_BASE_URL}
 
   php:
-    build: ./php
-    volumes:
-      - ./php/src:/var/www/html
+    build:
+      args:
+        SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
+        SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
+        TMDB_API_KEY: ${TMDB_API_KEY}
+      context: ./php
+      dockerfile: ./Dockerfile
     expose:
       - "9000"
+    environment:
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - TMDB_API_KEY=${TMDB_API_KEY}
 
 volumes:
   node_modules:

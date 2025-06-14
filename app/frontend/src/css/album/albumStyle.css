@@ -190,10 +190,6 @@ input[type="radio"]:checked + label{
     width: 460px;
 }   
 
-
-/* エフェクト系 */
-.texture { background: #181819 url("@/images/texture.png");}
-
 @media (max-width:768px) {
 .headerLogo{
     width: 45%;

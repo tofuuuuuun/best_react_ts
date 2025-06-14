@@ -2,6 +2,7 @@
 * common types
 **************************************** */
 export type frontCoverArt = {
+    id: string;
     poster_path: string;
 }
 export type gridArtProps = {
