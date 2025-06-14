@@ -7,7 +7,6 @@ const PROXY_URL = `${BASE_URL}/proxy/getProxyImage.php?url=`;
 
 export const MoviePosterList = (props: MoviePosterListProps) => {
     const { moviePosterList, deleteMovie } = props;
-    // const setMoviePosterImage = (poster: string) => poster ? `${API_BASE_URL}${poster}` : NO_IMAGE;
 
     const getProxyImageUrl = (originalUrl: string) => {
         const imageItem = `${API_BASE_URL}${originalUrl}`;
