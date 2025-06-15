@@ -8,3 +8,25 @@ services:
       - "443:443"
     environment:
       - VITE_API_BASE_URL=https://rahi-lab.com/
+
+  php:
+    build: ./php
+    expose:
+      - "9000"
+    environment:
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - TMDB_API_KEY=${TMDB_API_KEY}
+
+  image-cache-batch:
+    build:
+      context: ./php
+      dockerfile: ./Dockerfile
+    command:
+      sh /var/www/html/saveImages.sh
+    environment:
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - TMDB_API_KEY=${TMDB_API_KEY}
+    depends_on:
+      - php
