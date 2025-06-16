@@ -2,7 +2,11 @@
 $images = fetch_movie_images_from_api();
 
 // ファイルに保存
-file_put_contents('/var/www/html/topMovieImage.json', json_encode($images, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+$result = file_put_contents('/var/www/html/topMovieImage.json', json_encode($images, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+
+if ($result === false) {
+    error_log('Failed to write topMovieImage.json', 3, '/tmp/batch.log');
+}
 
 function fetch_movie_images_from_api()
 {
