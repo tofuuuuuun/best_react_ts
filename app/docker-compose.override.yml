@@ -35,3 +35,6 @@ services:
       - TMDB_API_KEY=${TMDB_API_KEY}
     depends_on:
       - php
+
+volumes:
+  node_modules_override:
