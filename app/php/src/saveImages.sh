@@ -9,7 +9,9 @@ while true; do
   ls -ld /var/www/html >> /tmp/batch.log
   ls -l /var/www/html >> /tmp/batch.log
   php /var/www/html/movie/saveTopMovieImage.php >> /tmp/batch.log 2>&1
+  ls -l /var/www/html
   php /var/www/html/album/saveTopAlbumImage.php >> /tmp/batch.log 2>&1
+  ls -l /var/www/html
   echo "end batch" >> /tmp/batch.log
   sleep 3600
 done
