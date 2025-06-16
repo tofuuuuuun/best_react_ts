@@ -26,6 +26,7 @@ services:
     build:
       context: ./php
       dockerfile: ./Dockerfile
+    user: "www-data"
     command:
       sh /var/www/html/saveImages.sh
     environment:

@@ -12,6 +12,7 @@ while true; do
   ls -l /var/www/html
   php /var/www/html/album/saveTopAlbumImage.php >> /tmp/batch.log 2>&1
   ls -l /var/www/html
+  chown www-data:www-data /var/www/html/topAlbumImage.json /var/www/html/topMovieImage.json
   echo "end batch" >> /tmp/batch.log
   sleep 3600
 done
