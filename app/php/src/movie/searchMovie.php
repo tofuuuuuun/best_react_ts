@@ -21,11 +21,9 @@ if ($cachedResult) {
 }
 
 $curl = curl_init();
-// ログに出力
-error_log("Searching for movie: " . $movieTitle);
 
 curl_setopt_array($curl, [
-    CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?query={$movieTitle}&include_adult=false&language=ja-JA&region=JA&page=1",
+    CURLOPT_URL => "https://api.themoviedb.org/3/search/movie?query={$movieTitle}&include_adult=false&language=ja-JP&region=JA&page=1",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,

@@ -88,6 +88,8 @@ export const MovieApp = () => {
         throw new Error('ネットワークエラーが発生しました。');
       }
       const data = await response.json();
+
+      console.log('searchMovie data', data);
       setResponseMovies((prevState) => [...prevState, ...data["results"]]);
     } catch {
       setErrorMessage('映画の検索中にエラーが発生しました。もう一度お試しください。');
