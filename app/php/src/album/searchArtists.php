@@ -21,10 +21,10 @@ if ($cachedResult) {
     echo json_encode($cachedResult);
     exit;
 }
-
+print_r($artistName);
 $curl = curl_init();
 curl_setopt_array($curl, [
-    CURLOPT_URL => "https://api.spotify.com/v1/search?q={urlencode($artistName)}&type=artist&market=JP&limit=30&offset=0",
+    CURLOPT_URL => "https://api.spotify.com/v1/search?q={$artistName}&type=artist&market=JP&limit=30&offset=0",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
