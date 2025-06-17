@@ -81,7 +81,7 @@ export const MovieApp = () => {
     setResponseMovies([]);
     setErrorMessage('');
     try {
-      const response = await fetch(`${BASE_URL}/movie/searchMovie.php?movieTitle=${movieTitle}`);
+      const response = await fetch(`${BASE_URL}/movie/searchMovie.php?movieTitle=${encodeURI(movieTitle)}`);
       if (!response.ok) {
         throw new Error('ネットワークエラーが発生しました。');
       }

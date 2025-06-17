@@ -139,7 +139,7 @@ export const AlbumApp = () => {
     setDataType('all');
 
     const params = new URLSearchParams({
-      'artistName': name,
+      'artistName': encodeURIComponent(name),
       'type': 'all',
       'artistId': artistId
     });
