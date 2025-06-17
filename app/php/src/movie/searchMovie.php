@@ -9,7 +9,7 @@ $tmdbToken = getenv('TMDB_API_KEY');
 $cacheKey = "";
 $cachedResult = "";
 $movieTitle = '';
-$movieTitle = isset($_GET['movieTitle']) ? $_GET['movieTitle'] : '';
+$movieTitle = isset($_GET['movieTitle']) ? urlencode($_GET['movieTitle']) : '';
 
 $cacheKey = "movieTitle_" . ($movieTitle ?: md5($movieTitle));
 

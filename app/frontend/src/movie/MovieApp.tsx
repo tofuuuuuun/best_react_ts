@@ -83,7 +83,7 @@ export const MovieApp = () => {
     console.log('searchMovie', movieTitle);
     console.log(encodeURIComponent(movieTitle));
     try {
-      const response = await fetch(`${BASE_URL}/movie/searchMovie.php?movieTitle=${encodeURIComponent(movieTitle)}`);
+      const response = await fetch(`${BASE_URL}/movie/searchMovie.php?movieTitle=${movieTitle}`);
       if (!response.ok) {
         throw new Error('ネットワークエラーが発生しました。');
       }
