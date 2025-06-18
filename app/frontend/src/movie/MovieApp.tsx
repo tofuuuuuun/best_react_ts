@@ -89,7 +89,8 @@ export const MovieApp = () => {
 
       console.log('searchMovie data', data);
       setResponseMovies((prevState) => [...prevState, ...data["results"]]);
-    } catch {
+    } catch (error) {
+      console.error('Error:', error);
       setErrorMessage('映画の検索中にエラーが発生しました。もう一度お試しください。');
     }
   };
