@@ -30,7 +30,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" 'bash -s' <<EOF
           cd /var/www/best_react_ts/app
 
-          docker compose down
+          docker compose down -v
           docker builder prune -f
 
           sudo git fetch origin

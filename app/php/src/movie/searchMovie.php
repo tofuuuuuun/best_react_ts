@@ -9,20 +9,16 @@ $tmdbToken = getenv('TMDB_API_KEY');
 $cacheKey = "";
 $cachedResult = "";
 $movieTitle = '';
-$movieTitle = isset($_GET['movieTitle']) ? urlencode($_GET['movieTitle']) : '';
-
-print_r("movieTitle: " . $movieTitle . "\n");
+$movieTitle = isset($_GET['movieTitle']) ? $_GET['movieTitle'] : '';
 
 $cacheKey = "movieTitle_" . ($movieTitle ?: md5($movieTitle));
-exit;
+
 // キャッシュに一致するデータが有れば返す
 $cachedResult = apcu_fetch($cacheKey);
 if ($cachedResult) {
     echo $cachedResult;
     exit;
 }
-
-print_r("cachedResult: " . $cachedResult . "\n");
 
 $curl = curl_init();
 
@@ -44,7 +40,7 @@ $response = curl_exec($curl);
 $err = curl_error($curl);
 
 curl_close($curl);
-exit;
+
 if ($err) {
     echo ["error" => "cURL Error #:" . $err];
 } else {
