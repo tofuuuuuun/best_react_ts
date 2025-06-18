@@ -11,7 +11,7 @@ $cachedResult = "";
 $movieTitle = '';
 $movieTitle = isset($_GET['movieTitle']) ? urlencode($_GET['movieTitle']) : '';
 
-error_log("movieTitle: " . $movieTitle, 3, '/tmp/batch.log');
+print_r("movieTitle: " . $movieTitle . "\n");
 
 $cacheKey = "movieTitle_" . ($movieTitle ?: md5($movieTitle));
 
@@ -22,7 +22,7 @@ if ($cachedResult) {
     exit;
 }
 
-error_log("cacheKey: " . $cacheKey, 3, '/tmp/batch.log');
+print_r("cachedResult: " . $cachedResult . "\n");
 
 $curl = curl_init();
 
