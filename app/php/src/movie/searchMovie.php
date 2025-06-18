@@ -42,9 +42,9 @@ curl_setopt_array($curl, [
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
-error_log("cURL response: " . $response, 3, '/tmp/batch.log');
-curl_close($curl);
 
+curl_close($curl);
+exit;
 if ($err) {
     echo ["error" => "cURL Error #:" . $err];
 } else {
