@@ -10,7 +10,7 @@ $cacheKey = "";
 $cachedResult = "";
 $movieTitle = '';
 $movieTitle = isset($_GET['movieTitle']) ? $_GET['movieTitle'] : '';
-$movieTitle = urlencode($movieTitle, JSON_UNESCAPED_UNICODE);
+$movieTitle = urlencode($movieTitle);
 
 $cacheKey = "movieTitle_" . ($movieTitle ?: md5($movieTitle));
 
