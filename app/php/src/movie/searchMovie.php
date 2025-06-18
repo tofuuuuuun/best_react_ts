@@ -11,6 +11,8 @@ $cachedResult = "";
 $movieTitle = '';
 $movieTitle = isset($_GET['movieTitle']) ? urlencode($_GET['movieTitle']) : '';
 
+error_log("movieTitle: " . $movieTitle, 3, '/tmp/batch.log');
+
 $cacheKey = "movieTitle_" . ($movieTitle ?: md5($movieTitle));
 
 // キャッシュに一致するデータが有れば返す
@@ -19,6 +21,8 @@ if ($cachedResult) {
     echo $cachedResult;
     exit;
 }
+
+error_log("cacheKey: " . $cacheKey, 3, '/tmp/batch.log');
 
 $curl = curl_init();
 
@@ -38,7 +42,7 @@ curl_setopt_array($curl, [
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
-
+error_log("cURL response: " . $response, 3, '/tmp/batch.log');
 curl_close($curl);
 
 if ($err) {
