@@ -14,7 +14,7 @@ $movieTitle = isset($_GET['movieTitle']) ? urlencode($_GET['movieTitle']) : '';
 print_r("movieTitle: " . $movieTitle . "\n");
 
 $cacheKey = "movieTitle_" . ($movieTitle ?: md5($movieTitle));
-exit
+exit;
 // キャッシュに一致するデータが有れば返す
 $cachedResult = apcu_fetch($cacheKey);
 if ($cachedResult) {
