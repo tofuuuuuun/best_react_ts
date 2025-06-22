@@ -113,7 +113,7 @@ export const AlbumApp = () => {
   const searchArtist = async (artistName: string) => {
     setResponseArtist([]);
     setErrorMessage('');
-    const params = new URLSearchParams({ 'artistName': artistName });
+    const params = new URLSearchParams({ 'artistName': encodeURIComponent(artistName) });
     try {
       const response = await fetch(`${BASE_URL}/album/searchArtists.php?${params}`, {
         method: 'GET',
