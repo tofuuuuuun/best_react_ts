@@ -14,7 +14,7 @@ services:
       - /home/deploy_user/.htpasswd:/etc/nginx/htpasswd:ro
     ports:
       - "8081:80"
-      - "8443:8443"
+      - "8444:8443"
     depends_on:
       - php
 
