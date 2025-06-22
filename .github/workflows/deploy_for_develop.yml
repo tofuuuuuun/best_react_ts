@@ -1,16 +1,16 @@
-name: deploy_for_master
+name: deploy_for_develop
 
 on:
   push:
     branches:
-      - master
+      - dev
   
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: push_to_master
+      - name: push_to_dev
         uses: actions/checkout@v3
 
       - name: Set up SSH key
@@ -28,14 +28,14 @@ jobs:
       - name: SSH and deploy to VPS
         run: |
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" 'bash -s' <<EOF
-          cd /var/www/best_react_ts/app
+          cd /var/www/test/best_react_ts/app
 
-          docker compose down -v
+          docker compose down
           docker builder prune -f
 
           sudo git fetch origin
-          sudo git reset --hard origin/master
-          sudo git pull origin master
+          sudo git reset --hard origin/dev
+          sudo git pull origin dev
 
           sudo rm -f .env
           echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env
@@ -43,5 +43,5 @@ jobs:
           echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
           echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" | sudo tee -a .env
 
-          docker compose --env-file .env -f docker-compose.yml -f docker-compose.override.yml up --build -d
+          docker compose --env-file .env -f docker-compose.yml -f docker-compose.dev.yml up --build -d
           EOF
