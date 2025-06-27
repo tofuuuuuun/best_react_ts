@@ -43,5 +43,5 @@ jobs:
           echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
           echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" | sudo tee -a .env
 
-          docker compose --env-file .env -f docker-compose.yml -f docker-compose.override.yml up --build -d
+          docker compose -p prod --env-file .env -f docker-compose.yml -f docker-compose.prod.yml up --build -d
           EOF
