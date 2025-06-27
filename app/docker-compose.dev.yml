@@ -1,5 +1,6 @@
 services:
   react:
+    container_name: react_dev
     build:
       context: .
       dockerfile: Dockerfile
@@ -19,6 +20,7 @@ services:
       - php
 
   php:
+    container_name: php_dev
     build: ./php
     expose:
       - "9000"
@@ -28,6 +30,7 @@ services:
       - TMDB_API_KEY=${TMDB_API_KEY}
 
   image-cache-batch:
+    container_name: batch_dev
     build:
       context: ./php
       dockerfile: ./Dockerfile

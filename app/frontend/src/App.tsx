@@ -32,8 +32,8 @@ export const App = () => {
                 </div>
               </div>
               <ul className='linkWrapper'>
-                <li className='l-linkCard'><Link to='/album' className='linkCard ta-center'><img src={albumLogoIcon}></img></Link></li>
-                <li className='l-linkCard'><Link to='/movie' className='linkCard ta-center'><img src={movieLogoIcon}></img></Link></li>
+                <li className='l-linkCard'><Link to='/album' className='linkCard ta-center'><img src={albumLogoIcon} width='280' height='60' alt='音楽用のアイコン' /></Link></li>
+                <li className='l-linkCard'><Link to='/movie' className='linkCard ta-center'><img src={movieLogoIcon} width='280' height='60' alt='映画用のアイコン' /></Link></li>
               </ul>
             </>
           } />

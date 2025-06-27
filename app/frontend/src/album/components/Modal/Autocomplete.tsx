@@ -1,4 +1,4 @@
-import noImage from '@/images/album/noImage.png';
+import noImage from '@/images/album/noImage.webp';
 import { ModalAutocompleteProps } from '@/types/types';
 
 export const Autocomplete = (props: ModalAutocompleteProps) => {
