@@ -1,4 +1,4 @@
-import NO_IMAGE from '@/images/movie/no_image.png';
+import NO_IMAGE from '@/images/movie/no_image.webp';
 import { MoviePosterListProps } from '@/types/types';
 
 const API_BASE_URL = 'https://image.tmdb.org/t/p/w200/';
