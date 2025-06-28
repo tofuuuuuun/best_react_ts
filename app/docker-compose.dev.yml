@@ -1,6 +1,6 @@
 services:
   react:
-    container_name: react_dev
+    container_name: dev_react
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,8 +20,10 @@ services:
       - php
 
   php:
-    container_name: php_dev
+    container_name: dev_php
     build: ./php
+    volumes:
+      - shared-data:/var/www/html
     expose:
       - "9000"
     environment:
@@ -30,10 +32,13 @@ services:
       - TMDB_API_KEY=${TMDB_API_KEY}
 
   image-cache-batch:
-    container_name: batch_dev
+    container_name: dev_batch
     build:
       context: ./php
       dockerfile: ./Dockerfile
+    user: "www-data"
+    volumes:
+      - shared-data-dev:/var/www/html
     command:
       sh /var/www/html/saveImages.sh
     environment:
@@ -43,3 +48,4 @@ services:
 
 volumes:
   node_modules_test:
+  shared-data-dev:
