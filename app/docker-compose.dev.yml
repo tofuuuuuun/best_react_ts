@@ -23,7 +23,7 @@ services:
     container_name: dev_php
     build: ./php
     volumes:
-      - shared-data:/var/www/html
+      - shared-data-dev:/var/www/html
     expose:
       - "9000"
     environment:
