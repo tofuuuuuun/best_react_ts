@@ -8,6 +8,9 @@ export const Introduction = (props: gridArtProps) => {
 
     const renderList = (covers: frontCoverArt[], className: string) => {
         const base_url = type === '/album' ? '' : 'https://image.tmdb.org/t/p/w200/';
+        if (!covers || covers.length === 0) {
+            return <div className='l-gridPoster l-gridPoster--empty'>No data available</div>;
+        }
         return (
             <ul className={`l-gridPoster ${className}`} >
                 {
