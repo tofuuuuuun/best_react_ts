@@ -13,8 +13,6 @@ function fetch_album_images_from_api()
 {
     require_once(__DIR__ . '/../token/spotifyToken.php');
 
-    error_log('token: ' . print_r($accessToken, true) . PHP_EOL, 3, '/var/www/html/debug.log');
-
     $curl = curl_init();
     curl_setopt_array($curl, [
         CURLOPT_URL => "https://api.spotify.com/v1/search?q=%E3%83%88%E3%83%83%E3%83%9750%EF%BC%88%E6%97%A5%E6%9C%AC%EF%BC%89&type=playlist&market=JP&limit=1&offset=0",
@@ -38,6 +36,8 @@ function fetch_album_images_from_api()
         return [];
     }
 
+
+    error_log('Failed to fetch playlists from Spotify API: ' . print_r($responseArray['playlists']['items'], true) . PHP_EOL, 3, '/var/www/html/debug.log');
     if (
         !isset($responseArray['playlists']['items']) ||
         !is_array($responseArray['playlists']['items']) ||
