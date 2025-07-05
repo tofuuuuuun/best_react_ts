@@ -30,7 +30,7 @@ function fetch_album_images_from_api()
 
     $response = curl_exec($curl);
     $responseArray = json_decode($response, true);
-
+    error_log('test: ' . print_r($responseArray) . PHP_EOL, 3, '/var/www/html/debug.log');
     if (!isset($responseArray['playlists']['items']) || !is_array($responseArray['playlists']['items'])) {
         error_log('Failed to fetch playlists from Spotify API: ' . print_r($responseArray['playlists']['items'], true) . PHP_EOL, 3, '/var/www/html/debug.log');
         return [];
