@@ -4,6 +4,10 @@ $clientSecret = getenv('SPOTIFY_CLIENT_SECRET');
 $cacheKey = 'spotify_access_token';
 $cacheExpiryKey = 'spotify_access_token_expiry';
 
+error_log('clientId: ' . print_r($clientId, true) . PHP_EOL, 3, '/var/www/html/debug.log');
+error_log('clientSecret: ' . print_r($clientSecret, true) . PHP_EOL, 3, '/var/www/html/debug.log');
+
+
 $accessToken = array();
 $accessToken = apcu_fetch($cacheKey);
 if ($accessToken) {
