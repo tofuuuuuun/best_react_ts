@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - ENV_FILE=.env.test
+        - ENV_FILE=.env
     tty: true
     volumes:
       - ./frontend/nginx.test.conf:/etc/nginx/conf.d/default.conf

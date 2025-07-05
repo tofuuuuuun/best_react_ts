@@ -36,8 +36,6 @@ function fetch_album_images_from_api()
         return [];
     }
 
-
-    error_log('Failed to fetch playlists from Spotify API: ' . print_r($responseArray['playlists']['items'], true) . PHP_EOL, 3, '/var/www/html/debug.log');
     if (
         !isset($responseArray['playlists']['items']) ||
         !is_array($responseArray['playlists']['items']) ||
