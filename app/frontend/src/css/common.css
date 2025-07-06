@@ -425,6 +425,10 @@ main {
 .disp-Sp{ display: block!important; }
 
 
+.l-container {
+    padding-top: 15px;
+}
+
 .l-contentWrapper{
     max-width: 100%;
 }
