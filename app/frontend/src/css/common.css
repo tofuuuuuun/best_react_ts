@@ -95,6 +95,7 @@ input[type=radio]{display: none;}
 .l-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding-top: 60px;
     padding-left: 1em;
     padding-right: 1em;
 }
@@ -415,7 +416,8 @@ input[type=radio]{display: none;}
 }
 
 @media (max-width:640px) {
-html{ font-size: 12px;}
+html{ font-size: 13px;}
+
 main {
     width: 100%;
 }
