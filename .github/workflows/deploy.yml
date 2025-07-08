@@ -1,16 +1,20 @@
-name: deploy_for_develop
+name: deploy
 
 on:
   push:
     branches:
       - dev
+      - main
   
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      IS_PROD: ${{ github.ref == 'refs/heads/main' }}
+      IS_DEV: ${{ github.ref == 'refs/heads/dev' }}
 
     steps:
-      - name: push_to_dev
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Set up SSH key
@@ -30,18 +34,18 @@ jobs:
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" 'bash -s' <<EOF
           cd /var/www/test/best_react_ts/app
 
-          docker compose -p dev down -v
+          docker compose -p ${{ env.IS_PROD == 'true' && 'prod' || 'dev' }} down -v
           docker builder prune -f
 
           sudo git fetch origin
-          sudo git reset --hard origin/dev
-          sudo git pull origin dev
+          sudo git reset --hard origin/${{ env.IS_PROD == 'true' && 'main' || 'dev' }}
+          sudo git pull origin ${{ env.IS_PROD == 'true' && 'main' || 'dev' }}
 
           sudo rm -f .env
           echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env
           echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env
           echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
-          echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" | sudo tee -a .env
+          echo "VITE_API_BASE_URL=${{ env.IS_PROD == 'true' && secrets.VITE_API_BASE_URL || secrets.VITE_API_BASE_URL }}" | sudo tee -a .env
 
-          docker compose -p dev --env-file .env -f docker-compose.yml -f docker-compose.dev.yml up --build -d
+          docker compose -p ${{ env.IS_PROD == 'true' && 'prod' || 'dev' }} --env-file .env -f docker-compose.yml -f docker-compose.${{ env.IS_PROD == 'true' && 'prod' || 'dev' }}.yml up --build -d
           EOF
