@@ -4,15 +4,11 @@ on:
   push:
     branches:
       - dev
-      - main
+      - master
   
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      IS_PROD: ${{ github.ref == 'refs/heads/main' }}
-      IS_DEV: ${{ github.ref == 'refs/heads/dev' }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,34 +25,46 @@ jobs:
           ssh-keyscan -H "${{ secrets.VPS_IP }}" >> ~/.ssh/known_hosts
         shell: bash
 
-      - name: SSH and deploy to VPS
+      - name: Deploy for prod
+        if: github.ref == 'refs/heads/master'
         run: |
           ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" 'bash -s' <<EOF
           cd /var/www/test/best_react_ts/app
 
-          if [ "${GITHUB_REF}" = "refs/heads/main" ]; then
-            PROJECT_NAME=prod
-            BRANCH=main
-            VITE_API_BASE_URL="${{ secrets.VITE_API_BASE_URL_PROD }}"
-          else
-            PROJECT_NAME=dev
-            BRANCH=dev
-            VITE_API_BASE_URL="${{ secrets.VITE_API_BASE_URL_DEV }}"
-          fi
-
-          docker compose -p $PROJECT_NAME down -v
+          docker compose -p prod down -v
           docker builder prune -f
 
           sudo git fetch origin
-          sudo git reset --hard origin/$BRANCH
-          sudo git pull origin $BRANCH
+          sudo git reset --hard origin/master
+          sudo git pull origin master
 
           sudo rm -f .env
           echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env
           echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env
           echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
-          echo "VITE_API_BASE_URL=$VITE_API_BASE_URL" | sudo tee -a .env
+          echo "VITE_API_BASE_URL=$VITE_API_BASE_URL_PROD" | sudo tee -a .env
 
-          docker compose --env-file .env -p $PROJECT_NAME -f docker-compose.yml -f docker-compose.$PROJECT_NAME.yml up --build -d
+          docker compose -p prod --env-file .env -f docker-compose.yml -f docker-compose.override.yml up --build -d
           EOF
-            shell: bash
+      
+      - name: Deploy for dev
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" 'bash -s' <<EOF
+          cd /var/www/test/best_react_ts/app
+
+          docker compose -p dev down -v
+          docker builder prune -f
+
+          sudo git fetch origin
+          sudo git reset --hard origin/dev
+          sudo git pull origin dev
+
+          sudo rm -f .env
+          echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env
+          echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env
+          echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
+          echo "VITE_API_BASE_URL=$VITE_API_BASE_URL_DEV" | sudo tee -a .env
+
+          docker compose -p dev --env-file .env -f docker-compose.yml -f docker-compose.dev.yml up --build -d
+          EOF
