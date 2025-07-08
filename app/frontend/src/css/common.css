@@ -401,10 +401,6 @@ input[type=radio]{display: none;}
 }
 
 .texture { background: #181819 url("../images/texture.gif");}
-@keyframes noise_anima {
-	from { background-position: 0 0; }
-	to { background-position: 123px 456px; }
-}
 
 .fadeIn{
     animation: fadeIn 2s; 
@@ -417,13 +413,8 @@ input[type=radio]{display: none;}
 
 @media (max-width:640px) {
 html{ font-size: 13px;}
-
-main {
-    width: 100%;
-}
-
+main { width: 100%;}
 .disp-Sp{ display: block!important; }
-
 
 .l-container {
     padding-top: 15px;
