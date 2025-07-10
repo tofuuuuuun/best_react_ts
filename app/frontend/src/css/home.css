@@ -48,6 +48,11 @@ background-color: #24272F;
     text-align: center;
 }
 
+.mainSubText{
+    width: 920px;
+    margin: 0 auto;
+}
+
 
 @media screen and (max-width: 640px){
     .l-linkCard{
