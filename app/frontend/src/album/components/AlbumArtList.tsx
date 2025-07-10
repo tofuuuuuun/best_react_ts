@@ -5,7 +5,7 @@ export const AlbumArtList = (props: AlbumArtListProps) => {
     return (
         <>
             {albumArtList.length != 0 && (
-                <div className='innerContent'>
+                <div className='innerContent m-top-2em'>
                     <div className='l-common'>
                         <div className='ta-center m-bottom-2em p-top-1em'><input type='text' placeholder='このリストに名前をつけよう' className='listNameInput'></input></div>
                         <ul className='albumArtList' id='target'>
