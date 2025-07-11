@@ -229,6 +229,12 @@ export const AlbumApp = () => {
                 setModalIsOpen={setModalIsOpen}
                 type={TYPE}
               />)}
+            {resetButtonVisible && (
+              <ResetArea
+                reset={resetAlbumList}
+                type={TYPE}
+              />
+            )}
             {isSelectStart && (
               <AlbumArtList
                 isSelectStart={isSelectStart}
@@ -237,12 +243,6 @@ export const AlbumApp = () => {
               />
             )}
           </div>
-          {resetButtonVisible && (
-            <ResetArea
-              reset={resetAlbumList}
-              type={TYPE}
-            />
-          )}
         </div>
         {isModalOpen && (
           <Modal

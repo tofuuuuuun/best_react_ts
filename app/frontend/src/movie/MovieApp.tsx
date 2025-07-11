@@ -154,16 +154,16 @@ export const MovieApp = () => {
                 type={TYPE}
               />)}
           </div>
-          {isSelectStart && (
-            <MoviePosterList
-              moviePosterList={moviePosterList}
-              deleteMovie={deleteMovie}
-            />
-          )}
           {resetButtonVisible && (
             <ResetArea
               reset={resetMoviePosterList}
               type={TYPE}
+            />
+          )}
+          {isSelectStart && (
+            <MoviePosterList
+              moviePosterList={moviePosterList}
+              deleteMovie={deleteMovie}
             />
           )}
         </div>
