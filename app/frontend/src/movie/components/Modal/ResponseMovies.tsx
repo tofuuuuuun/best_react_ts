@@ -1,4 +1,4 @@
-import NO_IMAGE from '@/images/movie/no_image.png';
+import NO_IMAGE from '@/images/movie/no_image.webp';
 import { ResultCheckboxButton } from '@/movie/components/Modal/ResultCheckButton';
 import { ResponseMoviesProps } from '@/types/types';
 import React, { useMemo } from 'react';

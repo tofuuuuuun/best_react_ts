@@ -211,7 +211,7 @@ export const AlbumApp = () => {
     <>
       <Header type={TYPE} />
       <div className='mainWrapper'>
-        <div className='contentWrapper'>
+        <div className='p-top-2em p-left-1em p-right-1em'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
               <Introduction

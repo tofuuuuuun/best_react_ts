@@ -91,12 +91,10 @@ input[type=radio]{display: none;}
 .lh-2 { line-height: 2; }
 .lh-2_5 { line-height: 2.5; }
 
-
 .l-container {
-    max-width: 1200px;
+    max-width: 1080px;
     margin: 0 auto;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: 2em 1em 0 1em;
 }
 
 .inner-container {
@@ -128,6 +126,30 @@ input[type=radio]{display: none;}
 .l-topRate{
     width: 100%;
     height: 100%;
+}
+
+.l-gridPosterWrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap : 0 1em;
+    width: 1080px;
+    /* height: 980px; */
+    height: 510px;
+    padding: 1em;
+    margin: 0 auto;
+    background-color: #000000;
+    overflow: hidden;
+}
+
+.l-gridPosterWrapper::after{
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 60%);
+    width: 1080px;
+    height: 510px;
+    margin: 0 auto;
+    padding: 1em;
 }
 
 .l-button {
@@ -169,7 +191,7 @@ input[type=radio]{display: none;}
 
 .l-subButton{
     width: 3em;
-    padding: 2px 8px;
+    padding: 4px 8px;
     font-size: 14px;
     border: none;
     border-radius: 10px;
@@ -212,7 +234,7 @@ input[type=radio]{display: none;}
 }
 
 .headerLogo {
-    width: 200px;
+    width: 145px;
     height: auto;
 }
 
@@ -364,7 +386,7 @@ input[type=radio]{display: none;}
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 6%;
+    top: 3%;
     right: -1%;
     width: 40px;
     height: 40px;
@@ -399,11 +421,7 @@ input[type=radio]{display: none;}
     padding :0 1em
 }
 
-.texture { background: #181819 url("../images/texture.png"); animation: noise_anima 1.1s steps(10) infinite;}
-@keyframes noise_anima {
-	from { background-position: 0 0; }
-	to { background-position: 123px 456px; }
-}
+.texture { background: #181819 url("../images/texture.gif");}
 
 .fadeIn{
     animation: fadeIn 2s; 
@@ -415,13 +433,13 @@ input[type=radio]{display: none;}
 }
 
 @media (max-width:640px) {
-html{ font-size: 12px;}
-main {
-    width: 100%;
-}
-
+html{ font-size: 13px;}
+main { width: 100%;}
 .disp-Sp{ display: block!important; }
 
+.l-container {
+    padding-top: 15px;
+}
 
 .l-contentWrapper{
     max-width: 100%;
@@ -442,7 +460,6 @@ main {
     padding: 10px 15px;
 }
 
-
 .l-resetButton {
     width: 130px;
     padding: 9px 18px;
@@ -452,6 +469,20 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 5px;
+}
+
+.l-gridPosterWrapper {
+    width: 620px;
+    height: 620px;
+    left: 0;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    transform: rotate(25deg);
+}
+.l-gridPosterWrapper::after{
+    width: 832px;
+    height: 832px;
 }
 
 .headerLogo { 
@@ -474,6 +505,12 @@ main {
 
 .topText{
     font-size: 30px;
+}
+
+.mainSubText{
+    width: 100%;
+    margin: 0 auto;
+    font-size: 13px;
 }
 
 .mainWrapper{
@@ -527,4 +564,18 @@ main {
 
 [name="form"] { height: 35px; }
 
+}
+
+@media screen and (min-width: 1200px) {
+    .l-gridPosterWrapper {
+        width: 1080px;
+        height: 980px;
+    }
+    
+    .l-gridPosterWrapper::after{
+        content: '';
+        width: 1080px;
+        height: 980px;
+    }
+    
 }

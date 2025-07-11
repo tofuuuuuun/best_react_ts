@@ -1,0 +1,70 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - dev
+      - master
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+        shell: bash
+
+      - name: Add known_hosts
+        run: |
+          ssh-keyscan -H "${{ secrets.VPS_IP }}" >> ~/.ssh/known_hosts
+        shell: bash
+
+      - name: Deploy for prod
+        if: github.ref == 'refs/heads/master'
+        run: |
+          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" 'bash -s' <<EOF
+          cd /var/www/test/best_react_ts/app
+
+          docker compose -p prod down -v
+          docker builder prune -f
+
+          sudo git fetch origin
+          sudo git reset --hard origin/master
+          sudo git pull origin master
+
+          sudo rm -f .env
+          echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env
+          echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env
+          echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
+          echo "VITE_API_BASE_URL=$VITE_API_BASE_URL_PROD" | sudo tee -a .env
+
+          docker compose -p prod --env-file .env -f docker-compose.yml -f docker-compose.override.yml up --build -d
+          EOF
+      
+      - name: Deploy for dev
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          ssh -o StrictHostKeyChecking=no "${{ secrets.DEPLOY_USER }}"@"${{ secrets.VPS_IP }}" 'bash -s' <<EOF
+          cd /var/www/test/best_react_ts/app
+
+          docker compose -p dev down -v
+          docker builder prune -f
+
+          sudo git fetch origin
+          sudo git reset --hard origin/dev
+          sudo git pull origin dev
+
+          sudo rm -f .env
+          echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" | sudo tee .env
+          echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" | sudo tee -a .env
+          echo "TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" | sudo tee -a .env
+          echo "VITE_API_BASE_URL=$VITE_API_BASE_URL_DEV" | sudo tee -a .env
+
+          docker compose -p dev --env-file .env -f docker-compose.yml -f docker-compose.dev.yml up --build -d
+          EOF
