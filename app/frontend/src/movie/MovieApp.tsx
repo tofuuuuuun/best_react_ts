@@ -135,7 +135,7 @@ export const MovieApp = () => {
     <>
       <Header type={TYPE} />
       <div className='mainWrapper'>
-        <div>
+        <div className='p-top-2em'>
           <div className='l-contentWrapper m-bottom-1em'>
             {!isSelectStart && (
               <Introduction
