@@ -12,7 +12,7 @@ export const ResetArea = (props: ResetAreaProps) => {
                 <button className={`l-resetButton action m-right-2em textM1 txt-white reset ${resetButtonStyle}`} onClick={reset}>
                     <img src={rotateIcon} alt='リセットボタンのアイコン' />リセット
                 </button>
-                <button className={`l-resetButton action txt-white  textM1 ${resetButtonStyle}`} onClick={handleCapture}>
+                <button className={`l-resetButton action txt-white  textM1 ${resetButtonStyle}`} onClick={() => handleCapture('.l-common')}>
                     <img src={cameraIcon} alt='キャプチャボタンのアイコン' /> 共有
                 </button>
             </div>
