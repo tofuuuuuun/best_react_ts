@@ -10,7 +10,6 @@ export function handleCapture() {
         const dataURL = canvas.toDataURL("image/png");
         const blob = toBlob(dataURL);
         if (blob) {
-            alert("共有機能は、モバイルブラウザでのみ動作します。");
             const imageFile = new File([blob], "image.png", {
                 type: "image/png",
             });
