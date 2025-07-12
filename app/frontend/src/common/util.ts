@@ -23,11 +23,10 @@ export function handleCapture() {
                     console.log(error);
                 });
             } else {
-                alert('test!!!');
-                // const link = document.createElement('a');
-                // link.href = dataURL;
-                // link.download = "image.png";
-                // link.click();
+                const link = document.createElement('a');
+                link.href = dataURL;
+                link.download = "image.png";
+                link.click();
             }
         }
     });
