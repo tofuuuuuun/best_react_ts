@@ -27,7 +27,7 @@ export const Modal = (props: ModalProps) => {
                         searchAlbum={searchAlbum}
                         type='album'
                     />
-                    <div className='txt-white'><p>あと{MAX_ALBUM - albumArtList.length}作品</p></div>
+                    <div className='txt-white'><p>あと{MAX_ALBUM - albumArtList.length}作品選べます</p></div>
                     <ErrorMessage errorMessage={errorMessage} />
                     {filterResponseAlbum.length !== 0 && (
                         <div>

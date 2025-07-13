@@ -13,14 +13,21 @@ export function handleCapture() {
             const imageFile = new File([blob], "image.png", {
                 type: "image/png",
             });
-            navigator.share({
-                text: "共有",
-                files: [imageFile],
-            }).then(() => {
-                console.log("success.");
-            }).catch((error) => {
-                console.log(error);
-            });
+            if (navigator.canShare && navigator.canShare({ files: [imageFile] })) {
+                navigator.share({
+                    text: "共有",
+                    files: [imageFile],
+                }).then(() => {
+                    console.log("success.");
+                }).catch((error) => {
+                    console.log(error);
+                });
+            } else {
+                const link = document.createElement('a');
+                link.href = dataURL;
+                link.download = "image.png";
+                link.click();
+            }
         }
     });
 }

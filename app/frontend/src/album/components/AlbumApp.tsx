@@ -211,7 +211,7 @@ export const AlbumApp = () => {
     <>
       <Header type={TYPE} />
       <div className='mainWrapper'>
-        <div className='p-top-2em p-left-1em p-right-1em'>
+        <div className='p-top-2em'>
           <div className='l-contentWrapper'>
             {!isSelectStart && (
               <Introduction
@@ -229,6 +229,12 @@ export const AlbumApp = () => {
                 setModalIsOpen={setModalIsOpen}
                 type={TYPE}
               />)}
+            {resetButtonVisible && (
+              <ResetArea
+                reset={resetAlbumList}
+                type={TYPE}
+              />
+            )}
             {isSelectStart && (
               <AlbumArtList
                 isSelectStart={isSelectStart}
@@ -237,12 +243,6 @@ export const AlbumApp = () => {
               />
             )}
           </div>
-          {resetButtonVisible && (
-            <ResetArea
-              reset={resetAlbumList}
-              type={TYPE}
-            />
-          )}
         </div>
         {isModalOpen && (
           <Modal

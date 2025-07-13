@@ -135,7 +135,7 @@ export const MovieApp = () => {
     <>
       <Header type={TYPE} />
       <div className='mainWrapper'>
-        <div>
+        <div className='p-top-2em'>
           <div className='l-contentWrapper m-bottom-1em'>
             {!isSelectStart && (
               <Introduction
@@ -154,16 +154,16 @@ export const MovieApp = () => {
                 type={TYPE}
               />)}
           </div>
-          {isSelectStart && (
-            <MoviePosterList
-              moviePosterList={moviePosterList}
-              deleteMovie={deleteMovie}
-            />
-          )}
           {resetButtonVisible && (
             <ResetArea
               reset={resetMoviePosterList}
               type={TYPE}
+            />
+          )}
+          {isSelectStart && (
+            <MoviePosterList
+              moviePosterList={moviePosterList}
+              deleteMovie={deleteMovie}
             />
           )}
         </div>
