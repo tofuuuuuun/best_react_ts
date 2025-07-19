@@ -10,9 +10,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
-# zip拡張をインストール
-RUN docker-php-ext-install zip
-
 # apcuをインストールして有効化
 RUN pecl install apcu && docker-php-ext-enable apcu
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini
