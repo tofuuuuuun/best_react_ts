@@ -4,19 +4,26 @@ import { Link } from 'react-router-dom';
 
 export const Header = (props: headerProps) => {
     const { type } = props;
-    // const logoIcon = type === '/album' ? albumLogoIcon : type === '/movie' ? movieLogoIcon : homeLogoIcon;
     const logoIcon = homeLogoIcon;
     const homeLogoClass = type === '/' ? 'homeLogo' : 'contentLogo';
 
     return (
         <>
-            <header className="l-header ta-center m-both-auto">
-                <h1 className='logoPosition m-left-1em'><img src={logoIcon} alt="best" className={`headerLogo ${homeLogoClass}`} /></h1>
-                <nav className='navWrapper m-right-1em'>
-                    <ul className='navList'>
-                        <li className='navText'><Link to='/' className='txt-white ta-center'>TOP</Link></li>
-                        <li className='navText'><Link to='/album' className='txt-white ta-center'>MUSIC</Link></li>
-                        <li className='navText'><Link to='/movie' className='txt-white ta-center'>MOVIE</Link></li>
+            <header className="l-header">
+                <h1 className='u-p-left-1em'>
+                    <img src={logoIcon} alt="BEST - あなたの好きが見えるリスト作成サービス" className={`m-logo ${homeLogoClass}`} />
+                </h1>
+                <nav className='m-gnav'>
+                    <ul className='m-gnav__list'>
+                        <li className='m-gnav__list--items'>
+                            <Link to='/' className='u-txt-white u-ta-center'>TOP</Link>
+                        </li>
+                        <li className='m-gnav__list--items'>
+                            <Link to='/album' className='u-txt-white u-ta-center'>MUSIC</Link>
+                        </li>
+                        <li className='m-gnav__list--items'>
+                            <Link to='/movie' className='u-txt-white u-ta-center'>MOVIE</Link>
+                        </li>
                     </ul>
                 </nav>
             </header>

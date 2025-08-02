@@ -1,10 +1,8 @@
 import { movieCheckboxButtonProps } from '@/types/types';
+import { FaCheck, FaPlus } from 'react-icons/fa';
 
 export const ResultCheckboxButton = (props: movieCheckboxButtonProps) => {
     const { id, title, poster, toggleDisplayFlg, toggleMovie } = props;
-    const handleMovie = () => {
-        toggleMovie(id, title, poster);
-    }
     return (
         <>
             <input
@@ -12,13 +10,14 @@ export const ResultCheckboxButton = (props: movieCheckboxButtonProps) => {
                 id={`checkbox-${id}`}
                 className={toggleDisplayFlg ? 'selected' : 'select'}
                 checked={toggleDisplayFlg}
-                onChange={handleMovie}
+                onChange={() => toggleMovie(id, title, poster)}
                 aria-checked={toggleDisplayFlg}
             />
             <label
                 htmlFor={`checkbox-${id}`}
                 className={`l-button action ta-center ${toggleDisplayFlg ? ' txt-white bg-orange ' : 'txt-navy bg-gray'}`} >
-                {toggleDisplayFlg ? '選択中' : '選択'}
+                {toggleDisplayFlg ? <FaCheck /> : <FaPlus />}
+                {toggleDisplayFlg ? '済み' : '追加'}
             </label >
         </>
     )

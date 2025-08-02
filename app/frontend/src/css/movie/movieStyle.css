@@ -23,8 +23,6 @@
     flex-direction: column;
 }
 
-
-
 .l-introductionWrapper{
     position: relative;
 }
@@ -36,27 +34,11 @@
 }
 
 .l-gridPoster{
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    gap: 1em;
+
 }
 
-.girdPosterBlockWrapper{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-.topRateItem:last-child{ margin-bottom: 1em; }
 
-.startButton{
-    width: 115px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
+
 
 .moviePoster{
     border-radius: 5px;
@@ -156,67 +138,10 @@
     border-bottom-right-radius: 10px
 }
 
-.resetWrapper{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
 
 .counterText{
     font-size: 1.5em;
     font-weight: bold;
-}
-
-.scroll-infinity__list--left1 {
-    animation: infinity-scroll-left1 80s infinite linear 0.5s both;
-}
-
-@keyframes infinity-scroll-left1{
-    from{
-        transform: translateY(0);
-    }
-    to{
-        transform: translateY(-100%);
-    }
-}
-
-.scroll-infinity__list--left2 {
-    animation: infinity-scroll-left2 79s infinite linear 0.5s both;
-}
-
-@keyframes infinity-scroll-left2{
-    from{
-        transform: translateY(0);
-    }
-    to{
-        transform: translateY(-100%);
-    }
-}
-
-.scroll-infinity__list--right1 {
-    animation: infinity-scroll-right1 80.5s infinite linear 0.5s both;
-}
-
-@keyframes infinity-scroll-right1{
-    from{
-        transform: translateY(-100%);
-    }
-    to{
-        transform: translateY(0);
-    }
-}
-
-.scroll-infinity__list--right2 {
-    animation: infinity-scroll-right2 78s infinite linear 0.5s both;
-}
-
-@keyframes infinity-scroll-right2 {
-    from{
-        transform: translateY(-100%);
-    }
-    to{
-        transform: translateY(0);
-    }
 }
 
 

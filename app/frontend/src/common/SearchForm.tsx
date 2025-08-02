@@ -1,13 +1,13 @@
 import { Autocomplete } from '@/album/components/Modal/Autocomplete';
-import searchIcon from '@/images/album/search.png';
 import { SearchFormProps } from '@/types/types';
+import { BsSearch, BsXCircleFill } from "react-icons/bs";
 
 export const SearchForm = (props: SearchFormProps) => {
     const { artistName, inputArtistName, clearModal, searchArtist, responseArtist, searchAlbum, searchMovie, movieTitle, inputMovieTitle, type } = props;
     const formType = type === 'album' ? 'album' : 'movie';
     return (
-        <div className='l-searchForm ta-left' >
-            <div className='l-selectType'>
+        <div className='m-form__container'>
+            <div className='m-form__search'>
                 <input
                     type='text'
                     name='form'
@@ -15,8 +15,8 @@ export const SearchForm = (props: SearchFormProps) => {
                     value={formType === 'album' ? artistName : movieTitle}
                     onChange={formType === 'album' ? inputArtistName : inputMovieTitle}
                 />
-                <div className='clear' onClick={() => clearModal()}>
-                    <span className='icon-close'></span>
+                <div className='m-form__btn--clear' onClick={() => clearModal()}>
+                    <BsXCircleFill />
                 </div>
                 {formType === 'album' && (
                     <Autocomplete
@@ -25,12 +25,12 @@ export const SearchForm = (props: SearchFormProps) => {
                     />
                 )}
             </div>
-            <div className='p-left-1em'>
+            <div className='u-p-left-1em'>
                 <button
-                    className={`l-buttonSearch txt-white search action ${formType === 'album' ? 'bg-turquoise' : 'bg-purple'}`}
+                    className={`m-btn u-txt-white ${formType === 'album' ? 'u-bg-green' : 'u-bg-purple'}`}
                     onClick={() => formType === 'album' ? searchArtist(artistName) : searchMovie(movieTitle)}
                 >
-                    <img src={searchIcon} alt='searchIcon' width='15' />
+                    <BsSearch />
                 </button>
             </div>
         </div >

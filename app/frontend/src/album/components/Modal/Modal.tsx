@@ -3,6 +3,7 @@ import { SelectType } from '@/album/components/Modal/SelectType';
 import { SearchForm } from '@/common/SearchForm';
 import { ErrorMessage } from '@/error/ErrorMessage';
 import { ModalProps } from '@/types/types';
+import { BsXCircleFill } from "react-icons/bs";
 
 export const Modal = (props: ModalProps) => {
     const { toggleModal, changeType, dataType, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, clearModal, albumArtList, toggleAlbum, errorMessage } = props;
@@ -11,10 +12,12 @@ export const Modal = (props: ModalProps) => {
     const changeFlg = () => toggleModal(false);
     const MAX_ALBUM = 10;
     return (
-        <div className='modal-container'>
-            <div className='modal-body'>
-                <div className='modal-close' onClick={changeFlg}><span className='icon-close'></span></div>
-                <div className='modal-content'>
+        <div className='m-modal__container'>
+            <div className='m-modal__body'>
+                <div className='m-modal__icon--close' onClick={changeFlg}>
+                    <BsXCircleFill />
+                </div>
+                <div className='m-modal__content'>
                     <SearchForm
                         artistName={artistName}
                         inputArtistName={inputArtistName}
@@ -27,7 +30,7 @@ export const Modal = (props: ModalProps) => {
                         searchAlbum={searchAlbum}
                         type='album'
                     />
-                    <div className='txt-white'><p>あと{MAX_ALBUM - albumArtList.length}作品選べます</p></div>
+                    <div className='u-txt-white'><p>あと{MAX_ALBUM - albumArtList.length}作品選べます</p></div>
                     <ErrorMessage errorMessage={errorMessage} />
                     {filterResponseAlbum.length !== 0 && (
                         <div>
