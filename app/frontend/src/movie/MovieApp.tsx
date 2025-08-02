@@ -80,15 +80,12 @@ export const MovieApp = () => {
   const searchMovie = async (movieTitle: string) => {
     setResponseMovies([]);
     setErrorMessage('');
-    console.log('searchMovie movieTitle', encodeURIComponent(movieTitle));
     try {
       const response = await fetch(`${BASE_URL}/movie/searchMovie.php?movieTitle=${movieTitle}`);
       if (!response.ok) {
         throw new Error('ネットワークエラーが発生しました。');
       }
       const data = await response.json();
-
-      console.log('searchMovie data', data);
       setResponseMovies((prevState) => [...prevState, ...data["results"]]);
     } catch (error) {
       console.error('Error:', error);

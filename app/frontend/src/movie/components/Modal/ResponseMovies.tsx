@@ -14,12 +14,12 @@ export const ResponseMovies = React.memo((props: ResponseMoviesProps) => {
         [moviePosterList]);
 
     return (
-        <ul className='modalList'>
+        <ul className='m-modal__list'>
             {responseMovies.map((movie, index) => (
-                <li className={`movieItems ${index === 0 ? 'first-item' : ''}`} key={movie.id} >
-                    <img className='moviePoster' src={setMoviePosterImage(movie.poster_path)} loading={index >= 2 ? "lazy" : "eager"} />
-                    <div className='l-movieInfo'>
-                        <span className='movieTitle p-all-1em font-wb'>{movie.title}</span>
+                <li className={`m-modalResponse ${index === 0 ? 'first-item' : ''}`} key={movie.id} >
+                    <img className='m-modalResponse__img' src={setMoviePosterImage(movie.poster_path)} loading={index >= 2 ? "lazy" : "eager"} />
+                    <div className='m-modalResponse__info'>
+                        <p className='m-modalResponse__info__name u-font-wb'>{movie.title}</p>
                     </div>
                     <ResultCheckboxButton
                         id={movie.id}

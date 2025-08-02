@@ -15,7 +15,7 @@ export const ResultCheckboxButton = (props: movieCheckboxButtonProps) => {
             />
             <label
                 htmlFor={`checkbox-${id}`}
-                className={`l-button action ta-center ${toggleDisplayFlg ? ' txt-white bg-orange ' : 'txt-navy bg-gray'}`} >
+                className={`m-btn__checkbox ${toggleDisplayFlg ? ' u-txt-white u-bg-orange ' : 'u-txt-navy u-bg-gray'}`} >
                 {toggleDisplayFlg ? <FaCheck /> : <FaPlus />}
                 {toggleDisplayFlg ? '済み' : '追加'}
             </label >
