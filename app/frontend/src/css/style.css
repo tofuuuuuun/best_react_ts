@@ -138,7 +138,7 @@ input[type="radio"]:checked + label{
 
 .m-innerContainer {
     max-width: 100%;
-    width: 100%;
+    padding: 0 1em;
 }
 
 .m-logo__img{
@@ -211,6 +211,8 @@ input[type="radio"]:checked + label{
     transform: scale(0.99,0.99) translateY(2px);
 }
 
+.m-btn--search{ width: 115px; }
+
 .m-btn__checkbox{
     display: flex;
     justify-content: center;
@@ -221,18 +223,6 @@ input[type="radio"]:checked + label{
     border-radius: 10px;
     cursor: pointer;
     transition: background .2s, color .2s;
-}
-
-.m-btn__utility{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 150px;
-    padding: 12px 24px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
 }
 
 .m-btn__text--white{
@@ -246,6 +236,18 @@ input[type="radio"]:checked + label{
     justify-content: center;
     gap: 1em;
     margin-bottom: 1em;
+}
+
+.m-btn__utility{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
 
 /* Button Module - END */
@@ -541,7 +543,7 @@ input[type="radio"]:checked + label{
 .m-bestList__img {
     width: 200px;
     height: auto;
-    box-shadow: 1px 1px 15px 3px #333339;
+    box-shadow: 1px 1px 15px 3px #1c1e23;
     border-radius: 5px;
     margin-bottom: 0.5em;
 }
@@ -661,7 +663,7 @@ html{ font-size: 13px;}
     }
 
     .l-container {
-        padding-top: 15px;  
+        padding: 50px 0px; 
     }
 
 /* ====================
@@ -673,126 +675,77 @@ html{ font-size: 13px;}
     Modules Parts - START 
  ==================== */
 
+    .m-main__text{
+        font-size: 29px;
+    }
 
+    .m-gridPoster {
+        width: 620px;
+        height: 620px;
+        left: 0;
+        margin: 0 auto;
+        border-radius: 50%;
+        overflow: hidden;
+        transform: rotate(25deg);
+    }
+    .m-gridPoster::after{
+        width: 832px;
+        height: 832px;
+    }
+    .m-gridPoster__text{
+        width: 100%;
+    }
 
+    .m-btn--add{
+        width: 140px;
+        height: 140px;
+    }
+    .m-btn--search{ width: 65px; }
+    .m-btn__checkbox {
+        width: 65px;
+        padding: 10px;
+    }
+    .m-btn__utility{
+        width: 115px;
+        padding: 6px 12px;
+    }
+
+    /* Autocomplete Module - START */
+    .m-autocomplete{ width: 100%; }
+    .m-modal__container {padding: 0;} 
+    .m-modal__icon--close{ top: unset; bottom: 0%; }
+    .m-modal__body {
+        position: absolute;
+        top: 15%;
+        left: 5%;
+        max-width: 640px;
+        width: 90%;
+    }
+    .m-modalResponse{ padding: .5em; }
+    .m-modalResponse__img {
+        width: 30%;
+        border-radius: 5px;
+    }
+
+    .m-bestList__input{
+        font-size: 1em;
+        width: 280px;
+    }
+    .m-bestList__list{
+        grid-template-columns: repeat(auto-fill, 160px);
+        grid-column-gap: 10px;
+        justify-items: center;
+        justify-content: center;
+    }
+
+    .m-bestList__img {
+        width: 140px;
+        height: auto;
+    }
 
 /* ====================
     Modules Parts - END
  ==================== */
-
-
-.l-contentWrapper{
-    max-width: 100%;
-}
-
-.l-button {
-    width: 60px;
-    padding: 7px 14px;
-}
-
-.l-addButton {
-    width: 140px;
-    height: 140px;
-}
-
-.l-buttonSearch {
-    width: 4em;
-    padding: 10px 15px;
-}
-
-.l-resetButton {
-    width: 130px;
-    padding: 9px 18px;
-}
-
-.l-topRate{
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-}
-
-.m-gridPoster {
-    width: 620px;
-    height: 620px;
-    left: 0;
-    margin: 0 auto;
-    border-radius: 50%;
-    overflow: hidden;
-    transform: rotate(25deg);
-}
-.m-gridPoster::after{
-    width: 832px;
-    height: 832px;
-}
-
-.headerLogo { 
-    width: 70%;
-}
-
-.contentLogo{
-    width: 60%;
-}
-
-.inner-container_top {
-    width: 100%;
-    margin: 0 auto;
-    padding: 2em 0 1em 0;
-}
-
-.topText{
-    font-size: 30px;
-}
-
-.mainWrapper{
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding:0;
-    overflow: auto;
-    transition: .3s;
-    box-sizing: border-box;
-}
-
-.modal-container:before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-
-.modal-container.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-body {
-    position: absolute;
-    top: 20%;
-    left: 5%;
-    max-width: 640px;
-    width: 90%;
-}
-
-.modal-close {
-    top: -45px;
-    right: 0;
-}
-
-.modal-content {
-    text-align: left;
-    padding: 1em;
-    border-radius: 5px;
-}
-
-[name="form"] { height: 35px; font-size: 16px; }
 
 }
 

@@ -27,7 +27,7 @@ export const SearchForm = (props: SearchFormProps) => {
             </div>
             <div className='u-p-left-1em'>
                 <button
-                    className={`m-btn u-txt-white ${formType === 'album' ? 'u-bg-green' : 'u-bg-purple'}`}
+                    className={`m-btn m-btn--search u-txt-white ${formType === 'album' ? 'u-bg-green' : 'u-bg-purple'}`}
                     onClick={() => formType === 'album' ? searchArtist(artistName) : searchMovie(movieTitle)}
                 >
                     <BsSearch />
