@@ -2,7 +2,6 @@ import { AddButton } from '@/common/AddButton';
 import { Header } from '@/common/Header';
 import { Introduction } from '@/common/Introduction';
 import { ResetArea } from '@/common/ResetArea';
-import '@/css/movie/movieStyle.css';
 import { Modal } from '@/movie/components/Modal/Modal';
 import { MoviePosterList } from '@/movie/MoviePosterList';
 import { ResponseMoviesType, frontCoverArt } from '@/types/types';

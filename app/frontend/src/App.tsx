@@ -1,6 +1,5 @@
 import { AlbumApp } from '@/album/components/AlbumApp';
 import { Header } from '@/common/Header';
-import '@/css/home.css';
 import albumLogoIcon from '@/images/album/logo.svg';
 import movieLogoIcon from '@/images/movie/logo.svg';
 import { MovieApp } from '@/movie/MovieApp';

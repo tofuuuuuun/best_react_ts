@@ -5,7 +5,6 @@ import { useDebounce } from '@/common/debounce';
 import { Header } from '@/common/Header';
 import { Introduction } from '@/common/Introduction';
 import { ResetArea } from '@/common/ResetArea';
-import '@/css/album/albumStyle.css';
 import { AlbumArtListType, ResponseAlbumType, ResponseArtistType, frontCoverArt } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
