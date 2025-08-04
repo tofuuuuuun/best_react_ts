@@ -129,7 +129,7 @@ export const MovieApp = () => {
 
   return (
     <>
-      <Header type={TYPE} />
+      <Header />
       <div className='l-container'>
         {!isSelectStart && (
           <Introduction

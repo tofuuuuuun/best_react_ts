@@ -1,17 +1,13 @@
 import homeLogoIcon from '@/images//homeLogo.svg';
-import { headerProps } from "@/types/types";
 import { Link } from 'react-router-dom';
 
-export const Header = (props: headerProps) => {
-    const { type } = props;
-    const logoIcon = homeLogoIcon;
-    const homeLogoClass = type === '/' ? 'homeLogo' : 'contentLogo';
+export const Header = () => {
 
     return (
         <>
             <header className="l-header">
                 <h1 className='u-p-left-1em'>
-                    <img src={logoIcon} alt="BEST - あなたの好きが見えるリスト作成サービス" className={`m-logo ${homeLogoClass}`} />
+                    <img src={homeLogoIcon} alt="BEST - あなたの好きが見えるリスト作成サービス" className='m-logo' />
                 </h1>
                 <nav className='m-gnav'>
                     <ul className='m-gnav__list'>

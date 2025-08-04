@@ -5,8 +5,6 @@ import movieLogoIcon from '@/images/movie/logo.svg';
 import { MovieApp } from '@/movie/MovieApp';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 
-const TYPE = 'home';
-
 export const App = () => {
   const location = useLocation();
   return (
@@ -15,7 +13,7 @@ export const App = () => {
         <Routes location={location}>
           <Route path="/" element={
             <>
-              <Header type={TYPE} />
+              <Header />
               <div className='l-container' id='wrapper'>
                 <article className='m-innerContainer'>
                   <div className='u-m-bottom-2em'>

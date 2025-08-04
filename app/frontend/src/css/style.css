@@ -11,7 +11,7 @@ a{ text-decoration: none; }
 th,td { border-bottom: 1px solid #e6e6e6; padding: 1em 0.5em;}
 input { padding: 0.5em 1em; border-radius: 0; border: 1px solid #cacaca; }
 input[type="checkbox"]{display: none;}
-input[type=radio]{display: none;}
+input[type="radio"]{display: none;}
 
 input[type="radio"]:checked + label{
     background: #009688;
@@ -464,7 +464,7 @@ input[type="radio"]:checked + label{
     background: #24272F;
     border-radius: 5px;
     overflow: auto;
-    padding:1em 0.5em
+    padding:1em 0.5em;
 }
 
 .m-autocomplete__items{

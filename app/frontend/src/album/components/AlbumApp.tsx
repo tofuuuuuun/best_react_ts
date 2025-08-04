@@ -208,7 +208,7 @@ export const AlbumApp = () => {
 
   return (
     <>
-      <Header type={TYPE} />
+      <Header />
       <div className='l-container'>
         {!isSelectStart && (
           <Introduction
