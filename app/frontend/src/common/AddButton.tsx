@@ -1,16 +1,17 @@
 import { AddButtonProps } from '@/types/types';
+import { MdAdd } from 'react-icons/md';
 
 export const AddButton = (props: AddButtonProps) => {
     const { setModalIsOpen, isModalOpen, type } = props;
-    const addButtonStyle = type === '/album' ? 'color-Green' : 'color-Purple';
+    const addButtonStyle = type === '/album' ? 'u-txt-green' : 'u-txt-purple';
     return (
-        <div className='innerContent'>
-            <p className='txt-white textL1 ta-center m-bottom-2em'>検索して10作品選ぶことができます。</p>
+        <div className='m-innerContainer'>
+            <p className='u-textL1 u-m-bottom-2em'>検索して10作品選ぶことができます。</p>
             <button
-                className='l-addButton addButton action m-bottom-1em'
+                className='m-btn m-btn--add u-m-bottom-1em'
                 onClick={() => setModalIsOpen(!isModalOpen)}
             >
-                <span className={`icon-add ${addButtonStyle}`}></span>
+                <MdAdd size={48} className={addButtonStyle} />
             </button >
         </div >
     )

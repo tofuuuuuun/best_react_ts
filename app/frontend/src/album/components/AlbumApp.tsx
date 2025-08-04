@@ -5,7 +5,6 @@ import { useDebounce } from '@/common/debounce';
 import { Header } from '@/common/Header';
 import { Introduction } from '@/common/Introduction';
 import { ResetArea } from '@/common/ResetArea';
-import '@/css/album/albumStyle.css';
 import { AlbumArtListType, ResponseAlbumType, ResponseArtistType, frontCoverArt } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -209,41 +208,37 @@ export const AlbumApp = () => {
 
   return (
     <>
-      <Header type={TYPE} />
-      <div className='mainWrapper'>
-        <div className='p-top-2em'>
-          <div className='l-contentWrapper'>
-            {!isSelectStart && (
-              <Introduction
-                selectStart={selectStart}
-                randomURLList1={randomURLList1}
-                randomURLList2={randomURLList2}
-                randomURLList3={randomURLList3}
-                randomURLList4={randomURLList4}
-                type={TYPE}
-              />
-            )}
-            {addButtonVisible && (
-              <AddButton
-                isModalOpen={isModalOpen}
-                setModalIsOpen={setModalIsOpen}
-                type={TYPE}
-              />)}
-            {resetButtonVisible && (
-              <ResetArea
-                reset={resetAlbumList}
-                type={TYPE}
-              />
-            )}
-            {isSelectStart && (
-              <AlbumArtList
-                isSelectStart={isSelectStart}
-                albumArtList={albumArtList}
-                deleteAlbum={deleteAlbum}
-              />
-            )}
-          </div>
-        </div>
+      <Header />
+      <div className='l-container'>
+        {!isSelectStart && (
+          <Introduction
+            selectStart={selectStart}
+            randomURLList1={randomURLList1}
+            randomURLList2={randomURLList2}
+            randomURLList3={randomURLList3}
+            randomURLList4={randomURLList4}
+            type={TYPE}
+          />
+        )}
+        {addButtonVisible && (
+          <AddButton
+            isModalOpen={isModalOpen}
+            setModalIsOpen={setModalIsOpen}
+            type={TYPE}
+          />)}
+        {resetButtonVisible && (
+          <ResetArea
+            reset={resetAlbumList}
+            type={TYPE}
+          />
+        )}
+        {isSelectStart && (
+          <AlbumArtList
+            isSelectStart={isSelectStart}
+            albumArtList={albumArtList}
+            deleteAlbum={deleteAlbum}
+          />
+        )}
         {isModalOpen && (
           <Modal
             toggleModal={toggleModal}

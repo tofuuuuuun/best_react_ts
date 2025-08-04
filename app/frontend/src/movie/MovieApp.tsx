@@ -2,7 +2,6 @@ import { AddButton } from '@/common/AddButton';
 import { Header } from '@/common/Header';
 import { Introduction } from '@/common/Introduction';
 import { ResetArea } from '@/common/ResetArea';
-import '@/css/movie/movieStyle.css';
 import { Modal } from '@/movie/components/Modal/Modal';
 import { MoviePosterList } from '@/movie/MoviePosterList';
 import { ResponseMoviesType, frontCoverArt } from '@/types/types';
@@ -80,15 +79,12 @@ export const MovieApp = () => {
   const searchMovie = async (movieTitle: string) => {
     setResponseMovies([]);
     setErrorMessage('');
-    console.log('searchMovie movieTitle', encodeURIComponent(movieTitle));
     try {
       const response = await fetch(`${BASE_URL}/movie/searchMovie.php?movieTitle=${movieTitle}`);
       if (!response.ok) {
         throw new Error('ネットワークエラーが発生しました。');
       }
       const data = await response.json();
-
-      console.log('searchMovie data', data);
       setResponseMovies((prevState) => [...prevState, ...data["results"]]);
     } catch (error) {
       console.error('Error:', error);
@@ -133,40 +129,36 @@ export const MovieApp = () => {
 
   return (
     <>
-      <Header type={TYPE} />
-      <div className='mainWrapper'>
-        <div className='p-top-2em'>
-          <div className='l-contentWrapper m-bottom-1em'>
-            {!isSelectStart && (
-              <Introduction
-                selectStart={selectStart}
-                randomURLList1={randomURLList1}
-                randomURLList2={randomURLList2}
-                randomURLList3={randomURLList3}
-                randomURLList4={randomURLList4}
-                type={TYPE}
-              />
-            )}
-            {addButtonVisible && (
-              <AddButton
-                isModalOpen={isModalOpen}
-                setModalIsOpen={setModalIsOpen}
-                type={TYPE}
-              />)}
-          </div>
-          {resetButtonVisible && (
-            <ResetArea
-              reset={resetMoviePosterList}
-              type={TYPE}
-            />
-          )}
-          {isSelectStart && (
-            <MoviePosterList
-              moviePosterList={moviePosterList}
-              deleteMovie={deleteMovie}
-            />
-          )}
-        </div>
+      <Header />
+      <div className='l-container'>
+        {!isSelectStart && (
+          <Introduction
+            selectStart={selectStart}
+            randomURLList1={randomURLList1}
+            randomURLList2={randomURLList2}
+            randomURLList3={randomURLList3}
+            randomURLList4={randomURLList4}
+            type={TYPE}
+          />
+        )}
+        {addButtonVisible && (
+          <AddButton
+            isModalOpen={isModalOpen}
+            setModalIsOpen={setModalIsOpen}
+            type={TYPE}
+          />)}
+        {resetButtonVisible && (
+          <ResetArea
+            reset={resetMoviePosterList}
+            type={TYPE}
+          />
+        )}
+        {isSelectStart && (
+          <MoviePosterList
+            moviePosterList={moviePosterList}
+            deleteMovie={deleteMovie}
+          />
+        )}
         {isModalOpen && (
           <Modal
             toggleModal={toggleModal}
