@@ -570,7 +570,7 @@ input[type="radio"]:checked + label{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     font-size: 15px;
     font-weight: 500;
 }
