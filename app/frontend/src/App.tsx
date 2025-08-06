@@ -29,18 +29,20 @@ export const App = () => {
                   </div>
                 </article>
               </div>
-              <ul className='m-linkCard--list'>
-                <li className='m-linkCard'>
-                  <Link to='/album' className='u-ta-center'>
-                    <img src={albumLogoIcon} width='280' height='60' alt='音楽用のアイコン' loading='lazy' />
-                  </Link>
-                </li>
-                <li className='m-linkCard'>
-                  <Link to='/movie' className='u-ta-center'>
-                    <img src={movieLogoIcon} width='280' height='60' alt='映画用のアイコン' loading='lazy' />
-                  </Link>
-                </li>
-              </ul>
+              <div className='m-innerContainer'>
+                <ul className='m-linkCard--list'>
+                  <li className='m-linkCard'>
+                    <Link to='/album' className='u-ta-center'>
+                      <img src={albumLogoIcon} width='280' height='60' alt='音楽用のアイコン' loading='lazy' />
+                    </Link>
+                  </li>
+                  <li className='m-linkCard'>
+                    <Link to='/movie' className='u-ta-center'>
+                      <img src={movieLogoIcon} width='280' height='60' alt='映画用のアイコン' loading='lazy' />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </>
           } />
           <Route path='/album' element={<AlbumApp key={location.pathname} />} />
