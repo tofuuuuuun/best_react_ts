@@ -129,13 +129,13 @@ export type AlbumArtListProps = {
     deleteAlbum: (id: string) => void;
 }
 
-export type CheckboxButtonProps = {
+export type GenericCheckButtonProps = {
     id: string;
-    name: string;
+    title: string;
     image: string;
     artists: string;
     toggleDisplayFlg: boolean;
-    toggleAlbum: (id: string, name: string, image: string, artists: string) => void;
+    toggleItems: (id: string, title: string, image: string, artists: string) => void;
 }
 
 export type ResponseAlbumListProps = {

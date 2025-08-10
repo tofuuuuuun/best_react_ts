@@ -1,5 +1,5 @@
+import { GenericCheckButton } from '@/common/GenericCheckButton';
 import NO_IMAGE from '@/images/movie/no_image.webp';
-import { ResultCheckboxButton } from '@/movie/components/Modal/ResultCheckButton';
 import { ResponseMoviesProps } from '@/types/types';
 import React, { useMemo } from 'react';
 
@@ -21,12 +21,13 @@ export const ResponseMovies = React.memo((props: ResponseMoviesProps) => {
                     <div className='m-modalResponse__info'>
                         <p className='m-modalResponse__info__name u-font-wb'>{movie.title}</p>
                     </div>
-                    <ResultCheckboxButton
+                    <GenericCheckButton
                         id={movie.id}
                         title={movie.title}
-                        poster={movie.poster_path}
+                        image={movie.poster_path}
+                        artists=''
                         toggleDisplayFlg={movieIdSet.has(movie.id)}
-                        toggleMovie={toggleMovie}
+                        toggleItems={toggleMovie}
                     />
                 </li>
             ))
