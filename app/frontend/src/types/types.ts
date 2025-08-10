@@ -65,6 +65,11 @@ export type SearchFormProps = {
     clearModal: () => void;
     type: string;
 }
+
+export type GenericBestListProps = {
+    children: ReactNode;
+};
+
 /**************************************** 
 * BEST MUSIC types
 **************************************** */
