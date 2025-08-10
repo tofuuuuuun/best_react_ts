@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 /**************************************** 
 * common types
 **************************************** */
@@ -14,7 +16,6 @@ export type gridArtProps = {
     type: string;
 }
 
-
 export type AddButtonProps = {
     isModalOpen: boolean;
     setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,6 +30,11 @@ export type ResetAreaProps = {
 export type Debounce = (fn: () => void) => void;
 
 export type headerProps = { type: string; }
+
+export type GenericModalProps = {
+    onClose: () => void;
+    children: ReactNode;
+};
 
 export type ModalProps = {
     toggleModal: (toggle: boolean) => void;
