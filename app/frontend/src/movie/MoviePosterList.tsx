@@ -1,3 +1,4 @@
+import { GenericBestList } from '@/common/GenericBestList';
 import NO_IMAGE from '@/images/movie/no_image.webp';
 import { MoviePosterListProps } from '@/types/types';
 import { BsXCircleFill } from 'react-icons/bs';
@@ -17,20 +18,15 @@ export const MoviePosterList = (props: MoviePosterListProps) => {
     return (
         <>
             {moviePosterList.length != 0 && (
-                <div className='m-bestList__container'>
-                    <div className='u-ta-center u-m-bottom-2em u-p-top-1em'>
-                        <input type='text' placeholder='このリストに名前をつけよう' className='m-bestList__input'></input>
-                    </div>
-                    <ul className='m-bestList__list' id='target'>
-                        {moviePosterList.map((movie, index) => (
-                            <li className='m-bestList__items action' id={movie.id} key={index} >
-                                <img className='m-bestList__img' src={getProxyImageUrl(movie.poster_path)} />
-                                <span className='m-bestList__title'>{movie.title}</span>
-                                <span className='m-bestList__icon--remove' onClick={() => deleteMovie(movie.id)}><BsXCircleFill /></span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                <GenericBestList>
+                    {moviePosterList.map((movie, index) => (
+                        <li className='m-bestList__items action' id={movie.id} key={index} >
+                            <img className='m-bestList__img' src={getProxyImageUrl(movie.poster_path)} />
+                            <span className='m-bestList__title'>{movie.title}</span>
+                            <span className='m-bestList__icon--remove' onClick={() => deleteMovie(movie.id)}><BsXCircleFill /></span>
+                        </li>
+                    ))}
+                </GenericBestList>
             )}
         </>
     )
