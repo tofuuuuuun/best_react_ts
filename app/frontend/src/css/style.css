@@ -87,6 +87,8 @@ input[type="radio"]:checked + label{
 .u-txt-green { color: #009688; }
 .u-txt-purple { color: #663399; }
 
+.u-txt-checkbox{color: #12ff83;}
+
 .u-bg-orange { background-color: #ff693a; }
 .u-bg-green { background-color: #009688; }
 .u-bg-purple { background-color: #663399; }
@@ -656,6 +658,15 @@ input[type="radio"]:checked + label{
 .action:active{ transform: scale(0.95); }
 .texture { background: #181819 url("../images/texture.gif");}
 
+@keyframes checked {
+    0%{ transform: scale(2.1); }
+    100%{ transform: scale(1); }
+}
+
+.e-checked {
+    animation: checked 0.5s ease forwards;
+}
+
 /* ====================
     Effects Parts - END
  ==================== */
@@ -735,7 +746,7 @@ html{ font-size: 13px;}
     .m-modal__container {
         padding: 0;
     }
-    .m-modal__icon--close{ top: unset; bottom: 0%; }
+    .m-modal__icon--close{ top: -30px; bottom: 0%; }
     .m-modal__body {
         position: absolute;
         top: 15%;

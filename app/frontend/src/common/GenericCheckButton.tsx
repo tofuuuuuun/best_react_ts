@@ -17,8 +17,8 @@ export const GenericCheckButton = (props: GenericCheckButtonProps) => {
             <label
                 htmlFor={`checkbox-${id}`}
                 className={`m-btn__checkbox ${toggleDisplayFlg ? 'u-txt-white u-bg-orange ' : 'u-txt-navy u-bg-gray'}`}>
-                {toggleDisplayFlg ? <FaCheck /> : <FaPlus />}
-                {toggleDisplayFlg ? '済み' : '追加'}
+                {toggleDisplayFlg ? <FaCheck className="u-txt-checkbox e-checked" /> : <FaPlus />}
+                {toggleDisplayFlg ? '済' : '追加'}
             </label>
         </>
     )
