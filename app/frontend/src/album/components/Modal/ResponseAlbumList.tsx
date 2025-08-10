@@ -3,7 +3,7 @@ import { ResponseAlbumListProps } from '@/types/types';
 import React, { useMemo } from 'react';
 
 export const ResponseAlbumList = React.memo(((props: ResponseAlbumListProps) => {
-    const { toggleAlbum, filterResponseAlbum, albumArtList } = props;
+    const { toggleItems, filterResponseAlbum, albumArtList } = props;
 
     const albumIdSet = useMemo(
         () => new Set(albumArtList.map(item => item.id)),
@@ -24,7 +24,7 @@ export const ResponseAlbumList = React.memo(((props: ResponseAlbumListProps) => 
                         image={album.images[0]?.url}
                         artists={album.artists.map((value) => value.name).join(',')}
                         toggleDisplayFlg={albumIdSet.has(album.id)}
-                        toggleItems={toggleAlbum}
+                        toggleItems={toggleItems}
                     />
                 </li>
             ))}

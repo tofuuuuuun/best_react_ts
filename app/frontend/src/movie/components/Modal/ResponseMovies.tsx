@@ -6,7 +6,7 @@ import React, { useMemo } from 'react';
 const BASE_URL = 'https://image.tmdb.org/t/p/w200/';
 
 export const ResponseMovies = React.memo((props: ResponseMoviesProps) => {
-    const { toggleMovie, responseMovies, moviePosterList } = props;
+    const { toggleItems, responseMovies, moviePosterList } = props;
     const setMoviePosterImage = (poster: string) => poster ? `${BASE_URL}${poster}` : NO_IMAGE;
 
     const movieIdSet = useMemo(
@@ -25,9 +25,8 @@ export const ResponseMovies = React.memo((props: ResponseMoviesProps) => {
                         id={movie.id}
                         title={movie.title}
                         image={movie.poster_path}
-                        artists=''
                         toggleDisplayFlg={movieIdSet.has(movie.id)}
-                        toggleItems={toggleMovie}
+                        toggleItems={toggleItems}
                     />
                 </li>
             ))

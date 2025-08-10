@@ -69,13 +69,13 @@ export const AlbumApp = () => {
     modalWindow?.scrollIntoView(true);
   }
 
-  const toggleAlbum = (id: string, albumName: string, albumArt: string, albumArtist: string) => {
+  const toggleAlbum = (id: string, albumName: string, albumArt: string, albumArtist?: string) => {
     setAlbumArtList((prevList) => {
       const isSelected = prevList.some((item) => item.id === id);
       if (isSelected) {
         return prevList.filter((item) => item.id !== id);
       } else {
-        return [...prevList, { id, albumName, albumArt, albumArtist }];
+        return [...prevList, { id, albumName, albumArt, albumArtist: albumArtist ?? '' }];
       }
     });
   }
@@ -253,7 +253,7 @@ export const AlbumApp = () => {
             clearModal={clearModal}
             artistName={artistName}
             deleteAlbum={deleteAlbum}
-            toggleAlbum={toggleAlbum}
+            toggleItems={toggleAlbum}
             albumArtList={albumArtList}
           />
         )}
