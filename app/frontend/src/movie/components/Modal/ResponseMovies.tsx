@@ -1,12 +1,12 @@
+import { GenericCheckButton } from '@/common/GenericCheckButton';
 import NO_IMAGE from '@/images/movie/no_image.webp';
-import { ResultCheckboxButton } from '@/movie/components/Modal/ResultCheckButton';
 import { ResponseMoviesProps } from '@/types/types';
 import React, { useMemo } from 'react';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w200/';
 
 export const ResponseMovies = React.memo((props: ResponseMoviesProps) => {
-    const { toggleMovie, responseMovies, moviePosterList } = props;
+    const { toggleItems, responseMovies, moviePosterList } = props;
     const setMoviePosterImage = (poster: string) => poster ? `${BASE_URL}${poster}` : NO_IMAGE;
 
     const movieIdSet = useMemo(
@@ -21,12 +21,12 @@ export const ResponseMovies = React.memo((props: ResponseMoviesProps) => {
                     <div className='m-modalResponse__info'>
                         <p className='m-modalResponse__info__name u-font-wb'>{movie.title}</p>
                     </div>
-                    <ResultCheckboxButton
+                    <GenericCheckButton
                         id={movie.id}
                         title={movie.title}
-                        poster={movie.poster_path}
+                        image={movie.poster_path}
                         toggleDisplayFlg={movieIdSet.has(movie.id)}
-                        toggleMovie={toggleMovie}
+                        toggleItems={toggleItems}
                     />
                 </li>
             ))

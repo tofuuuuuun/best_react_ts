@@ -6,7 +6,7 @@ import { ErrorMessage } from '@/error/ErrorMessage';
 import { ModalProps } from '@/types/types';
 
 export const Modal = (props: ModalProps) => {
-    const { toggleModal, changeType, dataType, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, clearModal, albumArtList, toggleAlbum, errorMessage } = props;
+    const { toggleModal, changeType, dataType, searchArtist, artistName, inputArtistName, responseArtist, searchAlbum, filterResponseAlbum, clearModal, albumArtList, toggleItems, errorMessage } = props;
 
     const selectType = (event: { target: { value: string; }; }) => changeType(event.target.value);
     const onClose = () => toggleModal(false);
@@ -34,7 +34,7 @@ export const Modal = (props: ModalProps) => {
                         selectType={selectType}
                     />
                     <ResponseAlbumList
-                        toggleAlbum={toggleAlbum}
+                        toggleItems={toggleItems}
                         filterResponseAlbum={filterResponseAlbum}
                         albumArtList={albumArtList}
                     />

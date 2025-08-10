@@ -49,7 +49,7 @@ export type ModalProps = {
     clearModal: () => void;
     deleteAlbum: (id: string) => void;
     albumArtList: { id: string, albumName: string, albumArt: string, albumArtist: string }[];
-    toggleAlbum: (id: string, albumName: string, albumArt: string, albumArtist: string) => void;
+    toggleItems: (id: string, albumName: string, albumArt: string, albumArtist?: string) => void;
     errorMessage: string;
 }
 
@@ -129,19 +129,19 @@ export type AlbumArtListProps = {
     deleteAlbum: (id: string) => void;
 }
 
-export type CheckboxButtonProps = {
-    id: string;
-    name: string;
-    image: string;
-    artists: string;
-    toggleDisplayFlg: boolean;
-    toggleAlbum: (id: string, name: string, image: string, artists: string) => void;
-}
-
 export type ResponseAlbumListProps = {
-    toggleAlbum: (id: string, albumName: string, albumArt: string, albumArtist: string) => void;
+    toggleItems: (id: string, albumName: string, albumArt: string, artists?: string) => void;
     filterResponseAlbum: ResponseAlbumType[];
     albumArtList: { id: string, albumName: string, albumArt: string, albumArtist: string }[];
+}
+
+export type GenericCheckButtonProps = {
+    id: string;
+    title: string;
+    image: string;
+    artists?: string;
+    toggleDisplayFlg: boolean;
+    toggleItems: (id: string, title: string, image: string, artists?: string) => void;
 }
 
 /**************************************** 
@@ -157,7 +157,7 @@ export type movieModalProps = {
     clearModal: () => void;
     deleteMovie: (id: string) => void;
     moviePosterList: { id: string, title: string, poster_path: string }[];
-    toggleMovie: (id: string, original_title: string, poster_path: string) => void;
+    toggleItems: (id: string, original_title: string, poster_path: string) => void;
     errorMessage: string;
 }
 
@@ -195,11 +195,11 @@ export type movieCheckboxButtonProps = {
     title: string;
     poster: string;
     toggleDisplayFlg: boolean;
-    toggleMovie: (id: string, title: string, poster: string) => void;
+    toggleItems: (id: string, title: string, poster: string) => void;
 }
 
 export type ResponseMoviesProps = {
-    toggleMovie: (id: string, title: string, poster: string) => void;
+    toggleItems: (id: string, title: string, poster: string) => void;
     responseMovies: MovieType[];
     moviePosterList: { id: string, title: string, poster_path: string }[];
 }

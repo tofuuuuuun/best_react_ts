@@ -5,7 +5,7 @@ import { ResponseMovies } from '@/movie/components/Modal/ResponseMovies';
 import { movieModalProps } from '@/types/types';
 
 export const Modal = (props: movieModalProps) => {
-    const { toggleModal, searchMovie, movieTitle, inputMovieTitle, responseMovies, clearModal, moviePosterList, toggleMovie, errorMessage } = props;
+    const { toggleModal, searchMovie, movieTitle, inputMovieTitle, responseMovies, clearModal, moviePosterList, toggleItems, errorMessage } = props;
     const onClose = () => toggleModal(false);
     const MAX_ALBUM = 10;
     return (
@@ -27,7 +27,7 @@ export const Modal = (props: movieModalProps) => {
             {responseMovies.length !== 0 && (
                 <div className='m-top-1em'>
                     <ResponseMovies
-                        toggleMovie={toggleMovie}
+                        toggleItems={toggleItems}
                         responseMovies={responseMovies}
                         moviePosterList={moviePosterList}
                     />

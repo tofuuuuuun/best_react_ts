@@ -169,7 +169,7 @@ export const MovieApp = () => {
             movieTitle={movieTitle}
             clearModal={clearModal}
             deleteMovie={deleteMovie}
-            toggleMovie={toggleMovie}
+            toggleItems={toggleMovie}
             errorMessage={errorMessage}
           />
         )}

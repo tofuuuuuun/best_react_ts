@@ -1,9 +1,9 @@
-import { ResultCheckboxButton } from '@/album/components/Modal/ResultCheckButton';
+import { GenericCheckButton } from '@/common/GenericCheckButton';
 import { ResponseAlbumListProps } from '@/types/types';
 import React, { useMemo } from 'react';
 
 export const ResponseAlbumList = React.memo(((props: ResponseAlbumListProps) => {
-    const { toggleAlbum, filterResponseAlbum, albumArtList } = props;
+    const { toggleItems, filterResponseAlbum, albumArtList } = props;
 
     const albumIdSet = useMemo(
         () => new Set(albumArtList.map(item => item.id)),
@@ -18,13 +18,13 @@ export const ResponseAlbumList = React.memo(((props: ResponseAlbumListProps) => 
                         <p className='m-modalResponse__info__name u-font-wb'>{album.name}   ({album.release_date.substring(0, 4)})</p>
                         <p className='m-modalResponse__info__name--sub'>{album.artists.map((value) => value.name).join(',')}</p>
                     </div>
-                    <ResultCheckboxButton
+                    <GenericCheckButton
                         id={album.id}
-                        name={album.name}
+                        title={album.name}
                         image={album.images[0]?.url}
                         artists={album.artists.map((value) => value.name).join(',')}
                         toggleDisplayFlg={albumIdSet.has(album.id)}
-                        toggleAlbum={toggleAlbum}
+                        toggleItems={toggleItems}
                     />
                 </li>
             ))}
