@@ -86,8 +86,7 @@ input[type="radio"]:checked + label{
 .u-txt-orange { color: #ff693a; }
 .u-txt-green { color: #009688; }
 .u-txt-purple { color: #663399; }
-
-.u-txt-checkbox{color: #12ff83;}
+.u-txt-checkbox{ color: #12ff83; }
 
 .u-bg-orange { background-color: #ff693a; }
 .u-bg-green { background-color: #009688; }
@@ -659,7 +658,7 @@ input[type="radio"]:checked + label{
 .texture { background: #181819 url("../images/texture.gif");}
 
 @keyframes checked {
-    0%{ transform: scale(2.1); }
+    0%  { transform: scale(2.1); }
     100%{ transform: scale(1); }
 }
 
