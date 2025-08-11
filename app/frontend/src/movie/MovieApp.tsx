@@ -130,50 +130,53 @@ export const MovieApp = () => {
   return (
     <>
       <Header />
-      <div className='l-container'>
-        {!isSelectStart && (
-          <Introduction
-            selectStart={selectStart}
-            randomURLList1={randomURLList1}
-            randomURLList2={randomURLList2}
-            randomURLList3={randomURLList3}
-            randomURLList4={randomURLList4}
-            type={TYPE}
-          />
-        )}
-        {addButtonVisible && (
-          <AddButton
-            isModalOpen={isModalOpen}
-            setModalIsOpen={setModalIsOpen}
-            type={TYPE}
-          />)}
-        {resetButtonVisible && (
-          <ResetArea
-            reset={resetMoviePosterList}
-            type={TYPE}
-          />
-        )}
-        {isSelectStart && (
-          <MoviePosterList
-            moviePosterList={moviePosterList}
-            deleteMovie={deleteMovie}
-          />
-        )}
-        {isModalOpen && (
-          <Modal
-            toggleModal={toggleModal}
-            searchMovie={searchMovie}
-            inputMovieTitle={inputMovieTitle}
-            responseMovies={responseMovies}
-            moviePosterList={moviePosterList}
-            movieTitle={movieTitle}
-            clearModal={clearModal}
-            deleteMovie={deleteMovie}
-            toggleItems={toggleMovie}
-            errorMessage={errorMessage}
-          />
-        )}
-      </div >
+
+      {!isSelectStart && (
+        <Introduction
+          selectStart={selectStart}
+          randomURLList1={randomURLList1}
+          randomURLList2={randomURLList2}
+          randomURLList3={randomURLList3}
+          randomURLList4={randomURLList4}
+          type={TYPE}
+        />
+      )}
+      {isSelectStart && (
+        <div className='l-container'>
+          {addButtonVisible && (
+            <AddButton
+              isModalOpen={isModalOpen}
+              setModalIsOpen={setModalIsOpen}
+              type={TYPE}
+            />)}
+          {resetButtonVisible && (
+            <ResetArea
+              reset={resetMoviePosterList}
+              type={TYPE}
+            />
+          )}
+          {isSelectStart && (
+            <MoviePosterList
+              moviePosterList={moviePosterList}
+              deleteMovie={deleteMovie}
+            />
+          )}
+          {isModalOpen && (
+            <Modal
+              toggleModal={toggleModal}
+              searchMovie={searchMovie}
+              inputMovieTitle={inputMovieTitle}
+              responseMovies={responseMovies}
+              moviePosterList={moviePosterList}
+              movieTitle={movieTitle}
+              clearModal={clearModal}
+              deleteMovie={deleteMovie}
+              toggleItems={toggleMovie}
+              errorMessage={errorMessage}
+            />
+          )}
+        </div >
+      )}
     </>
   )
 }

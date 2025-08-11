@@ -209,55 +209,57 @@ export const AlbumApp = () => {
   return (
     <>
       <Header />
-      <div className='l-container'>
-        {!isSelectStart && (
-          <Introduction
-            selectStart={selectStart}
-            randomURLList1={randomURLList1}
-            randomURLList2={randomURLList2}
-            randomURLList3={randomURLList3}
-            randomURLList4={randomURLList4}
-            type={TYPE}
-          />
-        )}
-        {addButtonVisible && (
-          <AddButton
-            isModalOpen={isModalOpen}
-            setModalIsOpen={setModalIsOpen}
-            type={TYPE}
-          />)}
-        {resetButtonVisible && (
-          <ResetArea
-            reset={resetAlbumList}
-            type={TYPE}
-          />
-        )}
-        {isSelectStart && (
-          <AlbumArtList
-            isSelectStart={isSelectStart}
-            albumArtList={albumArtList}
-            deleteAlbum={deleteAlbum}
-          />
-        )}
-        {isModalOpen && (
-          <Modal
-            toggleModal={toggleModal}
-            searchArtist={searchArtist}
-            inputArtistName={inputArtistName}
-            changeType={changeType}
-            dataType={dataType}
-            responseArtist={responseArtist}
-            searchAlbum={searchAlbum}
-            filterResponseAlbum={filterResponseAlbum}
-            errorMessage={errorMessage}
-            clearModal={clearModal}
-            artistName={artistName}
-            deleteAlbum={deleteAlbum}
-            toggleItems={toggleAlbum}
-            albumArtList={albumArtList}
-          />
-        )}
-      </div >
+      {!isSelectStart && (
+        <Introduction
+          selectStart={selectStart}
+          randomURLList1={randomURLList1}
+          randomURLList2={randomURLList2}
+          randomURLList3={randomURLList3}
+          randomURLList4={randomURLList4}
+          type={TYPE}
+        />
+      )}
+      {isSelectStart && (
+        <div className='l-container'>
+          {addButtonVisible && (
+            <AddButton
+              isModalOpen={isModalOpen}
+              setModalIsOpen={setModalIsOpen}
+              type={TYPE}
+            />)}
+          {resetButtonVisible && (
+            <ResetArea
+              reset={resetAlbumList}
+              type={TYPE}
+            />
+          )}
+          {isSelectStart && (
+            <AlbumArtList
+              isSelectStart={isSelectStart}
+              albumArtList={albumArtList}
+              deleteAlbum={deleteAlbum}
+            />
+          )}
+          {isModalOpen && (
+            <Modal
+              toggleModal={toggleModal}
+              searchArtist={searchArtist}
+              inputArtistName={inputArtistName}
+              changeType={changeType}
+              dataType={dataType}
+              responseArtist={responseArtist}
+              searchAlbum={searchAlbum}
+              filterResponseAlbum={filterResponseAlbum}
+              errorMessage={errorMessage}
+              clearModal={clearModal}
+              artistName={artistName}
+              deleteAlbum={deleteAlbum}
+              toggleItems={toggleAlbum}
+              albumArtList={albumArtList}
+            />
+          )}
+        </div >
+      )}
     </>
   )
 }
