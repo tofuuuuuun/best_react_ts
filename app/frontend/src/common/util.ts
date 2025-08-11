@@ -2,7 +2,7 @@ import html2canvas from 'html2canvas';
 
 // html2canvasを使用してキャプチャーを取得し、共有する
 export function handleCapture() {
-    const L_CAPTURE_SELECTOR = '.l-common';
+    const L_CAPTURE_SELECTOR = '.m-bestList__container';
     const element = document.querySelector(L_CAPTURE_SELECTOR) as HTMLElement
     html2canvas(element, {
         useCORS: true

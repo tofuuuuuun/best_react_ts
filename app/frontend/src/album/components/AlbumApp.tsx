@@ -5,7 +5,6 @@ import { useDebounce } from '@/common/debounce';
 import { Header } from '@/common/Header';
 import { Introduction } from '@/common/Introduction';
 import { ResetArea } from '@/common/ResetArea';
-import '@/css/album/albumStyle.css';
 import { AlbumArtListType, ResponseAlbumType, ResponseArtistType, frontCoverArt } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -70,13 +69,13 @@ export const AlbumApp = () => {
     modalWindow?.scrollIntoView(true);
   }
 
-  const toggleAlbum = (id: string, albumName: string, albumArt: string, albumArtist: string) => {
+  const toggleAlbum = (id: string, albumName: string, albumArt: string, albumArtist?: string) => {
     setAlbumArtList((prevList) => {
       const isSelected = prevList.some((item) => item.id === id);
       if (isSelected) {
         return prevList.filter((item) => item.id !== id);
       } else {
-        return [...prevList, { id, albumName, albumArt, albumArtist }];
+        return [...prevList, { id, albumName, albumArt, albumArtist: albumArtist ?? '' }];
       }
     });
   }
@@ -209,60 +208,58 @@ export const AlbumApp = () => {
 
   return (
     <>
-      <Header type={TYPE} />
-      <div className='mainWrapper'>
-        <div className='p-top-2em'>
-          <div className='l-contentWrapper'>
-            {!isSelectStart && (
-              <Introduction
-                selectStart={selectStart}
-                randomURLList1={randomURLList1}
-                randomURLList2={randomURLList2}
-                randomURLList3={randomURLList3}
-                randomURLList4={randomURLList4}
-                type={TYPE}
-              />
-            )}
-            {addButtonVisible && (
-              <AddButton
-                isModalOpen={isModalOpen}
-                setModalIsOpen={setModalIsOpen}
-                type={TYPE}
-              />)}
-            {resetButtonVisible && (
-              <ResetArea
-                reset={resetAlbumList}
-                type={TYPE}
-              />
-            )}
-            {isSelectStart && (
-              <AlbumArtList
-                isSelectStart={isSelectStart}
-                albumArtList={albumArtList}
-                deleteAlbum={deleteAlbum}
-              />
-            )}
-          </div>
-        </div>
-        {isModalOpen && (
-          <Modal
-            toggleModal={toggleModal}
-            searchArtist={searchArtist}
-            inputArtistName={inputArtistName}
-            changeType={changeType}
-            dataType={dataType}
-            responseArtist={responseArtist}
-            searchAlbum={searchAlbum}
-            filterResponseAlbum={filterResponseAlbum}
-            errorMessage={errorMessage}
-            clearModal={clearModal}
-            artistName={artistName}
-            deleteAlbum={deleteAlbum}
-            toggleAlbum={toggleAlbum}
-            albumArtList={albumArtList}
-          />
-        )}
-      </div >
+      <Header />
+      {!isSelectStart && (
+        <Introduction
+          selectStart={selectStart}
+          randomURLList1={randomURLList1}
+          randomURLList2={randomURLList2}
+          randomURLList3={randomURLList3}
+          randomURLList4={randomURLList4}
+          type={TYPE}
+        />
+      )}
+      {isSelectStart && (
+        <div className='l-container'>
+          {addButtonVisible && (
+            <AddButton
+              isModalOpen={isModalOpen}
+              setModalIsOpen={setModalIsOpen}
+              type={TYPE}
+            />)}
+          {resetButtonVisible && (
+            <ResetArea
+              reset={resetAlbumList}
+              type={TYPE}
+            />
+          )}
+          {isSelectStart && (
+            <AlbumArtList
+              isSelectStart={isSelectStart}
+              albumArtList={albumArtList}
+              deleteAlbum={deleteAlbum}
+            />
+          )}
+          {isModalOpen && (
+            <Modal
+              toggleModal={toggleModal}
+              searchArtist={searchArtist}
+              inputArtistName={inputArtistName}
+              changeType={changeType}
+              dataType={dataType}
+              responseArtist={responseArtist}
+              searchAlbum={searchAlbum}
+              filterResponseAlbum={filterResponseAlbum}
+              errorMessage={errorMessage}
+              clearModal={clearModal}
+              artistName={artistName}
+              deleteAlbum={deleteAlbum}
+              toggleItems={toggleAlbum}
+              albumArtList={albumArtList}
+            />
+          )}
+        </div >
+      )}
     </>
   )
 }

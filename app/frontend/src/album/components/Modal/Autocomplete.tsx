@@ -6,13 +6,13 @@ export const Autocomplete = (props: ModalAutocompleteProps) => {
     return (
         <>
             {responseArtist.length !== 0 && (
-                <div className='l-autocomplete'>
-                    <ul className='autocompleteList'>
+                <div className='m-autocomplete'>
+                    <ul className='m-autocomplete__list'>
                         {responseArtist.map((artist, index) => (
-                            <li className='artistItems action p-left-05em m-bottom-5px' data-artist_id={artist.id} key={artist.id} onClick={() => searchAlbum(artist.id, artist.name)}>
-                                <img className='l-searchArtistImage artistImage' src={artist.images[0]?.url || noImage} loading={index >= 2 ? "lazy" : "eager"} />
-                                <div className='l-artistInfo'>
-                                    <span className='searchArtistName  txt-white font-wb'>{artist.name}</span>
+                            <li className='m-autocomplete__items u-p-left-05em' data-artist_id={artist.id} key={artist.id} onClick={() => searchAlbum(artist.id, artist.name)}>
+                                <img className='m-autocomplete__items--img' src={artist.images[0]?.url || noImage} loading={index >= 2 ? "lazy" : "eager"} />
+                                <div className='m-autocomplete__items__info'>
+                                    <span className='u-txt-white u-font-wb'>{artist.name}</span>
                                 </div>
                             </li>
                         ))}
