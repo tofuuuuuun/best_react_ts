@@ -1,7 +1,8 @@
 import homeLogoIcon from '@/images//homeLogo.svg';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Header = () => {
+const HeaderBase = () => {
 
     return (
         <>
@@ -26,3 +27,6 @@ export const Header = () => {
         </>
     );
 };
+
+export const Header = React.memo(HeaderBase);
+Header.displayName = 'Header';
