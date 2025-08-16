@@ -9,10 +9,20 @@ export function handleCapture() {
     }).then(canvas => {
         const dataURL = canvas.toDataURL("image/png");
         const blob = toBlob(dataURL);
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
         if (blob) {
             const imageFile = new File([blob], "image.png", {
                 type: "image/png",
             });
+            // iOS の場合は強制的にダウンロード
+            if (isIOS) {
+                const link = document.createElement('a');
+                link.href = dataURL;
+                link.download = "best-list.png";
+                link.click();
+                return;
+            }
             if (navigator.canShare && navigator.canShare({ files: [imageFile] })) {
                 navigator.share({
                     text: "共有",
