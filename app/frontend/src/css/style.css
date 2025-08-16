@@ -535,8 +535,8 @@ input[type="radio"]:checked + label{
 .m-bestList__items:hover .m-bestList__icon--remove{
     display: block;
     position: absolute;
-    top: 1%;
-    right: 1%;
+    top: 5px;
+    right: 5px;
     width: 30px;
     height: 30px;
     font-size: 20px;
@@ -551,6 +551,9 @@ input[type="radio"]:checked + label{
     box-shadow: 1px 1px 15px 3px #1c1e23;
     border-radius: 5px;
     margin-bottom: 0.5em;
+}
+.m-bestList__img--music {
+    height: auto;
 }
 
 .m-bestList__img::after {

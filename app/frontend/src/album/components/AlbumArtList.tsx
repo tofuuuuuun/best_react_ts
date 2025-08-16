@@ -10,7 +10,7 @@ export const AlbumArtList = (props: AlbumArtListProps) => {
                 <GenericBestList>
                     {albumArtList.map((album, index) => (
                         <li className='m-bestList__items action' id={album.id} key={index} >
-                            <img className='m-bestList__img' src={album.albumArt} />
+                            <img className='m-bestList__img m-bestList__img--music' src={album.albumArt} />
                             <span className='m-bestList__title'>{album.albumName}</span>
                             <span className='m-bestList__sub'>{album.albumArtist}</span>
                             <span className='m-bestList__icon--remove' onClick={() => deleteAlbum(album.id)}><BsXCircleFill /></span>

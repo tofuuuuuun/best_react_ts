@@ -50,14 +50,15 @@ export const AlbumApp = () => {
   };
 
   const inputArtistName = (event: { target: { value: string } }) => {
-    if (!event.target.value || event.target.value.trim() === '') {
+    const inputValue = event.target.value;
+    setArtistName(inputValue);
+    if (!inputValue || inputValue.trim() === '') {
       setResponseArtist([]);
       setErrorMessage('');
       return;
     }
-    setArtistName(event.target.value);
     setResponseArtist([]);
-    debounceSearch(event.target.value);
+    debounceSearch(inputValue);
   };
 
   const changeType = (typeValue: string) => {
