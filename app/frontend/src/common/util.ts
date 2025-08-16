@@ -15,8 +15,9 @@ export function handleCapture() {
             const imageFile = new File([blob], "image.png", {
                 type: "image/png",
             });
-            // iOS の場合は強制的にダウンロード
+
             if (isIOS) {
+                alert("iOSでは画像を直接ダウンロードできません。");
                 const link = document.createElement('a');
                 link.href = dataURL;
                 link.download = "best-list.png";
