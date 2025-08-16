@@ -535,8 +535,8 @@ input[type="radio"]:checked + label{
 .m-bestList__items:hover .m-bestList__icon--remove{
     display: block;
     position: absolute;
-    top: 5px;
-    right: 10px;
+    top: 1%;
+    right: 1%;
     width: 30px;
     height: 30px;
     font-size: 20px;
@@ -546,7 +546,8 @@ input[type="radio"]:checked + label{
 
 .m-bestList__img {
     width: 200px;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
     box-shadow: 1px 1px 15px 3px #1c1e23;
     border-radius: 5px;
     margin-bottom: 0.5em;
@@ -557,7 +558,7 @@ input[type="radio"]:checked + label{
     z-index: 100;
 }
 
-.m-bestList__title{ font-size: 1.1em; font-weight: bold; }
+.m-bestList__title{ font-size: 1em; font-weight: bold; }
 .m-bestList__sub{ font-size:0.9em; }
 
 /* home modules */
