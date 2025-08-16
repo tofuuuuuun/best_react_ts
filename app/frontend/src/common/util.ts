@@ -17,11 +17,28 @@ export function handleCapture() {
             });
 
             if (isIOS) {
-                alert("iOSでは画像を直接ダウンロードできません。");
-                const link = document.createElement('a');
-                link.href = dataURL;
-                link.download = "best-list.png";
-                link.click();
+                // iOS用：新しいタブで画像を開く
+                const newWindow = window.open();
+                if (newWindow) {
+                    newWindow.document.write(`
+                        <html>
+                            <head>
+                                <title>画像を保存してください</title>
+                                <style>
+                                    body { margin: 0; padding: 20px; text-align: center; background: #000; color: #fff; }
+                                    img { max-width: 100%; height: auto; margin-top: 20px; }
+                                </style>
+                            </head>
+                            <body>
+                                <p>画像を長押しして「写真に追加」または「画像を保存」を選択してください</p>
+                                <img src="${dataURL}" alt="BEST List" />
+                            </body>
+                        </html>
+                    `);
+                } else {
+                    // ポップアップブロックされた場合
+                    alert("ポップアップがブロックされました。ポップアップを許可してもう一度お試しください。");
+                }
                 return;
             }
             if (navigator.canShare && navigator.canShare({ files: [imageFile] })) {
