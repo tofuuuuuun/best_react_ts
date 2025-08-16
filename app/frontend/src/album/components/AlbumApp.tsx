@@ -40,6 +40,11 @@ export const AlbumApp = () => {
     setModalIsOpen(toggleFlg);
   }
 
+  const clearSearchResults = () => {
+    setResponseArtist([]);
+    setErrorMessage('');
+  };
+
   const debounce = useDebounce(500);
 
   const debounceSearch = (name: string) => {
@@ -49,9 +54,15 @@ export const AlbumApp = () => {
   };
 
   const inputArtistName = (event: { target: { value: string } }) => {
-    setArtistName(event.target.value);
-    debounceSearch(event.target.value);
-  }
+    const inputValue = event.target.value;
+    setArtistName(inputValue);
+    if (!inputValue || inputValue.trim() === '') {
+      clearSearchResults();
+      return;
+    }
+    clearSearchResults();
+    debounceSearch(inputValue);
+  };
 
   const changeType = (typeValue: string) => {
     setDataType(typeValue);
@@ -120,7 +131,7 @@ export const AlbumApp = () => {
       });
       if (response.ok) {
         const responseData = await response.json();
-        setResponseArtist([...responseArtist, ...responseData]);
+        setResponseArtist(responseData);
       } else if (!response.ok) {
         throw new Error('Network response was not ok');
       }

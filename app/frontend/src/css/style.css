@@ -376,6 +376,7 @@ input[type="radio"]:checked + label{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: .5em;
     padding: 1em;
     border-top: 1px solid #B0BEC5;
 }
@@ -385,7 +386,6 @@ input[type="radio"]:checked + label{
 .m-modalResponse__img {
     width: 20%;
     height: auto;
-    margin-right: 1em;
 }
 
 .m-modalResponse__info { 
@@ -536,7 +536,7 @@ input[type="radio"]:checked + label{
     display: block;
     position: absolute;
     top: 5px;
-    right: 10px;
+    right: 5px;
     width: 30px;
     height: 30px;
     font-size: 20px;
@@ -546,10 +546,14 @@ input[type="radio"]:checked + label{
 
 .m-bestList__img {
     width: 200px;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
     box-shadow: 1px 1px 15px 3px #1c1e23;
     border-radius: 5px;
     margin-bottom: 0.5em;
+}
+.m-bestList__img--music {
+    height: auto;
 }
 
 .m-bestList__img::after {
@@ -557,7 +561,7 @@ input[type="radio"]:checked + label{
     z-index: 100;
 }
 
-.m-bestList__title{ font-size: 1.1em; font-weight: bold; }
+.m-bestList__title{ font-size: 1em; font-weight: bold; }
 .m-bestList__sub{ font-size:0.9em; }
 
 /* home modules */
