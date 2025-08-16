@@ -40,10 +40,14 @@ export const AlbumApp = () => {
     setModalIsOpen(toggleFlg);
   }
 
+  const clearSearchResults = () => {
+    setResponseArtist([]);
+    setErrorMessage('');
+  };
+
   const debounce = useDebounce(500);
 
   const debounceSearch = (name: string) => {
-    setResponseArtist([]);
     debounce(() => {
       searchArtist(name);
     })
@@ -53,11 +57,10 @@ export const AlbumApp = () => {
     const inputValue = event.target.value;
     setArtistName(inputValue);
     if (!inputValue || inputValue.trim() === '') {
-      setResponseArtist([]);
-      setErrorMessage('');
+      clearSearchResults();
       return;
     }
-    setResponseArtist([]);
+    clearSearchResults();
     debounceSearch(inputValue);
   };
 
