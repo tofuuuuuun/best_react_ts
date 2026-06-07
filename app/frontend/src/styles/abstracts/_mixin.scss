@@ -1,0 +1,17 @@
+/* ====================
+	Mixins
+==================== */
+
+@mixin respond-to($media) {
+  @if $media ==mobile {
+    @media (max-width: $mobile) {
+      @content;
+    }
+  }
+
+  @else if $media ==tablet {
+    @media (max-width: $tablet) {
+      @content;
+    }
+  }
+}

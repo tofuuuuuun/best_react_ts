@@ -1,0 +1,38 @@
+/* ====================
+	Layout
+==================== */
+// common layout styles
+.l-header {
+  position: sticky;
+  top: 16px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  width: min(1200px, calc(100% - 32px));
+  height: 50px;
+  margin-inline: auto;
+  padding: 1em 0;
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.l-main {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 70px 35px;
+}
+
+.l-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 1em 0;
+}
+
+.l-innercontainer {
+  max-width: 100%;
+  padding: 0 1em;
+}
