@@ -7,19 +7,19 @@ const HeaderBase = () => {
     return (
         <>
             <header className="l-header">
-                <h1 className='u-p-left-1em'>
-                    <img src={homeLogoIcon} alt="BEST - あなたの好きが見えるリスト作成サービス" className='m-logo' />
+                <h1 className=''>
+                    <img src={homeLogoIcon} alt="BEST - あなたの好きが見えるリスト作成サービス" className='c-logo' />
                 </h1>
-                <nav className='m-gnav'>
-                    <ul className='m-gnav__list'>
-                        <li className='m-gnav__list--items'>
-                            <Link to='/' className='u-txt-white u-ta-center'>TOP</Link>
+                <nav className='c-gnav'>
+                    <ul className='c-gnav__list'>
+                        <li className='c-gnav__list--items'>
+                            <Link to='/'>TOP</Link>
                         </li>
-                        <li className='m-gnav__list--items'>
-                            <Link to='/album' className='u-txt-white u-ta-center'>MUSIC</Link>
+                        <li className='c-gnav__list--items'>
+                            <Link to='/album'>MUSIC</Link>
                         </li>
-                        <li className='m-gnav__list--items'>
-                            <Link to='/movie' className='u-txt-white u-ta-center'>MOVIE</Link>
+                        <li className='c-gnav__list--items'>
+                            <Link to='/movie'>MOVIE</Link>
                         </li>
                     </ul>
                 </nav>

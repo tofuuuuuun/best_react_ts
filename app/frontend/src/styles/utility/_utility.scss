@@ -1,15 +1,15 @@
 /* ====================
 	Utility Class
 ==================== */
-.u-display-none {
+.u-disp-none {
 	display: none !important;
 }
 
-.u-display-sp {
+.u-disp-sp {
 	display: none !important;
 }
 
-
+// margin
 .u-mt-5px {
 	margin-top: 5px;
 }
@@ -98,6 +98,7 @@
 	margin: 0 auto;
 }
 
+// padding
 .u-p-all-1em {
 	padding: 1em;
 }
@@ -186,6 +187,15 @@
 	padding-left: 5em;
 }
 
+// text-align
 .u-ta-center {
 	text-align: center;
+}
+
+.u-txt-white {
+	color: $white-color;
+}
+
+.u-txt-navy {
+	color: $navy-color;
 }

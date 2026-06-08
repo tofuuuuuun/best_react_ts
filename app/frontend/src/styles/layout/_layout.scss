@@ -14,6 +14,12 @@
   padding: 1em 0;
   background: rgba(18, 18, 18, 0.85);
   backdrop-filter: blur(12px);
+
+  @include for-sp {
+    height: 50px;
+    padding: .5em 0;
+    align-items: center;
+  }
 }
 
 .l-main {
@@ -21,6 +27,10 @@
   width: 100%;
   margin: 0 auto;
   padding: 70px 35px;
+
+  @include for-sp {
+    padding: 80px 1em;
+  }
 }
 
 .l-footer {

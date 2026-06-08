@@ -14,17 +14,17 @@ export const App = () => {
           <Route path="/" element={
             <>
               <Header />
-              <div className='l-container' id='wrapper'>
-                <article className='m-innerContainer'>
-                  <div className='u-m-bottom-2em'>
-                    <h2 className='u-txt-white m-main__text'>選ぶ、並べる、<br className='u-display-Sp' />見えてくる "好き"
+              <div className='l-main' id='wrapper'>
+                <article className='l-innerContainer'>
+                  <div className='u-mb-2em'>
+                    <h2 className='u-txt-white m-main__text'>選ぶ、並べる、<br className='u-disp-sp' />見えてくる "好き"
                     </h2></div>
                   <div className='m-main__text--sub'>
-                    <p className='u-textM1 u-m-bottom-1em'>テーマごとに好きな作品を10作品だけ選んで並べるサイトです。</p>
-                    <p className='u-textM1 u-m-bottom-1em'>「ベストアルバム10枚」「泣ける映画10選」など‥‥ 自分だけのリストを気軽につくれます。</p>
-                    <p className='u-textM1 u-m-bottom-1em'>ユーザー登録は必要ありません。</p>
-                    <p className='u-textM1 u-m-bottom-1em'>作品の画像も表示されるので、見た目にもわかりやすく。</p>
-                    <p className='u-textM1 u-m-bottom-1em'>話のきっかけや、誰かとの共有にも使えます。</p>
+                    <p className='u-textM1 u-mb-1em'>テーマごとに好きな作品を10作品だけ選んで並べるサイトです。</p>
+                    <p className='u-textM1 u-mb-1em'>「ベストアルバム10枚」「泣ける映画10選」など‥‥ 自分だけのリストを気軽につくれます。</p>
+                    <p className='u-textM1 u-mb-1em'>ユーザー登録は必要ありません。</p>
+                    <p className='u-textM1 u-mb-1em'>作品の画像も表示されるので、見た目にもわかりやすく。</p>
+                    <p className='u-textM1 u-mb-1em'>話のきっかけや、誰かとの共有にも使えます。</p>
                     <p className='u-textM1'>ただ並べてみるだけでも、あなたの「好き」が見えてくるかもしれません。</p>
                   </div>
                 </article>

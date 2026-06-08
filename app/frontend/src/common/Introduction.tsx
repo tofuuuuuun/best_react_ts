@@ -54,7 +54,7 @@ export const Introduction = (props: gridArtProps) => {
                 </div>
                 <div className='m-gridPoster__text'>
                     <h2 className='m-main__text u-m-bottom-1em'>{modeType}の話をしよう。<br />あなたの"ベスト10"は？</h2>
-                    <button className={`m-btn m-btn__text--white u-m-both-auto ${addButtonStyle}`} onClick={() => selectStart()}>START <BsArrowRightShort size={24} /></button>
+                    <button className={`c-btn m-btn__text--white u-m-both-auto ${addButtonStyle}`} onClick={() => selectStart()}>START <BsArrowRightShort size={24} /></button>
                 </div>
             </div >
         </>
