@@ -1,35 +1,37 @@
+@use '../abstracts/variables' as v;
 /* ====================
 	Common components
 ==================== */
 
 // Header
-.m-logo {
+.c-logo {
   width: 60%;
 }
 
 // Global navigation
-.m-gnav {
+.c-gnav {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   height: auto;
   padding: 0 1em;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2em;
+
+    a {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: v.$white-color;
+    }
+  }
 }
 
-.c-gnav__list {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2em;
-}
-
-.c-gnav__list--items {
-  font-size: 1em;
-  font-weight: bold;
-  color: $white-color;
-}
 
 // button
 .c-btn {
@@ -53,7 +55,7 @@
 .c-btn--sub {
   padding: 6px 10px;
   font-size: 12px;
-  color: $navbar-color;
+  color: v.$navbar-color;
 }
 
 // TODO:　再考の余地あり

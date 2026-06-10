@@ -8,17 +8,17 @@ const HeaderBase = () => {
         <>
             <header className="l-header">
                 <h1 className=''>
-                    <img src={homeLogoIcon} alt="BEST - あなたの好きが見えるリスト作成サービス" className='c-logo' />
+                    <img src={homeLogoIcon} alt="BEST-あなたの好きが見えるリスト作成サービス" className='c-logo' />
                 </h1>
                 <nav className='c-gnav'>
                     <ul className='c-gnav__list'>
-                        <li className='c-gnav__list--items'>
+                        <li>
                             <Link to='/'>TOP</Link>
                         </li>
-                        <li className='c-gnav__list--items'>
+                        <li>
                             <Link to='/album'>MUSIC</Link>
                         </li>
-                        <li className='c-gnav__list--items'>
+                        <li>
                             <Link to='/movie'>MOVIE</Link>
                         </li>
                     </ul>

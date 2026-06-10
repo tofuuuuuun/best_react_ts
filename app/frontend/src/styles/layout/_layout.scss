@@ -1,6 +1,12 @@
+@use '../abstracts/mixin' as mixin;
+
 /* ====================
 	Layout
 ==================== */
+.texture {
+  background: #181819 url("../images/texture.gif");
+}
+
 // common layout styles
 .l-header {
   position: sticky;
@@ -9,13 +15,13 @@
   display: flex;
   justify-content: space-between;
   width: min(1200px, calc(100% - 32px));
-  height: 50px;
+  height: auto;
   margin-inline: auto;
   padding: 1em 0;
   background: rgba(18, 18, 18, 0.85);
   backdrop-filter: blur(12px);
 
-  @include for-sp {
+  @include mixin.respond-to(sp) {
     height: 50px;
     padding: .5em 0;
     align-items: center;
@@ -28,7 +34,7 @@
   margin: 0 auto;
   padding: 70px 35px;
 
-  @include for-sp {
+  @include mixin.respond-to(sp) {
     padding: 80px 1em;
   }
 }

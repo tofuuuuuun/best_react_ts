@@ -1,16 +1,17 @@
+@use './variables' as vars;
 /* ====================
 	Mixins
 ==================== */
 
 @mixin respond-to($media) {
-  @if $media ==mobile {
-    @media (max-width: $mobile) {
+  @if $media ==sp {
+    @media (max-width: vars.$mobile) {
       @content;
     }
   }
 
   @else if $media ==tablet {
-    @media (max-width: $tablet) {
+    @media (max-width: vars.$tablet) {
       @content;
     }
   }
