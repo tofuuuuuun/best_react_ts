@@ -4,7 +4,12 @@
 	Layout
 ==================== */
 .texture {
-  background: #181819 url("../images/texture.gif");
+  background:
+    radial-gradient(circle at top center,
+      rgba(255, 255, 255, 0.04),
+      transparent 60%),
+    url("../images/texture.gif"),
+    #181819;
 }
 
 // common layout styles
@@ -18,8 +23,12 @@
   height: auto;
   margin-inline: auto;
   padding: 1em 0;
-  background: rgba(18, 18, 18, 0.85);
-  backdrop-filter: blur(12px);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, .04),
+      rgba(255, 255, 255, .02));
+  border: 1px solid rgba(255, 255, 255, .08);
+  backdrop-filter: blur(1px);
 
   @include mixin.respond-to(sp) {
     height: 50px;
