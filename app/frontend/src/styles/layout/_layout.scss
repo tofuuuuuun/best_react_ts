@@ -22,12 +22,13 @@
   width: min(1200px, calc(100% - 32px));
   height: auto;
   margin-inline: auto;
-  padding: 1em 0;
+  padding: 1em;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 12px;
   background:
     linear-gradient(180deg,
       rgba(255, 255, 255, .04),
       rgba(255, 255, 255, .02));
-  border: 1px solid rgba(255, 255, 255, .08);
   backdrop-filter: blur(1px);
 
   @include mixin.respond-to(sp) {
@@ -38,13 +39,13 @@
 }
 
 .l-main {
-  max-width: 1080px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 70px 35px;
+  width: min(1200px, calc(100% - 32px));
+  margin-top: 3em;
+  margin-inline: auto;
+  background: none;
 
   @include mixin.respond-to(sp) {
-    padding: 80px 1em;
+    // padding: 80px 1em;
   }
 }
 

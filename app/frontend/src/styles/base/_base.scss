@@ -28,6 +28,10 @@ a {
     color: inherit;
 }
 
+li {
+    list-style: none;
+}
+
 /* 4. メディア要素（画像など）がはみ出さないようにし、ブロック要素化する */
 img,
 picture,

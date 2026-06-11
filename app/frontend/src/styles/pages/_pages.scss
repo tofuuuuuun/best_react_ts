@@ -1,0 +1,29 @@
+@use '../abstracts/variables' as v;
+/* ====================
+	Common components
+==================== */
+
+// main
+.p-main {
+  &__h2 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: -0.03em;
+    text-align: center;
+  }
+
+  &__desc {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+
+  }
+}
