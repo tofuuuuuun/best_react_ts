@@ -1,6 +1,5 @@
 import homeLogoIcon from '@/images//homeLogo.svg';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const HeaderBase = () => {
 
@@ -10,19 +9,6 @@ const HeaderBase = () => {
                 <h1 className=''>
                     <img src={homeLogoIcon} alt="BEST-あなたの好きが見えるリスト作成サービス" className='c-logo' />
                 </h1>
-                <nav className='c-gnav'>
-                    <ul className='c-gnav__list'>
-                        <li>
-                            <Link to='/'>TOP</Link>
-                        </li>
-                        <li>
-                            <Link to='/album'>MUSIC</Link>
-                        </li>
-                        <li>
-                            <Link to='/movie'>MOVIE</Link>
-                        </li>
-                    </ul>
-                </nav>
             </header>
         </>
     );

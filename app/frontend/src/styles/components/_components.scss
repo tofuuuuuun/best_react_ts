@@ -15,7 +15,6 @@
   align-items: center;
   flex-wrap: wrap;
   height: auto;
-  padding: 0 1em;
 
   &__list {
     display: flex;
@@ -48,7 +47,7 @@
   &--sub {
     padding: 6px 10px;
     font-size: 12px;
-    color: v.$navbar-color;
+    color: v.$navy-color;
   }
 }
 
@@ -63,11 +62,10 @@
   width: 220px;
   height: 220px;
   border-radius: 5px;
-  background-color: #24272f;
+  background-color: v.$navy-color;
 }
 
 .c-btn--add:hover {
-  background-color: #1b1d23;
   transition-duration: 0.2s;
   transform: scale(0.99, 0.99) translateY(2px);
 }
@@ -76,4 +74,32 @@
   gap: 5px;
   width: 55px;
   padding: 9px 18px;
+}
+
+// select　card
+.c-select {
+  &__list {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .02);
+    transition: transform .2s, border-color .2s;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, .15);
+    }
+  }
 }
