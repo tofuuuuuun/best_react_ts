@@ -3,16 +3,6 @@
 /* ====================
 	Layout
 ==================== */
-.texture {
-  background:
-    radial-gradient(circle at top center,
-      rgba(255, 255, 255, 0.02),
-      transparent 60%),
-    url("../images/texture.png"),
-    #181819;
-  background-repeat: no-repeat;
-}
-
 // common layout styles
 .l-header {
   position: sticky;
