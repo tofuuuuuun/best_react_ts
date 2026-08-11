@@ -1,38 +1,34 @@
-import { Autocomplete } from '@/album/components/Modal/Autocomplete';
-import { SearchFormProps } from '@/types/types';
 import { BsSearch, BsXCircleFill } from "react-icons/bs";
 
-export const SearchForm = (props: SearchFormProps) => {
-    const { artistName, inputArtistName, clearModal, searchArtist, responseArtist, searchAlbum, searchMovie, movieTitle, inputMovieTitle, type } = props;
-    const formType = type === 'album' ? 'album' : 'movie';
-    return (
-        <div className='m-form__container'>
-            <div className='m-form__search'>
-                <input
-                    type='text'
-                    name='form'
-                    placeholder={`${formType === 'album' ? 'アーティスト名' : '映画名'}を入力してください`}
-                    value={formType === 'album' ? artistName : movieTitle}
-                    onChange={formType === 'album' ? inputArtistName : inputMovieTitle}
-                />
-                <div className='m-form__btn--clear' onClick={() => clearModal()}>
-                    <BsXCircleFill />
-                </div>
-                {formType === 'album' && (
-                    <Autocomplete
-                        responseArtist={responseArtist}
-                        searchAlbum={searchAlbum}
-                    />
-                )}
-            </div>
-            <div className='u-p-left-1em'>
-                <button
-                    className={`c-btn u-txt-white ${formType === 'album' ? 'u-bg-green' : 'u-bg-purple'}`}
-                    onClick={() => formType === 'album' ? searchArtist(artistName) : searchMovie(movieTitle)}
-                >
-                    <BsSearch />
-                </button>
-            </div>
-        </div >
-    )
+export const SearchForm = (props: { inputValue: string, selectedMode: string, onSearch: (value: string) => void }) => {
+	const { inputValue, selectedMode, onSearch } = props;
+	return (
+		<div className='c-form__container'>
+			<div className='c-form__search'>
+				<input
+					type='text'
+					name='form'
+					value={inputValue}
+					onChange={(e) => { onSearch(e.target.value) }}
+				/>
+				<div className='c-form__btn--clear'>
+					<BsXCircleFill />
+				</div>
+				{/* {selectedMode === 'album' && (
+					<Autocomplete
+						responseArtist={responseArtist}
+						searchAlbum={searchAlbum}
+					/>
+				)} */}
+			</div>
+			<div className='u-p-left-1em'>
+				<button
+					className={`c-btn u-txt-white ${selectedMode === 'album' ? 'u-bg-green' : 'u-bg-purple'}`}
+					onClick={() => onSearch(inputValue)}
+				>
+					<BsSearch />
+				</button>
+			</div>
+		</div >
+	)
 }

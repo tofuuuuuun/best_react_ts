@@ -1,16 +1,13 @@
 import { GenericModal } from '@/common/GenericModal';
-import { SearchForm } from '@/common/SearchForm';
-import { ErrorMessage } from '@/error/ErrorMessage';
-import { ResponseMovies } from '@/movie/components/Modal/ResponseMovies';
-import { movieModalProps } from '@/types/types';
 
-export const Modal = (props: movieModalProps) => {
-    const { toggleModal, searchMovie, movieTitle, inputMovieTitle, responseMovies, clearModal, moviePosterList, toggleItems, errorMessage } = props;
-    const onClose = () => toggleModal(false);
-    const MAX_ALBUM = 10;
+export const Modal = () => {
+    // const { toggleModal, searchMovie, movieTitle, inputMovieTitle, responseMovies, clearModal, moviePosterList, toggleItems, errorMessage } = props;
+    // const onClose = () => toggleModal(false);
+    // const MAX_ALBUM = 10;
     return (
-        <GenericModal onClose={onClose}>
-            <SearchForm
+        <GenericModal onClose={() => { }}>
+            <></>
+            {/* <SearchForm
                 artistName=''
                 inputArtistName={() => { }}
                 searchArtist={() => { }}
@@ -32,7 +29,7 @@ export const Modal = (props: movieModalProps) => {
                         moviePosterList={moviePosterList}
                     />
                 </div>
-            )}
+            )} */}
         </GenericModal>
     )
 }

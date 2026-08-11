@@ -51,20 +51,38 @@ export type ModalProps = {
     albumArtList: { id: string, albumName: string, albumArt: string, albumArtist: string }[];
     toggleItems: (id: string, albumName: string, albumArt: string, albumArtist?: string) => void;
     errorMessage: string;
+    selectedType: string;
+    searchTarget: () => void;
+    inputTarget: (event: { target: { value: string } }) => void;
 }
 
 export type SearchFormProps = {
-    artistName: string;
-    movieTitle: string;
-    inputArtistName: (event: { target: { value: string } }) => void;
-    inputMovieTitle: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    searchTarget: () => void;
+    selectedType: string;
+    inputTarget: (event: { target: { value: string } }) => void;
     searchArtist: (artistName: string) => void;
     responseArtist: ResponseArtist[];
     searchAlbum: (id: string, name: string) => void;
-    searchMovie: (title: string) => void;
     clearModal: () => void;
-    type: string;
+
 }
+
+// ここは後で型の名前を変更する
+export type renewModalProsp = {
+    toggleModal: (toggle: boolean, type?: string) => void;
+    inputValue: string;
+    selectedMode: string;
+    responseArtist: ResponseArtist[];
+    // searchMovie: (artistName: string) => void;
+    // movieTitle: string;
+    onSearch: (value: string) => void;
+    // responseMovies: MovieType[];
+    clearModal: () => void;
+    // deleteMovie: (id: string) => void;
+    // moviePosterList: { id: string, title: string, poster_path: string }[];
+    // toggleItems: (id: string, original_title: string, poster_path: string) => void;
+    errorMessage: string;
+};
 
 export type GenericBestListProps = {
     children: ReactNode;

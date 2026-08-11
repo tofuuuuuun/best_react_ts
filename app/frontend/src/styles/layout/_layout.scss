@@ -1,8 +1,13 @@
 @use '../abstracts/mixin' as mixin;
+@use '../abstracts/variables' as v;
 
 /* ====================
 	Layout
 ==================== */
+body {
+  background-color: v.$navy-color;
+}
+
 // common layout styles
 .l-header {
   position: sticky;

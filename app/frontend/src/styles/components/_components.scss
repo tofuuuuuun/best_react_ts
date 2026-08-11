@@ -103,3 +103,65 @@
     }
   }
 }
+
+.c-modal {
+
+  &__container {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    padding: 40px 20px;
+    overflow: auto;
+    transition: .3s;
+    box-sizing: border-box;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+    }
+  }
+
+  &__body {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    vertical-align: middle;
+    width: 640px;
+  }
+
+  &__content {
+    position: absolute;
+    max-width: 100%;
+    width: 640px;
+    top: 10%;
+    background: #24272F;
+    padding: 1em 1em 1em 1em;
+    text-align: left;
+    border-radius: 5px;
+  }
+}
+
+.c-input {
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+  }
+
+  &__search {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+  }
+}

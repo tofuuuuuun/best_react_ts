@@ -4,12 +4,12 @@ import { BsXCircleFill } from "react-icons/bs";
 export const GenericModal = ({ onClose, children }: GenericModalProps) => {
 
     return (
-        <div className='m-modal__container'>
-            <div className='m-modal__body'>
-                <div className='m-modal__icon--close' onClick={onClose}>
+        <div className='c-modal__container'>
+            <div className='c-modal__body'>
+                <div className='c-modal__icon--close' onClick={onClose}>
                     <BsXCircleFill />
                 </div>
-                <div className='m-modal__content'>
+                <div className='c-modal__content'>
                     {children}
                 </div>
             </div>
