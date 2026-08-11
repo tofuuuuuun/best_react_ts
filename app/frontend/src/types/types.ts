@@ -37,7 +37,7 @@ export type GenericModalProps = {
 };
 
 export type ModalProps = {
-    toggleModal: (toggle: boolean) => void;
+    toggleModal: (toggle: boolean, type?: string) => void;
     changeType: (typeValue: string) => void
     dataType: string;
     searchArtist: (artistName: string) => void;
@@ -57,14 +57,13 @@ export type ModalProps = {
 }
 
 export type SearchFormProps = {
-    searchTarget: () => void;
-    selectedType: string;
-    inputTarget: (event: { target: { value: string } }) => void;
-    searchArtist: (artistName: string) => void;
+    inputValue: string;
+    selectedMode: string;
+    // searchArtist: (artistName: string) => void;
     responseArtist: ResponseArtist[];
     searchAlbum: (id: string, name: string) => void;
-    clearModal: () => void;
-
+    // clearModal: () => void;
+    onSearch: (value: string) => void;
 }
 
 // ここは後で型の名前を変更する
@@ -73,11 +72,17 @@ export type renewModalProsp = {
     inputValue: string;
     selectedMode: string;
     responseArtist: ResponseArtist[];
+    searchAlbum: (id: string, name: string) => void;
+    filterResponseAlbum: ResponseAlbumType[];
+    toggleItems: (id: string, albumName: string, albumArt: string, albumArtist?: string) => void;
+    albumArtList: { id: string, albumName: string, albumArt: string, albumArtist: string }[];
+    changeType: (typeValue: string) => void
     // searchMovie: (artistName: string) => void;
     // movieTitle: string;
     onSearch: (value: string) => void;
     // responseMovies: MovieType[];
     clearModal: () => void;
+    dataType: string;
     // deleteMovie: (id: string) => void;
     // moviePosterList: { id: string, title: string, poster_path: string }[];
     // toggleItems: (id: string, original_title: string, poster_path: string) => void;

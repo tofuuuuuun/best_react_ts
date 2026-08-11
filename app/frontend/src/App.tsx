@@ -2,7 +2,7 @@ import { Modal } from '@/album/components/Modal/Modal';
 import { Header } from '@/common/Header';
 import albumLogoIcon from '@/images/album/logo.svg';
 import movieLogoIcon from '@/images/movie/logo.svg';
-import { ResponseArtistType } from '@/types/types';
+import { AlbumArtListType, ResponseAlbumType, ResponseArtistType } from '@/types/types';
 import { useState } from 'react';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -12,6 +12,10 @@ export const App = () => {
   const [selectedMode, setSelectedMode] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState('');
   const [responseArtist, setResponseArtist] = useState<ResponseArtistType[]>([]);
+  const [responseAlbum, setResponseAlbum] = useState<ResponseAlbumType[]>([]);
+  const [filterResponseAlbum, setFilterResponseAlbum] = useState<ResponseAlbumType[]>([]);
+  const [albumArtList, setAlbumArtList] = useState<AlbumArtListType[]>([]);
+  const [dataType, setDataType] = useState('all');
 
   const [inputValue, setInputValue] = useState<string>('');
 
@@ -37,6 +41,7 @@ export const App = () => {
       if (response.ok) {
         const responseData = await response.json();
         setResponseArtist(responseData);
+        console.log('responseData:', responseData);
       } else if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -46,6 +51,57 @@ export const App = () => {
     }
   }
 
+  const searchAlbum = async (artistId: string, name: string) => {
+    setErrorMessage('');
+    setResponseArtist([]);
+    setResponseAlbum([]);
+    setFilterResponseAlbum([]);
+    setDataType('all');
+
+    const params = new URLSearchParams({
+      'artistName': name,
+      'type': 'all',
+      'artistId': artistId
+    });
+    try {
+      const response = await fetch(`${BASE_URL}/album/searchArtistAlbum.php?${params}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (response.ok) {
+        const responseAlbumData = await response.json();
+        setResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData]);
+        setFilterResponseAlbum((prevAlbum) => [...prevAlbum, ...responseAlbumData]);
+      } else if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMessage(`アルバム情報の取得に失敗しました。${error}`);
+    }
+  }
+  const changeType = (typeValue: string) => {
+    setDataType(typeValue);
+    if (typeValue != 'all') {
+      const filtered = responseAlbum.filter(album => album.album_type === typeValue);
+      setFilterResponseAlbum(filtered);
+    } else {
+      setFilterResponseAlbum(responseAlbum);
+    }
+    window.scrollTo(0, 0);
+  };
+
+
+  const toggleAlbum = (id: string, albumName: string, albumArt: string, albumArtist?: string) => {
+    setAlbumArtList((prevList) => {
+      const isSelected = prevList.some((item) => item.id === id);
+      if (isSelected) {
+        return prevList.filter((item) => item.id !== id);
+      } else {
+        return [...prevList, { id, albumName, albumArt, albumArtist: albumArtist ?? '' }];
+      }
+    });
+  }
 
   return (
     <main>
@@ -83,17 +139,19 @@ export const App = () => {
             onSearch={onSearch}
             clearModal={clearModal}
             errorMessage={errorMessage}
+            searchAlbum={searchAlbum}
+            filterResponseAlbum={filterResponseAlbum}
+            dataType={dataType}
+            albumArtList={albumArtList}
+            toggleItems={toggleAlbum}
+            changeType={changeType}
+
           // searchArtist={searchArtist}
           // inputArtistName={inputArtistName}
-          // changeType={changeType}
-          // dataType={dataType}
           // searchAlbum={searchAlbum}
-          // filterResponseAlbum={filterResponseAlbum}
           // clearModal={clearModal}
           // artistName={artistName}
           // deleteAlbum={deleteAlbum}
-          // toggleItems={toggleAlbum}
-          // albumArtList={albumArtList}
           />
         )}
       </div>
