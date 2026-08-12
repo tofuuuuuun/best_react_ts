@@ -182,14 +182,14 @@
 
   &__list {
     height: 200px;
-    background: #24272F;
+    background: v.$navy-color;
     border-radius: 5px;
     overflow: auto;
     padding: 1em 0.5em;
 
   }
 
-  &___items {
+  &__items {
     display: flex;
     align-items: center;
     justify-content: flex-start;

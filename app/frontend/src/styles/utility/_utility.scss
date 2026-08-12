@@ -11,7 +11,9 @@
 	display: none !important;
 }
 
-// margin
+/*-----------------
+margin
+----------------- */
 .u-mt-5px {
 	margin-top: 5px;
 }
@@ -100,7 +102,9 @@
 	margin: 0 auto;
 }
 
-// padding
+/*-----------------
+padding
+-----------------*/
 .u-p-all-1em {
 	padding: 1em;
 }
@@ -189,10 +193,16 @@
 	padding-left: 5em;
 }
 
-// text-align
+/*-----------------
+text-align
+----------------- */
 .u-ta-center {
 	text-align: center;
 }
+
+/*-----------------
+text color
+-----------------*/
 
 .u-txt-white {
 	color: v.$white-color;
@@ -202,6 +212,18 @@
 	color: v.$navy-color;
 }
 
+
+/*-----------------
+background color
+-----------------*/
 .u-bg-black {
 	background-color: v.$black-color;
+}
+
+.u-bg-green {
+	background-color: v.$music-green;
+}
+
+.u-bg-purple {
+	background-color: v.$movie-purple;
 }
