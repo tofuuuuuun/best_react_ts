@@ -10,13 +10,13 @@ export const ResponseAlbumList = React.memo(((props: ResponseAlbumListProps) => 
         [albumArtList]);
 
     return (
-        <ul className='m-modal__list'>
+        <ul className='c-response'>
             {filterResponseAlbum.map((album, index) => (
-                <li className='m-modalResponse' id={index === 0 ? 'firstItems' : ''} key={album.id} >
-                    <img className='m-modalResponse__img' src={album.images.length !== 0 ? album.images[1].url : ''} loading='lazy' />
-                    <div className='m-modalResponse__info'>
-                        <p className='m-modalResponse__info__name u-font-wb'>{album.name}   ({album.release_date.substring(0, 4)})</p>
-                        <p className='m-modalResponse__info__name--sub'>{album.artists.map((value) => value.name).join(',')}</p>
+                <li className='c-response__item' id={index === 0 ? 'firstItems' : ''} key={album.id} >
+                    <img className='c-response__img' src={album.images.length !== 0 ? album.images[1].url : ''} loading='lazy' />
+                    <div className='c-response__info'>
+                        <p className='c-response__primary'>{album.name}   ({album.release_date.substring(0, 4)})</p>
+                        <p className='c-response__secondary'>{album.artists.map((value) => value.name).join(',')}</p>
                     </div>
                     <GenericCheckButton
                         id={album.id}
