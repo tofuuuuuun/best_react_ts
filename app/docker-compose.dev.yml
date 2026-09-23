@@ -19,8 +19,6 @@ services:
   php:
     container_name: dev_php
     build: ./php
-    volumes:
-      - shared-data-dev:/var/www/html
     expose:
       - "9000"
     environment:
@@ -28,23 +26,5 @@ services:
       - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
       - TMDB_API_KEY=${TMDB_API_KEY}
 
-  image-cache-batch:
-    container_name: dev_batch
-    build:
-      context: ./php
-      dockerfile: ./Dockerfile
-    user: "www-data"
-    volumes:
-      - shared-data-dev:/var/www/html
-    command:
-      sh /var/www/html/saveImages.sh
-    environment:
-      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
-      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
-      - TMDB_API_KEY=${TMDB_API_KEY}
-    depends_on:
-      - php
-
 volumes:
   node_modules_test:
-  shared-data-dev:
