@@ -10,7 +10,7 @@ WORKDIR /home/node/app/frontend
 
 # パッケージインストール
 COPY ./frontend/package.json ./frontend/yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 # 環境変数ファイルをコピー
 ARG ENV_FILE=.env
