@@ -3,8 +3,8 @@
 # #####
 
 # Node.jsのビルダーイメージ
-ARG NODE_VER=22
-FROM node:${NODE_VER}-bookworm-slim AS builder
+ARG NODE_VER=24-alpine
+FROM node:${NODE_VER} AS builder
 
 WORKDIR /home/node/app/frontend
 

@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        NODE_VER: 23-alpine3.20
+        NODE_VER: 24-alpine
         ENV_FILE: .env
     tty: true
     volumes:
